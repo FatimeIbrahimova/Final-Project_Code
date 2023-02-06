@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    .second-section {
+        margin-top: 50px;
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        &__products {
+            display: flex;
+            gap: 20px;
+            &-leftside {
+                width: 50%;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap:20px;
+                &-first {
+                    height:auto;
+                    // height: 600px;
+                    background-color: #f7f7f7;
+                    img {
+                        width: 100%;
+                    }
+                    &_desc {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        padding-top:20px;
+                        p{
+                          margin-top: 20px;
+                          margin-left: 60px;
+                          color: #5e5e5e;
+                        }
+                        &-btn {
+                            margin-top: 40px;
+                            padding: 10px 25px;
+                            background-color: white;
+                            color: black;
+                            border-radius: 3px;
+                            border: none;
+                            text-transform: uppercase;
+                            margin-bottom: 30px;
+                            &:hover {
+                                background-color: black;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+            &-rightside{
+                width: 50%;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap:20px;
+            }
+        }
+        &_end-btn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            margin-top: 50px;
+            color: white;
+            background-color: black;
+            padding: 10px 25px;
+            border-radius: 3px;
+            border: none;
+            text-transform: uppercase;
+            outline:none;
+            &:hover{
+                background-color: #f73b98;
+            }
+        }
+       
+        .product{
+            bottom: 0;
+            
+        }
+        &_p{
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 70px;
+        }
+    }
+    .visible{
+        display: inherit;
+    }
+    .hidden{
+        display: none;
+    }
+}
