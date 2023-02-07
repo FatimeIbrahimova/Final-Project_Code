@@ -1,9 +1,26 @@
-import React from 'react'
+import React from 'react';
+import "./NotFound.scss"
 
 const NotFound = () => {
   return (
-    <div>NotFound</div>
-  )
-}
+    <div className="not-found">
+      <div className='container not-found'>
+      <div className="not-found_desc">
+        <h2>This Page Was Lost</h2>
+        <p>
+          The Page You are looking for isn’t available. Try to search again or use the Go Back button below.
+        </p>
+        <a href='/'><i class="fa-solid fa-arrow-left"></i> Go Back</a>
+      </div>
+      <div className="not-found_img">
+        <img
+          src="https://storyhub-beauty-redq.vercel.app/static/3e89880fa3f03870db04c781ec892372/f26e3/404.png"
+          alt="img"
+        />
+      </div>
+      </div>
+    </div>
+  );
+};
 
-export default NotFound
+export default NotFound;

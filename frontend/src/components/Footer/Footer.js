@@ -16,24 +16,36 @@ const Footer = () => {
                 src="https://storyhub-beauty-redq.vercel.app/static/d303738dc5d6e597590f0ddeb1f5d199/34353/61399796_715520225569317_368831368756356983_n.jpg"
                 alt="img"
               />
+              <div className='footer-top_imgs_image-desc'>
+             <span><i class="fa-solid fa-heart"></i>9 <i class="fa-solid fa-comment"></i>1</span>
+              </div>
             </div>
             <div className="footer-top_imgs_image">
               <img
                 src="https://storyhub-beauty-redq.vercel.app/static/50011a731f7b70366fe662a3a91ec1bd/34353/61251868_312268296360730_2797310803087453718_n.jpg"
                 alt="img"
               />
+               <div className='footer-top_imgs_image-desc'>
+             <span><i class="fa-solid fa-heart"></i>9 <i class="fa-solid fa-comment"></i>0</span>
+              </div>
             </div>
-            <div className="footer-top_imgs_image">
+            <div className="footer-top_imgs_image fourth-image">
               <img
                 src="https://storyhub-beauty-redq.vercel.app/static/3afcf05ad49885f60e0c5d72fa6ccb98/34353/61162228_358604618343312_5682820484988311364_n.jpg"
                 alt="img"
               />
+               <div className='footer-top_imgs_image-desc'>
+             <span><i class="fa-solid fa-heart"></i>8<i class="fa-solid fa-comment"></i>0</span>
+              </div>
             </div>
             <div className="footer-top_imgs_image">
               <img
                 src="https://storyhub-beauty-redq.vercel.app/static/90ff6a913305c8b68eeb9c4cc2dc6a83/34353/60382248_443817892862343_5605602902724620232_n.jpg"
                 alt="img"
               />
+               <div className='footer-top_imgs_image-desc'>
+             <span><i class="fa-solid fa-heart"></i>9 <i class="fa-solid fa-comment"></i>6</span>
+              </div>
             </div>
           </div>
         </div>

@@ -11,6 +11,13 @@
         &__products {
             display: flex;
             gap: 20px;
+            h2{
+                font-family: 'PT Serif', serif;
+                font-size: 32px;
+                font-weight: 100;
+                width: 500px;
+                margin-left: 30px;
+            }
             &-leftside {
                 width: 50%;
                 position: relative;
@@ -95,5 +102,44 @@
     }
     .hidden{
         display: none;
+    }
+}
+@media only screen and (max-width: 576px){
+    .second-section{
+        .container {
+            width: 70%;
+            margin: 0 auto;
+            .product{
+                width: 100%;
+                position: relative;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+        h2{
+            font-size: 16px;
+            margin-left:1px;
+            width: 150px;
+        }
+        p{
+            font-size: 10px;
+            width: 100px;
+            margin-left: 1px;
+        }
+    }
+    
+}
+@media only screen and (min-width: 768px){
+    .second-section{
+        h2{
+            font-size: 26px;
+            width: 180px;
+        }
+        p{
+            font-size: 16px;
+            width: 180px;
+            margin-left: 5px;
+        }
     }
 }

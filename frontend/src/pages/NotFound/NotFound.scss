@@ -1,0 +1,33 @@
+.not-found{
+    margin-top: 160px;
+    display: flex;
+    .container{
+        width: 80%;
+        margin: 0 auto;
+        .not-found_desc{
+            margin-top: 170px;
+            h2{
+                font-family: 'PT Serif', serif;
+            }
+            p{
+                margin-bottom: 50px;
+                margin-top: 15px;
+            }
+            a{
+                text-decoration: none;
+                i{
+                    padding: 9px 10px;
+                    border-radius: 50%;
+                    color: white;
+                    background-color:#dbdbdb;
+                }
+                &:hover{
+                    color:#c43b72;
+                    i{
+                    background-color: #c43b72;
+                    }
+                }
+            }
+        }
+    }
+}

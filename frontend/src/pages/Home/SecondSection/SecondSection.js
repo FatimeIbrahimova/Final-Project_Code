@@ -42,7 +42,7 @@ const SecondSection = () => {
               alt="img"
             />
             <div className="second-section__products-leftside-first_desc">
-              <h2>What’s in your makeup <span>drawer</span></h2>
+              <h2>Beauty itself is but the sensible image of the Infinite</h2>
               <p>
                 An Essay on Typography by Eric Gill takes the reader back to the year
                 {' '}
@@ -60,7 +60,7 @@ const SecondSection = () => {
               alt="img"
             />
             <div className="second-section__products-leftside-first_desc">
-              <h2>What’s in your makeup <span>drawer</span></h2>
+              <h2>I have often said that the lure of flying is the lure of beauty</h2>
               <p>
                 An Essay on Typography by Eric Gill takes the reader back to the year
                 {' '}
@@ -78,11 +78,9 @@ const SecondSection = () => {
               alt="img"
             />
             <div className="second-section__products-leftside-first_desc">
-              <h2>What’s in your makeup <span>drawer</span></h2>
+              <h2>It's a good thing that beauty is only skin deep</h2>
               <p>
-                An Essay on Typography by Eric Gill takes the reader back to the year
-                {' '}
-                <span>1930. The year when a conflict…</span>
+              Given the discourse around this issue, it can be easy to either overestimate the scope of this…
               </p>
               <button className="second-section__products-leftside-first_desc-btn">
                 Read More
@@ -97,11 +95,9 @@ const SecondSection = () => {
                 alt="img"
               />
               <div className="second-section__products-leftside-first_desc products">
-                <h2>What’s in your makeup <span>drawer</span></h2>
+                <h2>Foundation should unify tone, but it shouldn’t take away the individuality of the skin</h2>
                 <p>
-                  An Essay on Typography by Eric Gill takes the reader back to the year
-                  {' '}
-                  <span>1930. The year when a conflict…</span>
+                Wow! I love blogging so much already. Did you know that “despite its name, salted duck eggs can also…
                 </p>
                 <button className="second-section__products-leftside-first_desc-btn">
                   Read More
@@ -117,11 +113,9 @@ const SecondSection = () => {
                 alt="img"
               />
               <div className="second-section__products-leftside-first_desc products">
-                <h2>What’s in your makeup <span>drawer</span></h2>
+                <h2>Beauty arises out of human inspiration</h2>
                 <p>
-                  An Essay on Typography by Eric Gill takes the reader back to the year
-                  {' '}
-                  <span>1930. The year when a conflict…</span>
+                Technology companies can do more, but as long as these trends continue, there will be incentives for…
                 </p>
                 <button className="second-section__products-leftside-first_desc-btn">
                   Read More
@@ -138,7 +132,7 @@ const SecondSection = () => {
               alt="img"
             />
             <div className="second-section__products-leftside-first_desc">
-              <h2>What’s in your makeup <span>drawer</span></h2>
+              <h2>I think permitting the game to become too physical takes away a little bit of the beauty</h2>
               <p>
                 An Essay on Typography by Eric Gill takes the reader back to the year
                 {' '}
@@ -156,7 +150,7 @@ const SecondSection = () => {
               alt="img"
             />
             <div className="second-section__products-leftside-first_desc">
-              <h2>What’s in your makeup <span>drawer</span></h2>
+              <h2>Anyone who keeps the ability to see beauty never grows old</h2>
               <p>
                 An Essay on Typography by Eric Gill takes the reader back to the year
                 {' '}
@@ -174,7 +168,7 @@ const SecondSection = () => {
               alt="img"
             />
             <div className="second-section__products-leftside-first_desc">
-              <h2>What’s in your makeup <span>drawer</span></h2>
+              <h2>What the imagination seizes as beauty must be truth</h2>
               <p>
                 An Essay on Typography by Eric Gill takes the reader back to the year
                 {' '}
@@ -192,7 +186,7 @@ const SecondSection = () => {
               alt="img"
             />
             <div className="second-section__products-leftside-first_desc">
-              <h2>What’s in your makeup <span>drawer</span></h2>
+              <h2>Your favorite skincare products</h2>
               <p>
                 An Essay on Typography by Eric Gill takes the reader back to the year
                 {' '}
@@ -211,7 +205,7 @@ const SecondSection = () => {
                 alt="img"
               />
               <div className="second-section__products-leftside-first_desc products">
-                <h2>What’s in your makeup <span>drawer</span></h2>
+                <h2>Never ask a girl with winged eyeliner why she’s late</h2>
                 <p>
                   An Essay on Typography by Eric Gill takes the reader back to the year
                   {' '}
@@ -231,7 +225,7 @@ const SecondSection = () => {
                 alt="img"
               />
               <div className="second-section__products-leftside-first_desc products">
-                <h2>What’s in your makeup <span>drawer</span></h2>
+                <h2>Beauty begins the moment you decide to be yourself</h2>
                 <p>
                   An Essay on Typography by Eric Gill takes the reader back to the year
                   {' '}

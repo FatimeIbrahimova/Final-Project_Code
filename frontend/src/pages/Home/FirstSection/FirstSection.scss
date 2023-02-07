@@ -20,6 +20,7 @@
             h2{
                 font-family: 'PT Serif', serif;
                 font-size: 32px;
+                font-weight: 100;
             }
             p{
                 margin-top: 20px;
@@ -38,5 +39,39 @@
                 }
             }
         }
+    }
+}
+@media only screen and (max-width: 576px){
+    .container{
+        // width: 80%;
+        // position:relative;
+        margin-left: 0px;
+    }
+    SwiperSlide{
+        width:100%;
+        position: absolute;
+        left: 0;
+    }
+    img{
+        width:100%;
+        // position: absolute;   
+    }
+    .first-section__swipper-desc{
+        margin-left: 50px;
+    }
+}
+@media only screen and (max-width: 768px){
+    .container{
+        width: 100%;
+    }
+    SwiperSlide{
+        width: 100%;
+    }
+    img{
+        width:100%;
+        // position: absolute;   
+    }
+    .first-section__swipper-desc{
+        margin-left: 70px;
     }
 }

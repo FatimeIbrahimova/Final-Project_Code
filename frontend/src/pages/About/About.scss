@@ -1,0 +1,52 @@
+.about{
+    margin-top: 200px;
+    .container{
+        width: 80%;
+        margin: 0 auto;
+        position: relative;
+        .about_page-desc{
+            h1{
+                font-family: 'PT Serif', serif;
+                font-weight: 600;
+            }
+            p{
+                color:#5e5e5e;
+                padding-top:20px;
+            }
+        }
+        .about_page-img{
+            margin-top: 70px;
+            img{
+                width: 100%;
+            }
+        }
+        .about_page-message{
+            margin-top: 80px;
+            h2{
+                font-family: 'PT Serif', serif;
+                font-weight: 100; 
+            }
+            p{
+                color: #5e5e5e;
+                padding-top: 30px;
+            }
+            hr{
+                margin-top: 60px;
+                width: 40px;
+                color:black;
+            }
+            ul{
+                list-style: none;
+                display: flex;
+                gap:25px;
+                margin-top: 50px;
+                li{
+                    a{
+                        text-decoration: none;
+                        color:black;
+                    }
+                }
+            }
+        }
+    }
+}

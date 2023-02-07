@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    .contact-page {
+        margin-top: 200px;
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            position: relative;
+            .contact-page_desc {
+                h1 {
+                    font-family: "PT Serif", serif;
+                    font-weight: 600;
+                }
+                p {
+                    color: #5e5e5e;
+                    padding-top: 20px;
+                }
+            }
+            .form {
+                margin-top: 50px;
+                
+                &_inputs {
+                    // position: absolute;
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    &-name {
+                        .input-name {
+                            // position: relative;
+                            width: 500px;
+                            input {
+                                margin-top: 10px;
+                                // position: absolute;
+                                width: 100%;
+                                height: 44px;
+                                border: 1px solid rgb(219, 219, 219);
+                                color: rgb(41, 41, 41);
+                                font-size: 15px;
+                                line-height: 1.5;
+                                font-weight: 400;
+                                padding: 0px 15px;
+                            }
+                        }
+                    }
+                    &-email {
+                        .input-email {
+                            position: relative;
+                            width: 500px;
+                            input {
+                                margin-top: 10px;
+                                position: absolute;
+                                width: 100%;
+                                height: 44px;
+                                border: 1px solid rgb(219, 219, 219);
+                                color: rgb(41, 41, 41);
+                                font-size: 15px;
+                                line-height: 1.5;
+                                font-weight: 400;
+                                padding: 0px 15px;
+                            }
+                        }
+                    }
+                }
+                &-text{
+                    margin-top: 60px;
+                    width: 100%;
+                    textarea{
+                        width: 100%;
+                        margin-top: 10px;
+                    }
+                }
+                &_button-submit{
+                    padding: 10px 20px;
+                    background-color: black;
+                    color: white;
+                    margin-top: 50px;
+                }
+            }
+        }
+    }
+}
