@@ -31,3 +31,34 @@
         }
     }
 }
+@media only screen and (max-width: 576px){
+    .not-found{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    
+}
+@media only screen and (max-width: 768px){
+    .not-found{
+        img{
+            margin-top: 180px;
+        }
+    }
+}
+@media only screen and (max-width: 992px) {
+    .not-found{
+        img{
+            margin-top: 140px;
+        }
+    }
+}
+@media only screen and (min-width: 992px) {
+    .not-found{
+        img{
+            margin-top: 80px;
+        }
+    }
+}
+@media only screen and (min-width: 1200px) {
+    
+}

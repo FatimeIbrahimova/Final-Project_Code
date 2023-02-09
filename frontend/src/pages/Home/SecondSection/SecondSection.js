@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 import './SecondSection.scss';
 
 const SecondSection = () => {
@@ -23,7 +24,7 @@ const SecondSection = () => {
               src="https://storyhub-beauty-redq.vercel.app/static/350b1e64ba3459bb3898791aa5b26eb0/d8441/preview.webp"
               alt="img"
             />
-            <div className="second-section__products-leftside-first_desc">
+           <div className="second-section__products-leftside-first_desc">
               <h2>What’s in your makeup <span>drawer</span></h2>
               <p>
                 An Essay on Typography by Eric Gill takes the reader back to the year
@@ -31,9 +32,10 @@ const SecondSection = () => {
                 <span>1930. The year when a conflict…</span>
               </p>
               <button className="second-section__products-leftside-first_desc-btn">
-                Read More
+              <Link to="/firstCard">Read More</Link>
               </button>
             </div>
+          
 
           </div>
           <div className="second-section__products-leftside-first">

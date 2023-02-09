@@ -2,6 +2,7 @@ import MainRoot from "../components/MainRoot";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
 import Home from "../pages/Home/Home";
+import FirstCard from "../pages/Home/SecondSection/FirstCard/FirstCard";
 import NotFound from "../pages/NotFound/NotFound";
 
 export const ROUTES=[
@@ -11,7 +12,7 @@ export const ROUTES=[
         children:[
             {
                 path:"",
-                element:<Home/>
+                element:<Home/>,
             },
             {
                 path:"about",
@@ -24,7 +25,11 @@ export const ROUTES=[
             {
                 path:"notFound",
                 element:<NotFound/>
+            },
+            {
+                path:"firstCard",
+                element:<FirstCard/>
             }
         ]
-    }
+    },
 ]

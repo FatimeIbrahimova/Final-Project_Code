@@ -107,14 +107,25 @@
 @media only screen and (max-width: 576px){
     .second-section{
         .container {
-            width: 70%;
-            margin: 0 auto;
+            width: 80%;
+        position: relative;
             .product{
                 width: 100%;
                 position: relative;
                 img{
                     width: 100%;
                 }
+            }
+        }
+        &__products {
+            // display: flex;
+           
+            flex-direction: column;
+            &-leftside{
+                width: 100%;   
+            }
+            &-rightside{
+                width: 100%;   
             }
         }
         h2{
@@ -130,7 +141,7 @@
     }
     
 }
-@media only screen and (min-width: 768px){
+@media only screen and (max-width: 768px){
     .second-section{
         h2{
             font-size: 26px;
@@ -140,6 +151,44 @@
             font-size: 16px;
             width: 180px;
             margin-left: 5px;
+        }
+    }
+}
+@media only screen and (max-width: 992px) {
+    .second-section{
+        h2{
+            font-size: 26px;
+            width: 180px;
+        }
+        p{
+            font-size: 16px;
+            width: 180px;
+            margin-left: 5px;
+        }
+    }
+}
+@media only screen and (min-width: 992px) {
+    .second-section{
+        h2{
+            font-size: 26px;
+            width: 180px;
+        }
+        p{
+            font-size: 16px;
+            width: 180px;
+            margin-left: 5px;
+        }
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .second-section{
+        h2{
+            font-size: 32px;
+            width: 500px;
+        }
+        p{
+            width: 500px;
+            margin-left: 7px;
         }
     }
 }

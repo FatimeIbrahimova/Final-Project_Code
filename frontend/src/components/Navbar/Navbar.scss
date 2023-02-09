@@ -9,11 +9,9 @@
         z-index: 9997;
         background-color: white;
         top: 0;
-        // display: flex;
         .container{
             width: 80%;
             margin: 0 auto;
-            // border: 1px solid black;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -37,7 +35,7 @@
             position: absolute;
             right: 0;
             top:0;
-            padding-top: 100px;
+            padding-top: 50px;
             z-index: 9999;
             i{
                 padding-left: 20px;
@@ -159,11 +157,16 @@
         margin-right: 10px;
      }
 }
-// @media only screen and (max-width: 768px) {
-//      .nav__left-icons{
-//         display: none;
-//      }
-//      .nav__right-icons{
-//         margin-right: 10px;
-//      }
-// }
+@media only screen and (max-width: 768px) {
+     .nav__left-icons{
+        display: none;
+     }
+     .nav__right-icons{
+        margin-right: 10px;
+     }
+}
+@media only screen and (min-width: 992px) {
+    .nav__left-icons{
+        display: block;
+     }
+}
