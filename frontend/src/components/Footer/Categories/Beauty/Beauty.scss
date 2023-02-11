@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    .beauty {
+        padding-top: 170px;
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        &-title {
+            h1 {
+                color: #d10068;
+                font-weight: 700;
+                font-family: "PT Serif", serif;
+                font-size: 26px;
+            }
+            p {
+                font-size: 14px;
+                font-weight: 400;
+                padding-top: 8px;
+            }
+        }
+        hr {
+            width: 85px;
+            margin-top: 15px;
+        }
+        .second-section__products {
+            display: flex;
+            gap: 20px;
+            padding-top: 50px;
+            h2{
+                font-family: 'PT Serif', serif;
+                font-size: 32px;
+                font-weight: 100;
+                width: 500px;
+                margin-left: 30px;
+            }
+            &-leftside {
+                width: 50%;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap:20px;
+                &-first {
+                    height:auto;
+                    // height: 600px;
+                    background-color: #f7f7f7;
+                    img {
+                        width: 100%;
+                    }
+                    &_desc {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        padding-top:20px;
+                        p{
+                          margin-top: 20px;
+                          margin-left: 60px;
+                          color: #5e5e5e;
+                        }
+                        &-btn {
+                            margin-top: 40px;
+                            padding: 10px 25px;
+                            background-color: white;
+                            color: black;
+                            border-radius: 3px;
+                            border: none;
+                            text-transform: uppercase;
+                            margin-bottom: 30px;
+                            &:hover {
+                                background-color: black;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+            &-rightside{
+                width: 50%;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap:20px;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 576px){
+    .beauty{
+        .container {
+            width: 80%;
+        position: relative;
+            .product{
+                width: 100%;
+                position: relative;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+        .second-section__products {
+            flex-direction: column;
+            &-leftside{
+                width: 100%;   
+            }
+            &-rightside{
+                width: 100%;   
+            }
+        }
+        h2{
+            font-size: 16px;
+            margin-left:1px;
+            width: 150px;
+        }
+        p{
+            font-size: 10px;
+            margin-left: 1px;
+        }
+    }
+    
+}
+@media only screen and (max-width: 768px){
+   .beauty{
+    .container{
+        h2{
+            font-size: 26px;
+            width: 220px;
+        }
+        p{
+            font-size: 16px;
+            width: 200px;
+            margin-left: 5px;
+        }
+    }
+   }
+}
+@media only screen and (max-width: 992px) {
+   .beauty{
+    .container{
+        h2{
+            font-size: 26px;
+            width: 200px;
+        }
+        p{
+            font-size: 16px;
+            width: 180px;
+            margin-left: 5px;
+        }
+    }
+   }
+}
+@media only screen and (min-width: 992px) {
+    .beauty{
+        .container{
+            h2{
+                font-size: 26px;
+                width: 180px;
+            }
+            .second-section__products{
+                p{
+                    font-size: 16px;
+                    width: 180px;
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 1200px) {
+   .beauty{
+    .container{
+        h2{
+            font-size: 32px;
+            width: 500px;
+        }
+        .second-section__products{
+            p{
+                width: 500px;
+                margin-left: 7px;
+            }
+        }
+    }
+   }
+}

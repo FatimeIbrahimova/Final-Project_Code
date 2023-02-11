@@ -1,3 +1,7 @@
+import Beauty from "../components/Footer/Categories/Beauty/Beauty";
+import LifeStyle from "../components/Footer/Categories/LifeStyle/LifeStyle";
+import Products from "../components/Footer/Categories/Products/Products";
+import Tips from "../components/Footer/Categories/Tips/Tips";
 import MainRoot from "../components/MainRoot";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
@@ -29,6 +33,22 @@ export const ROUTES=[
             {
                 path:"firstCard",
                 element:<FirstCard/>
+            },
+            {
+                path:"beauty",
+                element:<Beauty/>
+            },
+            {
+                path:"lifestyle",
+                element:<LifeStyle/>
+            },
+            {
+                path:"products",
+                element:<Products/>
+            },
+            {
+                path:"tips",
+                element:<Tips/>
             }
         ]
     },

@@ -67,7 +67,6 @@
                 p {
                     font-family: "PT Serif", serif;
                     font-size: 25px;
-                    width: 400px;
                 }
                 input {
                     padding-top: 15px;
@@ -95,6 +94,9 @@
                     margin-top: 20px;
                     li {
                         padding-top: 10px;
+                        .link:hover{
+                            color:red;
+                    }
                         a {
                             text-decoration: none;
                             color: #5e5e5e;
@@ -135,7 +137,6 @@
     }
    }
    .footer-middle{
-    width: 100%;
     position: relative;
     .container{
         position: relative;
@@ -143,9 +144,8 @@
     }
     flex-direction: column;
     p{
-        top:10px;
-        left: 0;
-        width: 60px;
+        top:20px;
+        left: 10px;
         position: absolute;
         font-size: 10px;
         font-weight: 100;
@@ -153,18 +153,19 @@
     form{
         margin-top:30px;
         display: flex;
-        position: absolute;
-        width: 60px;
+        flex-direction: column;
         left:0;
         input{
-                padding-right: 20px;
-                width: 200px;
+                margin-top:20px;
+                width: 250px;
         }
     }
    }
    .footer-end{
+    display: flex;
     flex-direction: column;
     &_desc{
+        
         img{
             width: 100px;
         }
@@ -182,17 +183,39 @@
          margin-top:20px;
          display: flex;
      }
+    
     }
+    
+ }
+ @media only screen and (min-width: 769px){
+    .footer-middle {
+        p {
+            font-family: "PT Serif", serif;
+            font-size: 25px;
+            width: 35%;
+        }
+    }
+ }
+
+ @media only screen and (min-width:576px){
     .footer-end{
-     flex-direction: column;
-     &_desc{
-         img{
-             width: 100px;
-         }
-     }
-    h3{
-     margin-top: 20px;
+        flex-wrap: wrap;
+        gap:50px;
+        &_desc{
+            display: grid;
+            order: 2;
+            padding-left: 30%;
+        }
     }
+ }
+ @media only screen and (min-width: 1200px){
+    .footer-end{
+        flex-wrap: nowrap;
+        &_desc{
+            display: grid;
+            order: 0;
+            padding-left: 0px;
+        }
     }
  }
 

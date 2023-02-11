@@ -4,6 +4,7 @@
     box-sizing: border-box;
     .first-section{
         margin-top: 120px;
+        z-index: -3;
         .container{
             width:80%;
             margin: 0 auto;
@@ -38,6 +39,90 @@
                     background-color: #f73b98;
                 }
             }
+        }
+        .demos-btn{
+            top:40%;
+            z-index: 8888;
+            position: absolute;
+            right: 0;
+            position: fixed;
+            display: block;
+            padding: 10px 12px;
+            letter-spacing: 0.17em;
+            background-color: rgb(247, 59, 152);
+            color: rgb(255, 255, 255);
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            transition: all 0.15s ease-in-out 0s;
+            h2{
+                font-size: 12px;
+                font-weight: 100;
+                -webkit-writing-mode: vertical-rl;
+                writing-mode: vertical-rl;
+                text-orientation: upright
+            }
+        }
+        .demos{
+            position:absolute;
+            z-index: 999999;
+            width: 430px;
+            // height: 100vh;
+            background-color:white;
+            right: 0;
+            top:0;
+            padding-top: 50px;
+            z-index: 9998;
+            &-container{
+                width: 90%;
+                margin: 0 auto;
+            }
+            &-top{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                h2{
+                    font-family: 'PT Serif', serif;
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+            }
+            &-cards{
+                padding-top: 30px;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap:10px;
+                &_card{
+                 border: 1px solid rgb(174, 172, 172);
+                 border-radius: 5px;
+                }
+                &_card:hover{
+                    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+                }
+                h4{
+                    margin-left: 25%;
+                    padding-top: 5px;
+                    font-family: 'PT Serif', serif;
+                    font-weight: 500;
+                    font-size: 12px;
+                }
+            }
+            button{
+               margin-left: 30%;
+               margin-top: 20px;
+               margin-bottom: 20px;
+                padding:10px 20px;
+                background-color: black;
+                color: white;
+                border: none;
+            }
+        }
+        .visible{
+            display:inherit;
+        }
+        .hidden{
+            display:none;
         }
     }
 }

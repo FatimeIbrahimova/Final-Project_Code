@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 const Footer = () => {
@@ -82,31 +83,29 @@ const Footer = () => {
           <div className="footer-end_links">
             <h3>Quick Links</h3>
             <ul>
-              <li><a href="/about">About</a></li>
-              <li><a href="/contact">Contact</a></li>
-              <li><a href="/notFound">404 Page</a></li>
+              <li><a className='link' href="/about">About</a></li>
+              <li><a className='link' href="/contact">Contact</a></li>
+              <li><a className='link' href="/notFound">404 Page</a></li>
             </ul>
           </div>
           <div className="footer-end_categories">
             <h3>Category</h3>
             <ul>
-              <li><a href="">Beauty</a></li>
-              <li><a href="">Lifestyle</a></li>
-              <li><a href="">Products</a></li>
-              <li><a href="">tips</a></li>
+              <li><a className='link' href="/beauty">Beauty</a></li>
+              <li><a className='link' href="/lifestyle">Lifestyle</a></li>
+              <li><a className='link' href="/products">Products</a></li>
+              <li><a className='link' href="/tips">Tips</a></li>
             </ul>
           </div>
           <div className="footer-end_follow">
             <h3>Follow Us</h3>
             <ul>
               <li>
-                {' '}
                 <a href="https://www.facebook.com/redqinc/">
                   <i class="fa-brands fa-square-facebook" />
                 </a>
               </li>
               <li>
-                {' '}
                 <a
                   className="social-icon"
                   href="https://www.instagram.com/redqinc/"
