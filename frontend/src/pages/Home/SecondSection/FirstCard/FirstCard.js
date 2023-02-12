@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useForm } from 'react-hook-form';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { MainContext } from '../../../../context/ContextProvider'
+import { loginFormSchema } from '../../../../schema/formSchema'
 import "./FirstCard.scss"
 
 const FirstCard = () => {
-  const [login,setLogin]=useState(false)
-  const [socialNetworks,setSocialNetworks]=useState("hidden")
+  const {login,setLogin}=useContext(MainContext)
+  const {socialNetworks,setSocialNetworks}=useContext(MainContext)
   const handleClick=()=>{
     if(!login){
       setSocialNetworks("visible")
@@ -13,6 +17,13 @@ const FirstCard = () => {
       setSocialNetworks("hidden")
     }
   }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+} = useForm({
+    resolver: yupResolver(loginFormSchema),
+});
   return (
     <>
     <div className='first-card'>
@@ -57,7 +68,7 @@ Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulpu
           <i class="fa-solid fa-border-all"></i>
           </div>
           <div className='first-card_switch-next'>
-            <Link to=""><h3>Next</h3><i class="fa-solid fa-greater-than"></i></Link>
+            <Link to="/beauty2"><h3>Next</h3><i class="fa-solid fa-greater-than"></i></Link>
           </div>
         </div>
         <hr/>
@@ -109,7 +120,7 @@ Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulpu
                   </div>
                   <i class="fa-solid fa-quote-left"></i>
                   </div>
-                  <button className='comment-btn'>Comment</button>
+                  <button className='comment-btn' onClick={handleSubmit()}>Comment</button>
                 </div>
                 <div className='login-comment'>
                   <div className='login-comment-icons'>
@@ -123,13 +134,28 @@ Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulpu
                   </div>
                   <div className='login-comment-inputs'>
                     <h4>Or sign up with discuss</h4>
-                    <input placeholder='Name'/>
-                    <input placeholder='Email'/>
-                    <input type="password" placeholder='Password'/>
+                    <input placeholder='Name' {...register("name")}/>
+                    {errors.name ? (
+                      <span style={{ color: "white",backgroundColor:"red",fontWeight:600,padding:5}}>{errors.name.message}</span>
+                    ) : (
+                      <></>
+                    )}
+                    <input placeholder='Email' {...register("email")}/>
+                    {errors.email ? (
+                      <span style={{ color: "white",backgroundColor:"red",fontWeight:600,padding:5}}>{errors.email.message}</span>
+                    ) : (
+                      <></>
+                    )}
+                    <input type="password" placeholder='Password' {...register("password")}/>
+                    {errors.password ? (
+                      <span style={{ color: "white",backgroundColor:"red",fontWeight:600,padding:5}}>{errors.password.message}</span>
+                    ) : (
+                      <></>
+                    )}
                      <span>Please access our <a href="https://help.disqus.com/en/articles/1717103-disqus-privacy-policy" target="_blank">Privacy Policy</a> to learn what personal data Disqus collects and your choices about how it is used. All users of our service are also subject to our <a href='https://help.disqus.com/en/articles/1717102-terms-of-service' target="_blank">Terms of Service</a>.</span>
                   </div>
                 </div>
-                <i class="fa-solid fa-arrow-right"></i>
+                <i class="fa-solid fa-arrow-right" onClick={handleSubmit()}></i>
               </div>
            </div>
          </div>

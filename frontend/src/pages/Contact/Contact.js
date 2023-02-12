@@ -1,7 +1,18 @@
 import React from 'react'
+import { useForm } from 'react-hook-form';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginFormSchema } from '../../schema/formSchema';
 import "./Contact.scss"
 
 const Contact = () => {
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+} = useForm({
+    resolver: yupResolver(loginFormSchema),
+});
   return (
     <>
    <div className='contact-page'>
@@ -16,21 +27,36 @@ const Contact = () => {
           <div className='form_inputs-name'>
           <label for="name">Name</label><br/>
             <div className='input-name'>
-            <input id="name"/>
+            <input id="name" {...register("name")}/>
+            {errors.name ? (
+                <span style={{ color: "red" }}>{errors.name.message}</span>
+            ) : (
+                <></>
+            )}
             </div>
           </div>
             <div className='form_inputs-email'>
             <label for="email">Email</label><br/>
             <div className='input-email'>
-            <input id="email"/>
+            <input id="email" {...register("email")}/>
+            {errors.email ? (
+                <span style={{ color: "red" }}>{errors.email.message}</span>
+            ) : (
+                <></>
+            )}
             </div>
             </div>
           </div>
           <div className='form-text'>
             <label>Message</label><br/>
-           <textarea/>
+           <textarea {...register("message")}/>
+           {errors.message ? (
+                <span style={{ color: "red" }}>{errors.message.message}</span>
+            ) : (
+                <></>
+            )}
           </div>
-          <button className='form_button-submit'>Submit</button>
+          <button className='form_button-submit' onClick={handleSubmit()}>Submit</button>
            {/* </form> */}
           </div>
     
