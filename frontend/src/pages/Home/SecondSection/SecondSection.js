@@ -248,7 +248,9 @@ const SecondSection = () => {
       </button>
       </div>
       <div className={product_class}>
-      <p className='second-section_p'>No more posts</p>
+      <div className='second-section_p'>
+      <p>No more posts</p>
+      </div>
       </div>
     </div>
   );

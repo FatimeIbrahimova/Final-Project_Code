@@ -7,12 +7,7 @@ const Beauty2 = () => {
   const {login,setLogin}=useContext(MainContext)
   const {socialNetworks,setSocialNetworks}=useContext(MainContext)
   const handleClick=()=>{
-    if(!login){
-      setSocialNetworks("visible")
-    }
-    else{
-      setSocialNetworks("hidden")
-    }
+    setSocialNetworks(socialNetworks==="hidden" ? "visible" :"hidden")
   }
   return (
   <>
@@ -53,7 +48,9 @@ Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulpu
         </div>
         <hr/>
         <div className='first-card_switch'>
-          <div></div>
+          <div>
+          <Link to="/firstCard"><i class="fa-solid fa-less-than"></i><h3>Previous</h3></Link>
+          </div>
           <div>
           <i class="fa-solid fa-border-all"></i>
           </div>

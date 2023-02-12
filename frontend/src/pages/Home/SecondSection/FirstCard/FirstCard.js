@@ -10,12 +10,7 @@ const FirstCard = () => {
   const {login,setLogin}=useContext(MainContext)
   const {socialNetworks,setSocialNetworks}=useContext(MainContext)
   const handleClick=()=>{
-    if(!login){
-      setSocialNetworks("visible")
-    }
-    else{
-      setSocialNetworks("hidden")
-    }
+    setSocialNetworks(socialNetworks==="hidden" ? "visible" :"hidden")
   }
   const {
     register,
@@ -176,7 +171,7 @@ Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulpu
            <h5>Oldest</h5>
            </div>
          </div>
-         <div className='comments_post-bottom'>
+         {/* <div className='comments_post-bottom'>
            <div className='comments_post-bottom-comment'>
              <div className='user-profile'>
              <img src='https://c.disquscdn.com/uploads/users/2534/640/avatar92.jpg?1590753847' alt="img"/>
@@ -211,7 +206,8 @@ Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulpu
                </div>
              </div>
            </div>
-         </div>
+         </div> */}
+         <span className='no-comment'>Be the first to comment</span>
          <hr/>
          <div className='comments-part-end'>
            <div className='comments-part-end-leftside'>
@@ -238,6 +234,53 @@ Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulpu
              <h2><a href="https://disqus.com">Disqus</a></h2>
            </div>
          </div>
+        </div>
+        <div className='related-posts'>
+          <h1>Related Posts</h1>
+          <div className='card-wrapper'>
+            <div className='card-wrapper_card'>
+              <div className='card-wrapper_card-img'>
+                <img src="https://storyhub-beauty-redq.vercel.app/static/350b1e64ba3459bb3898791aa5b26eb0/a5f21/preview.webp" alt="img"/>
+              </div>
+              <div className='card-wrapper_card-desc'>
+                <h2>What’s in your makeup drawer</h2>
+                <p>An Essay on Typography by Eric Gill takes the reader back to the year 1930. The…</p>
+                <div className='card-wrapper_card-desc_btn'>
+              <button>
+              <Link to="/firstCard">Read More</Link>
+              </button>
+              </div>
+              </div>
+            </div>
+            <div className='card-wrapper_card'>
+              <div className='card-wrapper_card-img'>
+                <img src="https://storyhub-beauty-redq.vercel.app/static/b05520375116fe062ba264aa78de8d7f/a5f21/preview.webp" alt="img"/>
+              </div>
+              <div className='card-wrapper_card-desc'>
+                <h2>Beauty itself is but the sensible image of the</h2>
+                <p>An Essay on Typography by Eric Gill takes the reader back to the year 1930. The…</p>
+                <div className='card-wrapper_card-desc_btn'>
+              <button>
+              <Link to="/firstCard">Read More</Link>
+              </button>
+              </div>
+              </div>
+            </div>
+            <div className='card-wrapper_card'>
+              <div className='card-wrapper_card-img'>
+                <img src="https://storyhub-beauty-redq.vercel.app/static/b9b35f8d467e871dbd43fbcc64406587/a5f21/preview.webp" alt="img"/>
+              </div>
+              <div className='card-wrapper_card-desc'>
+                <h2>I have often said that the lure of flying is the lure of</h2>
+                <p>Wow! I love blogging so much already. Did you know that “despite its name…</p>
+              <div className='card-wrapper_card-desc_btn'>
+              <button>
+              <Link to="/firstCard">Read More</Link>
+              </button>
+              </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

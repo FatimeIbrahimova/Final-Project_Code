@@ -6,32 +6,30 @@ const Navbar = () => {
     //hamburger menu
     const [isMenuClicked,setIsMenuClicked]=useState(false)
     const [nav_list,setMenuClass]=useState("menu hidden")
-    const [burger,setBurger]=useState("burger unclicked")
     const [close,setClose]=useState(false)
     //search
-    const [searchClicked,setSearchClicked]=useState(false)
     const [search_input,setInputClass]=useState("input hidden")
-    
+    const [searchClicked,setSearchClicked]=useState(false)
+
     const handleSearch=()=>{
+        // setInputClass(search_input==="hidden" ? "visible" :"hidden")
         if(!searchClicked){
-            console.log("click")
-            setInputClass("input visible")
-        }else{
-            setInputClass("input hidden")
-        }
-        
+          console.log("click")
+          setInputClass("input visible")
+      }else{
+          setInputClass("input hidden")
+      }
     }
 
     //hamburger menu
     const handleClick=()=>{
         if(!isMenuClicked){
             console.log("true");
-            setBurger("burger clicked")
             setMenuClass("menu visible")
         }else{
-            setBurger("burger unclicked")
             setMenuClass("menu hidden")
         }
+        // setMenuClass(nav_list==="hidden" ? "visible" :"hidden")
     }
     const handleClose=()=>{
         if(!close){
