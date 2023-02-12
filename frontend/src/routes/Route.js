@@ -6,6 +6,7 @@ import MainRoot from "../components/MainRoot";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
 import Home from "../pages/Home/Home";
+import Beauty2 from "../pages/Home/SecondSection/Beauty2/Beauty2";
 import FirstCard from "../pages/Home/SecondSection/FirstCard/FirstCard";
 import NotFound from "../pages/NotFound/NotFound";
 
@@ -33,6 +34,10 @@ export const ROUTES=[
             {
                 path:"firstCard",
                 element:<FirstCard/>
+            },
+            {
+                path:"beauty2",
+                element:<Beauty2/>
             },
             {
                 path:"beauty",

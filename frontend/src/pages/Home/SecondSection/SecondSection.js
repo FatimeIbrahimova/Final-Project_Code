@@ -141,7 +141,7 @@ const SecondSection = () => {
                 <span>1930. The year when a conflict…</span>
               </p>
               <button className="second-section__products-leftside-first_desc-btn">
-                Read More
+                <Link to="/beauty2">Read More</Link>
               </button>
             </div>
 
