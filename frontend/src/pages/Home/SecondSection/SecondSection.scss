@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     .second-section {
-        margin-top: 50px;
+        margin-top: 90px;
         .container {
             width: 80%;
             margin: 0 auto;
@@ -16,7 +16,7 @@
                 font-size: 32px;
                 font-weight: 100;
                 width: 500px;
-                margin-left: 30px;
+                text-align: center;
             }
             &-leftside {
                 width: 50%;
@@ -25,7 +25,6 @@
                 flex-direction: column;
                 gap:20px;
                 &-first {
-                    height:auto;
                     background-color: #f7f7f7;
                     img {
                         width: 100%;
@@ -38,7 +37,7 @@
                         padding-top:20px;
                         p{
                           margin-top: 20px;
-                          margin-left: 60px;
+                        text-align: center;
                           color: #5e5e5e;
                         }
                         &-btn {
@@ -107,7 +106,7 @@
     .visible{
         display: inherit;
     }
-    .hidden{
+   .hidden{
         display: none;
     }
 }

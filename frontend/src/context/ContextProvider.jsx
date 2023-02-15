@@ -4,11 +4,17 @@ export const MainContext = createContext("")
 function ContextProvider({ children }) {
     const [login,setLogin]=useState(false)
   const [socialNetworks,setSocialNetworks]=useState("hidden")
+  const [data, setData] = useState([]);
+  const [value,setValue]=useState("")
     const values = {
        login,
        setLogin,
        socialNetworks,
-       setSocialNetworks
+       setSocialNetworks,
+       data,
+       setData,
+       value,
+       setValue
     }
 
     return (

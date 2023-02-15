@@ -5,6 +5,7 @@ import Tips from "../components/Footer/Categories/Tips/Tips";
 import MainRoot from "../components/MainRoot";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
+import DataDetails from "../pages/DataDetails/DataDetails";
 import Home from "../pages/Home/Home";
 import Beauty2 from "../pages/Home/SecondSection/Beauty2/Beauty2";
 import FirstCard from "../pages/Home/SecondSection/FirstCard/FirstCard";
@@ -30,6 +31,10 @@ export const ROUTES=[
             {
                 path:"notFound",
                 element:<NotFound/>
+            },
+            {
+                path:":id",
+                element:<DataDetails/>
             },
             {
                 path:"firstCard",

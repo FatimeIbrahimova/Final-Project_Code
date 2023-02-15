@@ -1,245 +1,144 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import './SecondSection.scss';
+import axios from "axios";
+import { MainContext } from '../../../context/ContextProvider';
 
 const SecondSection = () => {
+  const {value,setValue}=useContext(MainContext)
+  //api
+  const {data, setData} = useContext(MainContext);
+  const [data2, setData2] = useState([]);
+  const [data3, setData3] = useState([]);
+  const [data4, setData4] = useState([]);
+  //
   const [btnClick, setBtnClick] = useState (false);
   const [product_class, setProductClass] = useState ('product hidden');
   const [btn,setBtn]=useState("visible")
 
   const handleClick = () => {
-    if (!btnClick) {
+      if (!btnClick) {
       setProductClass ('product visible');
+      //  setProductClass(product_class==="hidden" ? "visible" :"hidden")
       setBtn("hidden")
-    } else {
-      setProductClass ('product hidden');
-    }
+     } else {
+       setProductClass ('product hidden');
+      }
   };
+  //api
+  const getData = async () => {
+    const res = await axios.get("http://localhost:8080/products");
+    setData(res.data);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+  
+  const getData2 = async () => {
+    const res = await axios.get("http://localhost:8080/products2");
+    setData2(res.data);
+  };
+  useEffect(() => {
+    getData2();
+  }, []);
+
+  const getData3 = async () => {
+    const res = await axios.get("http://localhost:8080/productsAdd1");
+    setData3(res.data);
+  };
+  useEffect(() => {
+    getData3();
+  }, []);
+
+  const getData4 = async () => {
+    const res = await axios.get("http://localhost:8080/productsAdd2");
+    setData4(res.data);
+  };
+  useEffect(() => {
+    getData4();
+  }, []);
+
   return (
+    <>
     <div className="second-section">
       <div className="container second-section__products">
         <div className="second-section__products-leftside">
-          <div className="second-section__products-leftside-first">
-            <img
-              src="https://storyhub-beauty-redq.vercel.app/static/350b1e64ba3459bb3898791aa5b26eb0/d8441/preview.webp"
-              alt="img"
-            />
-           <div className="second-section__products-leftside-first_desc">
-              <h2>What’s in your makeup <span>drawer</span></h2>
-              <p>
-                An Essay on Typography by Eric Gill takes the reader back to the year
-                {' '}
-                <span>1930. The year when a conflict…</span>
-              </p>
-              <button className="second-section__products-leftside-first_desc-btn">
-              <Link to="/firstCard">Read More</Link>
-              </button>
-            </div>
-          
-
-          </div>
-          <div className="second-section__products-leftside-first">
-            <img
-              src="https://storyhub-beauty-redq.vercel.app/static/b05520375116fe062ba264aa78de8d7f/d8441/preview.webp"
-              alt="img"
-            />
-            <div className="second-section__products-leftside-first_desc">
-              <h2>Beauty itself is but the sensible image of the Infinite</h2>
-              <p>
-                An Essay on Typography by Eric Gill takes the reader back to the year
-                {' '}
-                <span>1930. The year when a conflict…</span>
-              </p>
-              <button className="second-section__products-leftside-first_desc-btn">
-                Read More
-              </button>
-            </div>
-
-          </div>
-          <div className="second-section__products-leftside-first">
-            <img
-              src="https://storyhub-beauty-redq.vercel.app/static/b9b35f8d467e871dbd43fbcc64406587/d8441/preview.webp"
-              alt="img"
-            />
-            <div className="second-section__products-leftside-first_desc">
-              <h2>I have often said that the lure of flying is the lure of beauty</h2>
-              <p>
-                An Essay on Typography by Eric Gill takes the reader back to the year
-                {' '}
-                <span>1930. The year when a conflict…</span>
-              </p>
-              <button className="second-section__products-leftside-first_desc-btn">
-                Read More
-              </button>
-            </div>
-
-          </div>
-          <div className="second-section__products-leftside-first">
-            <img
-              src="https://storyhub-beauty-redq.vercel.app/static/465bb28f9e9b5bf5327e09eacba1a9f7/d8441/preview.webp"
-              alt="img"
-            />
-            <div className="second-section__products-leftside-first_desc">
-              <h2>It's a good thing that beauty is only skin deep</h2>
-              <p>
-              Given the discourse around this issue, it can be easy to either overestimate the scope of this…
-              </p>
-              <button className="second-section__products-leftside-first_desc-btn">
-                Read More
-              </button>
-            </div>
-
-          </div>
-          <div className={product_class}>
-            <div className="second-section__products-leftside-first product">
+         {data && data
+         .map((product)=>{
+          return <div className="second-section__products-leftside-first">
+           <img
+             src={product.url}
+             alt="img"
+           />
+          <div className="second-section__products-leftside-first_desc">
+             <h2>{product.title}</h2>
+             <p>
+               {product.desc}
+             </p>
+             <button className="second-section__products-leftside-first_desc-btn">
+             <Link to={`${product._id}`}>Read More</Link>
+             </button>
+           </div>
+         </div>
+         })}
+            {data3 && data3.map((product)=>(
+              <div className={product_class}>
+                <div className="second-section__products-leftside-first product">
               <img
-                src="https://storyhub-beauty-redq.vercel.app/static/34ed5ef02af3b249256c4152efffc2aa/d8441/preview.webp"
+                src={product.url}
                 alt="img"
               />
               <div className="second-section__products-leftside-first_desc products">
-                <h2>Foundation should unify tone, but it shouldn’t take away the individuality of the skin</h2>
+                <h2>{product.title}</h2>
                 <p>
-                Wow! I love blogging so much already. Did you know that “despite its name, salted duck eggs can also…
+                {product.desc}
                 </p>
                 <button className="second-section__products-leftside-first_desc-btn">
-                  Read More
+                <Link to={`${product._id}`}>Read More</Link>
                 </button>
               </div>
 
             </div>
-          </div>
-          <div className={product_class}>
-            <div className="second-section__products-leftside-first product">
-              <img
-                src="https://storyhub-beauty-redq.vercel.app/static/d436b841b5bbad3bd8156678d595b46a/d8441/preview.webp"
-                alt="img"
-              />
-              <div className="second-section__products-leftside-first_desc products">
-                <h2>Beauty arises out of human inspiration</h2>
-                <p>
-                Technology companies can do more, but as long as these trends continue, there will be incentives for…
-                </p>
-                <button className="second-section__products-leftside-first_desc-btn">
-                  Read More
-                </button>
               </div>
-
-            </div>
-          </div>
+            ))}
         </div>
         <div className="second-section__products-rightside">
-          <div className="second-section__products-leftside-first">
-            <img
-              src="https://storyhub-beauty-redq.vercel.app/static/7e1fa5ac3d06e65804b3ec7d00b5b93b/d8441/preview.webp"
-              alt="img"
-            />
-            <div className="second-section__products-leftside-first_desc">
-              <h2>I think permitting the game to become too physical takes away a little bit of the beauty</h2>
-              <p>
-                An Essay on Typography by Eric Gill takes the reader back to the year
-                {' '}
-                <span>1930. The year when a conflict…</span>
-              </p>
-              <button className="second-section__products-leftside-first_desc-btn">
-                <Link to="/beauty2">Read More</Link>
-              </button>
-            </div>
+         {data2 && data2.map((product)=>(
+           <div className="second-section__products-leftside-first">
+           <img
+             src={product.url}
+             alt="img"
+           />
+           <div className="second-section__products-leftside-first_desc">
+             <h2>{product.title}</h2>
+             <p>
+               {product.desc}
+             </p>
+             <button className="second-section__products-leftside-first_desc-btn">
+               <Link to={`${product._id}`}>Read More</Link>
+             </button>
+           </div>
 
-          </div>
-          <div className="second-section__products-leftside-first">
-            <img
-              src="https://storyhub-beauty-redq.vercel.app/static/2c278d57a60460fa70e0f790a7381e0b/d8441/preview.webp"
-              alt="img"
-            />
-            <div className="second-section__products-leftside-first_desc">
-              <h2>Anyone who keeps the ability to see beauty never grows old</h2>
-              <p>
-                An Essay on Typography by Eric Gill takes the reader back to the year
-                {' '}
-                <span>1930. The year when a conflict…</span>
-              </p>
-              <button className="second-section__products-leftside-first_desc-btn">
-                Read More
-              </button>
-            </div>
-
-          </div>
-          <div className="second-section__products-leftside-first">
-            <img
-              src="https://storyhub-beauty-redq.vercel.app/static/2c49ef889edcc5876f9805abe0979f1f/d8441/preview.webp"
-              alt="img"
-            />
-            <div className="second-section__products-leftside-first_desc">
-              <h2>What the imagination seizes as beauty must be truth</h2>
-              <p>
-                An Essay on Typography by Eric Gill takes the reader back to the year
-                {' '}
-                <span>1930. The year when a conflict…</span>
-              </p>
-              <button className="second-section__products-leftside-first_desc-btn">
-                Read More
-              </button>
-            </div>
-
-          </div>
-          <div className="second-section__products-leftside-first">
-            <img
-              src="https://storyhub-beauty-redq.vercel.app/static/cd708d69721e79c0da0f18148e3205f4/d8441/preview.webp"
-              alt="img"
-            />
-            <div className="second-section__products-leftside-first_desc">
-              <h2>Your favorite skincare products</h2>
-              <p>
-                An Essay on Typography by Eric Gill takes the reader back to the year
-                {' '}
-                <span>1930. The year when a conflict…</span>
-              </p>
-              <button className="second-section__products-leftside-first_desc-btn">
-                Read More
-              </button>
-            </div>
-
-          </div>
-          <div className={product_class}>
-            <div className="second-section__products-leftside-first product">
+         </div>
+         ))}
+          {data4 && data4.map((product)=>(
+            <div className={product_class}>
+            <div className="second-section__products-leftside-first product ">
               <img
-                src="https://storyhub-beauty-redq.vercel.app/static/bcbf431fca61421f1b21562063d8307f/d8441/preview.webp"
+                src={product.url}
                 alt="img"
               />
               <div className="second-section__products-leftside-first_desc products">
-                <h2>Never ask a girl with winged eyeliner why she’s late</h2>
-                <p>
-                  An Essay on Typography by Eric Gill takes the reader back to the year
-                  {' '}
-                  <span>1930. The year when a conflict…</span>
-                </p>
+                <h2>{product.title}</h2>
+                <p>{product.desc}</p>
                 <button className="second-section__products-leftside-first_desc-btn">
-                  Read More
+                <Link to={`${product._id}`}>Read More</Link>
                 </button>
               </div>
 
             </div>
           </div>
-          <div className={product_class}>
-            <div className="second-section__products-leftside-first product">
-              <img
-                src="https://storyhub-beauty-redq.vercel.app/static/02f247d2c0109e288bd216c31650d916/d8441/preview.webp"
-                alt="img"
-              />
-              <div className="second-section__products-leftside-first_desc products">
-                <h2>Beauty begins the moment you decide to be yourself</h2>
-                <p>
-                  An Essay on Typography by Eric Gill takes the reader back to the year
-                  {' '}
-                  <span>1930. The year when a conflict…</span>
-                </p>
-                <button className="second-section__products-leftside-first_desc-btn">
-                  Read More
-                </button>
-              </div>
-
-            </div>
-          </div>
+          ))}
         </div>
       </div>
       <div className={btn}>
@@ -253,6 +152,7 @@ const SecondSection = () => {
       </div>
       </div>
     </div>
+    </>
   );
 };
 

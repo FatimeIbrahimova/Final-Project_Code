@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { MainContext } from '../../context/ContextProvider'
 import "./Navbar.scss"
 
 const Navbar = () => {
@@ -8,18 +10,37 @@ const Navbar = () => {
     const [nav_list,setMenuClass]=useState("menu hidden")
     const [close,setClose]=useState(false)
     //search
-    const [search_input,setInputClass]=useState("input hidden")
+    const [filter, setFilter] =useState([])
+    const {value,setValue}=useContext(MainContext)
+    const [search_input,setInputClass]=useState("search-input hidden")
     const [searchClicked,setSearchClicked]=useState(false)
+    const [filterSearch,setFilterSearch]=useState("")
 
     const handleSearch=()=>{
-        // setInputClass(search_input==="hidden" ? "visible" :"hidden")
+       
         if(!searchClicked){
           console.log("click")
-          setInputClass("input visible")
-      }else{
-          setInputClass("input hidden")
+           setInputClass(search_input==="hidden" ? "visible" :"hidden")
+            setFilterSearch(filterSearch==="hidden" ? "visible" :"hidden")
+           
+          // setInputClass("input visible")
+          
       }
+      //else{
+      //     setInputClass("input hidden")
+      // }
     }
+    const handleChange=(e)=>{
+      setValue(e.target.value)
+      console.log(value);
+    }
+    useEffect(()=>{
+    //  if(value !== ""){
+      axios.get(`http://localhost:8080/filter`)
+      .then((res)=>setFilter(res.data))
+      
+    //  }
+    },[])
 
     //hamburger menu
     const handleClick=()=>{
@@ -35,10 +56,14 @@ const Navbar = () => {
         if(!close){
           setMenuClass("menu hidden")
           setInputClass("input hidden")
+          setFilterSearch("hidden")
         }
+        
     }
+    
   return (
     <>
+    
     <div className='nav'>
         <div className='container'>
             <div className='nav__left-icons'>
@@ -106,10 +131,31 @@ const Navbar = () => {
         <div className={search_input}>
         <div className='search-input'>
           <div className='container'>
-          <input placeholder='Enter Your Search Topic'/>
+          <input placeholder='Enter Your Search Topic'  onChange={(e)=>handleChange(e)} value={value}/>
           <i class="fa-solid fa-xmark" onClick={()=>handleClose()}></i>
           </div>
         </div>
+        </div>
+        <div className={filterSearch}>
+        <div className='search_wrapper'>
+            {filter && filter
+            .filter((data)=>{
+              return value ==="" ? null : data.title.includes(value)
+            })
+            .map((data)=>(
+              <>
+              <div className='search_wrapper-inner'>
+                <div className='search_wrapper-inner-img'>
+                 <img src={data.url} alt="img"/>    
+                </div>
+                <div className='search_wrapper-inner-desc'>
+                  <h1>{data.title}</h1>
+                  <span>{data.date}</span>
+                </div>
+              </div>
+              </>
+            ))}
+          </div>
         </div>
     </div>
     </>

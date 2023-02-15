@@ -18,17 +18,20 @@
                 font-family: "PT Serif", serif;
                 font-size: 40px;
                 font-weight: 100;
+                color:#292929;
+                text-align: center;
             }
             h2 {
                 font-weight: 100;
-                padding-top: 5px;
+                padding-top: 8px;
+                padding-bottom: 8px;
                 color: #d10068;
+                text-transform: uppercase;
                 font-weight: 400;
                 font-size: 18px;
             }
             span {
                 color: #62696f;
-                padding-top: 5px;
             }
         }
         &_img {
