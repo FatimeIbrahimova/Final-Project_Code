@@ -1,43 +1,52 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { MainContext } from '../../../../context/ContextProvider'
+import "../Beauty/Beauty.scss"
 
-const Tips = () => {
+const Products = () => {
+  const {filter,setFilter}=useContext(MainContext)
+  const {count,setCount}=useContext(MainContext)
   return (
     <>
-<div className='life-style'>
-       <div className='container'>
-         <div className='life-style_title'>
-          <h1>tips</h1>
-          <p>A collection of 1 post</p>
-         </div>
-         <hr/>
-        <div className='second-section__products'>
-       <div className='second-section__products-leftside'>
-       <div className="second-section__products-leftside-first">
-            <img
-              src="https://storyhub-beauty-redq.vercel.app/static/2c278d57a60460fa70e0f790a7381e0b/d8441/preview.webp"
-              alt="img"
-            />
-            <div className="second-section__products-leftside-first_desc">
-              <h2>Anyone who keeps the ability to see beauty never grows old</h2>
-              <p>
-                An Essay on Typography by Eric Gill takes the reader back to the year
-                {' '}
-                <span>1930. The year when a conflict…</span>
-              </p>
-              <button className="second-section__products-leftside-first_desc-btn">
-                Read More
-              </button>
-            </div>
-
-          </div>
-       </div>
-       <div className='second-section__products-rightside'>
-       </div>
+    <div className='category'>
+      <div className='container'>
+        <div className='category-title'>
+         <h1>tips</h1>
+         <p>A collection of {count} post</p>
         </div>
+        <hr/>
+       <div className='second-section__products'>
+       {filter && filter
+        .filter((data)=>{
+         console.log(data.count);
+         return data.name.toLowerCase()==="tips" ? data : data.name.toLowerCase().includes("tips")
+       })
+       .map((product)=>(
+         
+         <>
+          <div className="second-section__products-first">
+          <img
+            src={product.url}
+            alt="img"
+          />
+          <div className="second-section__products-first_desc">
+            <h2>{product.title}</h2>
+            <p>
+            {product.desc}
+            </p>
+            <button className="second-section__products-first_desc-btn">
+            <a href={`${product._id}`}>Read More</a>
+            </button>
+          </div>
+        </div>
+          </>
+       ))
+     }
+       
        </div>
-     </div>
-    </>
+      </div>
+    </div>
+   </>
   )
 }
 
-export default Tips
+export default Products

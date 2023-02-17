@@ -1,45 +1,37 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { MainContext } from '../../context/ContextProvider'
 import "./Navbar.scss"
 
 const Navbar = () => {
+  //imgs from insta
+const {insta}=useContext(MainContext)
+  //
     //hamburger menu
     const [isMenuClicked,setIsMenuClicked]=useState(false)
     const [nav_list,setMenuClass]=useState("menu hidden")
-    const [close,setClose]=useState(false)
+    // const [close,setClose]=useState(false)
     //search
-    const [filter, setFilter] =useState([])
+    const {filter, setFilter} =useContext(MainContext)
     const {value,setValue}=useContext(MainContext)
-    const [search_input,setInputClass]=useState("search-input hidden")
-    const [searchClicked,setSearchClicked]=useState(false)
-    const [filterSearch,setFilterSearch]=useState("")
+    const [search_input,setInputClass]=useState("search-wrapper hidden")
+    // const [searchClicked,setSearchClicked]=useState(false)
+    const [filterSearch,setFilterSearch]=useState("hidden")
 
     const handleSearch=()=>{
-       
-        if(!searchClicked){
-          console.log("click")
-           setInputClass(search_input==="hidden" ? "visible" :"hidden")
-            setFilterSearch(filterSearch==="hidden" ? "visible" :"hidden")
-           
-          // setInputClass("input visible")
-          
-      }
-      //else{
-      //     setInputClass("input hidden")
-      // }
+          //  setInputClass(search_input==="hidden" ? "visible" :"hidden")
+            // setFilterSearch(filterSearch==="hidden" ? "visible" :"hidden")
+            setFilterSearch("visibe")
+          setInputClass("input visible")
     }
     const handleChange=(e)=>{
       setValue(e.target.value)
       console.log(value);
     }
     useEffect(()=>{
-    //  if(value !== ""){
       axios.get(`http://localhost:8080/filter`)
       .then((res)=>setFilter(res.data))
-      
-    //  }
     },[])
 
     //hamburger menu
@@ -53,11 +45,9 @@ const Navbar = () => {
         // setMenuClass(nav_list==="hidden" ? "visible" :"hidden")
     }
     const handleClose=()=>{
-        if(!close){
           setMenuClass("menu hidden")
           setInputClass("input hidden")
           setFilterSearch("hidden")
-        }
         
     }
     
@@ -91,30 +81,14 @@ const Navbar = () => {
                 </ul>
                 <h3 className='img-title'>Instagram</h3> 
                 <div className='nav-imgs'>
-                   <div className='img-wrapper'>
-                   <img src="https://storyhub-beauty-redq.vercel.app/static/d303738dc5d6e597590f0ddeb1f5d199/34353/61399796_715520225569317_368831368756356983_n.jpg"/>
-                   <div className='message'>
-                     <span><i class="fa-solid fa-heart"></i>9</span> <span><i class="fa-solid fa-comment"></i>1</span>
-                   </div>
-                   </div>
-                    <div className='img-wrapper'>
-                    <img src="https://storyhub-beauty-redq.vercel.app/static/50011a731f7b70366fe662a3a91ec1bd/34353/61251868_312268296360730_2797310803087453718_n.jpg"/>
-                    <div className='message'>
-                     <span><i class="fa-solid fa-heart"></i>9</span> <span><i class="fa-solid fa-comment"></i>0</span>
-                   </div>
-                    </div>
-                   <div className='img-wrapper'>
-                   <img src="https://storyhub-beauty-redq.vercel.app/static/3afcf05ad49885f60e0c5d72fa6ccb98/34353/61162228_358604618343312_5682820484988311364_n.jpg"/>
-                   <div className='message'>
-                     <span><i class="fa-solid fa-heart"></i>8</span> <span><i class="fa-solid fa-comment"></i>0</span>
-                   </div>
-                   </div>
-                    <div className='img-wrapper'>
-                    <img src="https://storyhub-beauty-redq.vercel.app/static/90ff6a913305c8b68eeb9c4cc2dc6a83/34353/60382248_443817892862343_5605602902724620232_n.jpg"/>
-                    <div className='message'>
-                     <span><i class="fa-solid fa-heart"></i>9</span> <span><i class="fa-solid fa-comment"></i>6</span>
-                   </div>
-                    </div>
+                  {insta && insta.map((data)=>(
+                     <div className='img-wrapper'>
+                     <img src={data.url} alt="img"/>
+                     <div className='message'>
+                       <span><i class="fa-solid fa-heart"></i>{data.like}</span> <span><i class="fa-solid fa-comment"></i>{data.comment}</span>
+                     </div>
+                     </div>
+                  ))}
                 </div> 
                
                 <div className='nav-footer'>
@@ -140,11 +114,12 @@ const Navbar = () => {
         <div className='search_wrapper'>
             {filter && filter
             .filter((data)=>{
-              return value ==="" ? null : data.title.includes(value)
+              return value.trim().toLowerCase() ==="" ? null : data.title.toLowerCase().includes(value.toLowerCase()) ||  data.name.toLowerCase().includes(value.toLowerCase()) || data.date.toLowerCase().includes(value.toLowerCase())  
             })
             .map((data)=>(
               <>
-              <div className='search_wrapper-inner'>
+             <a href={`${data._id}`}>
+             <div className='search_wrapper-inner' >
                 <div className='search_wrapper-inner-img'>
                  <img src={data.url} alt="img"/>    
                 </div>
@@ -153,6 +128,7 @@ const Navbar = () => {
                   <span>{data.date}</span>
                 </div>
               </div>
+             </a>
               </>
             ))}
           </div>

@@ -129,10 +129,10 @@
    &_imgs{
     display: flex;
     gap:0px;
-   }
-    .fourth-image{
+    &_image:nth-child(4){
         display: none;
     }
+   }
    }
    .footer-middle{
     position: relative;

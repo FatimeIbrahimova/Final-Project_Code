@@ -39,6 +39,10 @@ const DataDetails = () => {
       .then((res)=>setData(res.data))
       console.log(data);
     }, [id]);
+    useEffect(() => {
+      axios.get(`http://localhost:8080/filter/${id}`)
+      .then((res)=>setData(res.data))
+    }, [id]);
   //
     const {login,setLogin}=useContext(MainContext)
     const {socialNetworks,setSocialNetworks}=useContext(MainContext)
@@ -267,7 +271,7 @@ const DataDetails = () => {
                 <p>An Essay on Typography by Eric Gill takes the reader back to the year 1930. The…</p>
                 <div className='card-wrapper_card-desc_btn'>
               <button>
-              <Link to="/firstCard">Read More</Link>
+              <a href="/63eb3bae422b4ac03aeec2e9">Read More</a>
               </button>
               </div>
               </div>
@@ -281,7 +285,7 @@ const DataDetails = () => {
                 <p>An Essay on Typography by Eric Gill takes the reader back to the year 1930. The…</p>
                 <div className='card-wrapper_card-desc_btn'>
               <button>
-              <Link to="/firstCard">Read More</Link>
+              <a href="/63eb3d7a422b4ac03aeec2ec">Read More</a>
               </button>
               </div>
               </div>
@@ -295,7 +299,7 @@ const DataDetails = () => {
                 <p>Wow! I love blogging so much already. Did you know that “despite its name…</p>
               <div className='card-wrapper_card-desc_btn'>
               <button>
-              <Link to="/firstCard">Read More</Link>
+              <a href="/63eb3e73422b4ac03aeec2ef">Read More</a>
               </button>
               </div>
               </div>

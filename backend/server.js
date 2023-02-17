@@ -9,6 +9,7 @@ const productAdd1Route=require("./src/routes/SecondSection/productsAdd1")
 const productAdd2Route=require("./src/routes/SecondSection/productsAdd2")
 const sliderRoute=require("./src/routes/FirstSection/slider")
 const filterRoute=require("./src/routes/filter")
+const instaRoute=require("./src/routes/insta")
 
 
 dotenv.config()
@@ -23,6 +24,7 @@ app.use("/productsAdd1",productAdd1Route)
 app.use("/productsAdd2",productAdd2Route)
 app.use("/slider",sliderRoute)
 app.use("/filter",filterRoute)
+app.use("/insta",instaRoute)
 
 const PORT=process.env.PORT;
 app.listen(PORT,()=>{

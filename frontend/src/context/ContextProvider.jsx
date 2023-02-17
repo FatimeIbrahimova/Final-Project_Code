@@ -6,6 +6,9 @@ function ContextProvider({ children }) {
   const [socialNetworks,setSocialNetworks]=useState("hidden")
   const [data, setData] = useState([]);
   const [value,setValue]=useState("")
+  const [filter, setFilter] =useState([])
+  const [count,setCount]=useState(0)
+  const [insta,setInsta]=useState([])
     const values = {
        login,
        setLogin,
@@ -14,7 +17,13 @@ function ContextProvider({ children }) {
        data,
        setData,
        value,
-       setValue
+       setValue,
+       filter,
+       setFilter,
+       count,
+       setCount,
+       insta,
+       setInsta
     }
 
     return (

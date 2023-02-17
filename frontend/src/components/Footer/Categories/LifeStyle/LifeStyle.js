@@ -1,61 +1,55 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import "./LifeStyle.scss"
+import React, { useContext } from 'react'
+import { MainContext } from '../../../../context/ContextProvider'
+import "../Beauty/Beauty.scss"
 
 const LifeStyle = () => {
+  const {filter,setFilter}=useContext(MainContext)
+  const {count,setCount}=useContext(MainContext)
+
+  const changeCount=()=>{
+    setCount(count)
+   }
   return (
     <>
- <div className='life-style'>
-       <div className='container'>
-         <div className='life-style_title'>
-          <h1>lifestyle</h1>
-          <p>A collection of 2 post</p>
-         </div>
-         <hr/>
-        <div className='second-section__products'>
-       <div className='second-section__products-leftside'>
-       <div className="second-section__products-leftside-first">
-            <img
-              src="https://storyhub-beauty-redq.vercel.app/static/b9b35f8d467e871dbd43fbcc64406587/d8441/preview.webp"
-              alt="img"
-            />
-            <div className="second-section__products-leftside-first_desc">
-              <h2>I have often said that the lure of flying is the lure of beauty</h2>
-              <p>
-                An Essay on Typography by Eric Gill takes the reader back to the year
-                {' '}
-                <span>1930. The year when a conflict…</span>
-              </p>
-              <button className="second-section__products-leftside-first_desc-btn">
-                Read More
-              </button>
-            </div>
-
-          </div>
-       </div>
-       <div className='second-section__products-rightside'>
-       <div className="second-section__products-leftside-first product">
-              <img
-                src="https://storyhub-beauty-redq.vercel.app/static/02f247d2c0109e288bd216c31650d916/d8441/preview.webp"
-                alt="img"
-              />
-              <div className="second-section__products-leftside-first_desc products">
-                <h2>Beauty begins the moment you decide to be yourself</h2>
-                <p>
-                  An Essay on Typography by Eric Gill takes the reader back to the year
-                  {' '}
-                  <span>1930. The year when a conflict…</span>
-                </p>
-                <button className="second-section__products-leftside-first_desc-btn">
-                  Read More
-                </button>
-              </div>
-            </div>
-       </div>
+    <div className='category'>
+      <div className='container'>
+        <div className='category-title'>
+         <h1>lifestyle</h1>
+         <p>A collection of {count} post</p>
         </div>
+        <hr/>
+       <div className='second-section__products'>
+       {filter && filter
+        .filter((data)=>{
+         console.log(data.count);
+         return data.name.toLowerCase()==="lifestyle" ? data : data.name.toLowerCase().includes("lifestyle")
+       })
+       .map((product)=>(
+         
+         <>
+          <div className="second-section__products-first">
+          <img
+            src={product.url}
+            alt="img"
+          />
+          <div className="second-section__products-first_desc">
+            <h2>{product.title}</h2>
+            <p>
+            {product.desc}
+            </p>
+            <button className="second-section__products-first_desc-btn">
+            <a href={`${product._id}`}>Read More</a>
+            </button>
+          </div>
+        </div>
+          </>
+       ))
+     }
+       
        </div>
-     </div>
-    </>
+      </div>
+    </div>
+   </>
   )
 }
 
