@@ -1,0 +1,30 @@
+.nav{
+    position: relative;
+    container{
+       
+    }
+    .nav-list{
+        background-color: #f73b98;
+        height: 200vh;
+        width: 300px;
+        position: absolute;
+        // top: 0;
+        text-align: center;
+        .admin-user{
+            margin-top: 20px;
+            img{
+                width: 50px;
+            }
+        }
+       .list{
+        margin-top: 50px;
+        a{
+            text-decoration: none;
+            color: white;
+            li{
+                padding-bottom: 20px;
+            }
+        }
+       }
+    }
+}

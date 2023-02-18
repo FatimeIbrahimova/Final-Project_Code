@@ -13,4 +13,20 @@ export const loginFormSchema = yup.object().shape({
   message:yup
     .string()
     .required("Required"),
+  category: yup
+     .string()
+     .required("category is required"),
+  url: yup
+    .string("url must be string")
+    .required("url is required"),
+  date: yup
+    .string("date must be string")
+    .required("date is required"),
+  title:yup
+  .string("title must be string")
+  .required("title is required"),
+  desc:yup
+  .string("desc must be string")
+  .required("desc is required"),
+
 });

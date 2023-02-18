@@ -1,6 +1,6 @@
 const express = require('express')
 let router = express.Router()
-const Products=require("../models/Filter");
+const Products=require("../models/AllProduct");
 
 
 
@@ -27,7 +27,7 @@ router.post("/",(req,res)=>{
     product.save()
     res.send({message: "success"})
 })
-//! Get user by id
+//! Get product by id
 router.get("/:id", (req, res) => {
     const { id } = req.params;
   
@@ -55,4 +55,17 @@ router.delete("/:id",(req,res)=>{
         }
     })
 })
+//! Update product by id
+router.put ('/:id', (req, res) => {
+  const {id} = req.params;
+
+  Products.findByIdAndUpdate (id, req.body, (err, doc) => {
+    if (!err) {
+      res.status (201);
+    } else {
+      res.status (500).json (err);
+    }
+  });
+  res.send ({message: 'SUCCESSFULLY Updated'});
+});
 module.exports=router;

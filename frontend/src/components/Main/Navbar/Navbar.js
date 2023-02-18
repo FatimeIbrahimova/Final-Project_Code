@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { MainContext } from '../../context/ContextProvider'
+import { MainContext } from '../../../context/ContextProvider'
 import "./Navbar.scss"
 
 const Navbar = () => {
@@ -30,7 +30,7 @@ const {insta}=useContext(MainContext)
       console.log(value);
     }
     useEffect(()=>{
-      axios.get(`http://localhost:8080/filter`)
+      axios.get(`http://localhost:8080/allProductt`)
       .then((res)=>setFilter(res.data))
     },[])
 

@@ -4,30 +4,29 @@ const productSchema = new Schema (
   {
     url: {
       type: String,
-      required: true,
+      // required: true,
     },
     title: {
       type: String,
-      required: true,
+      // required: true,
     },
     desc: {
       type: String,
-      required: true,
+      // required: true,
     },
     name: {
       type: String,
-      required: true,
+      // required: true,
     },
     date: {
       type: String,
-      required: true,
+      // required: true,
     },
     allDesc: {
       type: String,
-      required: true,
     }
   },
   {timestamps: true}
 );
-const Products = mongoose.model('filter', productSchema);
+const Products = mongoose.model('allProductt', productSchema);
 module.exports = Products;

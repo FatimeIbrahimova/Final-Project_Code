@@ -8,7 +8,7 @@ const product2Route=require("./src/routes/SecondSection/products2")
 const productAdd1Route=require("./src/routes/SecondSection/productsAdd1")
 const productAdd2Route=require("./src/routes/SecondSection/productsAdd2")
 const sliderRoute=require("./src/routes/FirstSection/slider")
-const filterRoute=require("./src/routes/filter")
+const allProductRoute=require("./src/routes/allProduct")
 const instaRoute=require("./src/routes/insta")
 
 
@@ -23,7 +23,7 @@ app.use("/products2",product2Route)
 app.use("/productsAdd1",productAdd1Route)
 app.use("/productsAdd2",productAdd2Route)
 app.use("/slider",sliderRoute)
-app.use("/filter",filterRoute)
+app.use("/allProductt",allProductRoute)
 app.use("/insta",instaRoute)
 
 const PORT=process.env.PORT;

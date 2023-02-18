@@ -8,7 +8,7 @@ const Beauty = () => {
    const {filter,setFilter}=useContext(MainContext)
    const {count,setCount}=useContext(MainContext)
    useEffect(()=>{
-    axios.get(`http://localhost:8080/filter`)
+    axios.get(`http://localhost:8080/allProductt`)
     .then((res)=>setFilter(res.data))
   },[])
 
@@ -27,9 +27,7 @@ const Beauty = () => {
          <hr/>
         <div className='second-section__products'>
         {filter && filter
-        
          .filter((data)=>{
-          console.log(data.count);
           return data.name.toLowerCase()==="beauty" ? data : data.name.toLowerCase().includes("beauty")
         })
         .map((product)=>(
