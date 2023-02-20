@@ -1,17 +1,20 @@
 import React, { useContext } from 'react'
-import { MainContext } from '../../../../context/ContextProvider'
-
+import { MainContext } from '../../../../../context/ContextProvider'
 import "../Beauty/Beauty.scss"
 
-const Products = () => {
+const LifeStyle = () => {
   const {filter,setFilter}=useContext(MainContext)
   const {count,setCount}=useContext(MainContext)
+
+  const changeCount=()=>{
+    setCount(count)
+   }
   return (
     <>
     <div className='category'>
       <div className='container'>
         <div className='category-title'>
-         <h1>products</h1>
+         <h1>lifestyle</h1>
          <p>A collection of {count} post</p>
         </div>
         <hr/>
@@ -19,12 +22,12 @@ const Products = () => {
        {filter && filter
         .filter((data)=>{
          console.log(data.count);
-         return data.name.toLowerCase()==="products" ? data : data.name.toLowerCase().includes("products")
+         return data.name.toLowerCase()==="lifestyle" ? data : data.name.toLowerCase().includes("lifestyle")
        })
-       .map((product)=>(
+       .map((product,index)=>(
          
          <>
-          <div className="second-section__products-first">
+          <div className="second-section__products-first" key={index}>
           <img
             src={product.url}
             alt="img"
@@ -50,4 +53,4 @@ const Products = () => {
   )
 }
 
-export default Products
+export default LifeStyle

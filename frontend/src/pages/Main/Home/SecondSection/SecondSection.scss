@@ -11,6 +11,7 @@
         &__products {
             display: flex;
             gap: 20px;
+            flex-wrap: wrap;
             h2{
                 font-family: 'PT Serif', serif;
                 font-size: 32px;
@@ -18,16 +19,13 @@
                 width: 500px;
                 text-align: center;
             }
-            &-leftside {
-                width: 50%;
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                gap:20px;
-                &-first {
+
+           &-product {
+             width: 49%;
                     background-color: #f7f7f7;
                     img {
                         width: 100%;
+                        height: 340px;
                     }
                     &_desc {
                         display: flex;
@@ -62,14 +60,7 @@
                         }
                     }
                 }
-            }
-            &-rightside{
-                width: 50%;
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                gap:20px;
-            }
+            
         }
         &_end-btn{
             display: flex;
@@ -115,21 +106,15 @@
         .container {
             width: 80%;
         position: relative;
-            .product{
-                width: 100%;
-                position: relative;
-                img{
+            .second-section__products{
+                flex-direction: column;
+                &-product{
                     width: 100%;
+                    img{
+                        width: 100%;
+                    }
                 }
-            }
-        }
-        &__products {
-            flex-direction: column;
-            &-leftside{
-                width: 100%;   
-            }
-            &-rightside{
-                width: 100%;   
+               
             }
         }
         h2{
@@ -145,34 +130,26 @@
     }
     
 }
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 1200px){
     .second-section{
-        h2{
-            font-size: 26px;
-            width: 180px;
+        .container {
+            width: 80%;
+        position: relative;
+        
         }
-        p{
-            font-size: 16px;
-            width: 180px;
-            margin-left: 5px;
+        .second-section__products{
+            display: flex;
+           width:80%;
+           gap:20px;
+           &-product {
+            width: 48%;
+            img {
+                width: 100%;
+                height: 250px;
+            }
+           }
+
         }
-    }
-}
-@media only screen and (max-width: 992px) {
-    .second-section{
-        h2{
-            font-size: 26px;
-            width: 180px;
-        }
-        p{
-            font-size: 16px;
-            width: 180px;
-            margin-left: 5px;
-        }
-    }
-}
-@media only screen and (min-width: 992px) {
-    .second-section{
         h2{
             font-size: 26px;
             width: 180px;
@@ -186,6 +163,19 @@
 }
 @media only screen and (min-width: 1200px) {
     .second-section{
+        .second-section__products{
+            display: flex;
+           width:80%;
+           gap:20px;
+           &-product {
+            width: 48%;
+            img {
+                width: 100%;
+                height: 340px;
+            }
+           }
+
+        }
         h2{
             font-size: 32px;
             width: 500px;

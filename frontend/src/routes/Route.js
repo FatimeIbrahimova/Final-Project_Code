@@ -1,17 +1,17 @@
 import AdminRoot from '../components/Admin/AdminRoot';
-import Beauty from '../components/Footer/Categories/Beauty/Beauty';
-import LifeStyle from '../components/Footer/Categories/LifeStyle/LifeStyle';
-import Products from '../components/Footer/Categories/Products/Products';
-import Tips from '../components/Footer/Categories/Tips/Tips';
+import Beauty from '../components/Main/Footer/Categories/Beauty/Beauty';
+import LifeStyle from '../components/Main/Footer/Categories/LifeStyle/LifeStyle';
+import Products from '../components/Main/Footer/Categories/Products/Products';
+import Tips from '../components/Main/Footer/Categories/Tips/Tips';
 import MainRoot from '../components/Main/MainRoot';
 import About from '../pages/Main/About/About';
-// import Contact from '../pages/Contact/Contact';
-import DataDetails from '../pages/DataDetails/DataDetails';
-import Home from '../pages/Home/Home';
+import DataDetails from '../pages/Main/DataDetails/DataDetails';
+import Home from '../pages/Main/Home/Home';
 import NotFound from '../pages/Main/NotFound/NotFound';
 import AllProducts from '../pages/Admin/Products/AllProducts';
 import DashBoard from '../pages/Admin/DashBoard/DashBoard';
 import Contact from '../pages/Main/Contact/Contact';
+import CategoryDetail from '../components/Main/Navbar/CategoryDetail';
 
 export const ROUTES = [
   {
@@ -54,6 +54,10 @@ export const ROUTES = [
         path: 'tips',
         element: <Tips />,
       },
+      {
+        path:"category/:id",
+        element:<CategoryDetail/>
+      }
     ],
   },
   {

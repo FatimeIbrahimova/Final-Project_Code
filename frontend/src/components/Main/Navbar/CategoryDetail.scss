@@ -1,0 +1,27 @@
+.category{
+    margin-top: 0px;
+
+    .container{
+        width: 80%;
+        margin: 0 auto;
+        .makeup{
+            display: flex;
+            gap:30px;
+            &-img{
+                width: 800px;
+                img{
+                    width: 800px;
+                }
+            }
+            h2{
+                color:red;
+                padding-bottom: 30px;
+            }
+        }
+    }
+    .makeup-wrapper{
+        display: flex;
+        flex-direction: column;
+        gap:100px;
+    }
+}

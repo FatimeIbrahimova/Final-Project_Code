@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { MainContext } from '../../../../context/ContextProvider'
+import { MainContext } from '../../../../../context/ContextProvider'
 import "../Beauty/Beauty.scss"
 
 const Products = () => {
@@ -20,10 +20,10 @@ const Products = () => {
          console.log(data.count);
          return data.name.toLowerCase()==="tips" ? data : data.name.toLowerCase().includes("tips")
        })
-       .map((product)=>(
+       .map((product,index)=>(
          
          <>
-          <div className="second-section__products-first">
+          <div className="second-section__products-first" key={index}>
           <img
             src={product.url}
             alt="img"

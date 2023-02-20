@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import './Footer.scss';
 import ScrollToTop from "react-scroll-to-top";
 import axios from 'axios';
-import { MainContext } from '../../context/ContextProvider';
+import { MainContext } from '../../../context/ContextProvider';
 
 const Footer = () => {
   const {insta,setInsta}=useContext(MainContext)
@@ -25,8 +25,8 @@ const Footer = () => {
             <h2>Me On Instagram</h2>
           </div>
           <div className="footer-top_imgs">
-            {insta && insta.map((data)=>(
-              <div className="footer-top_imgs_image">
+            {insta && insta.map((data,index)=>(
+              <div className="footer-top_imgs_image" key={index}>
               <img
                 src={data.url}
                 alt="img"

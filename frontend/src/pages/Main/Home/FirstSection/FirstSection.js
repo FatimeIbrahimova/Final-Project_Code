@@ -54,8 +54,9 @@ const handleClose=()=>{
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log('slide change')}
     >
-      {slider && slider.map((product)=>(
+      {slider && slider.map((product,index)=>(
         <SwiperSlide>
+        <div key={index}>
         <div className="first-section__swipper-img">
         <img src={product.url} alt="img"/>
         </div>
@@ -65,6 +66,7 @@ const handleClose=()=>{
         <button className='first-section__swipper-desc-btn'>
           <Link to={`${product._id}`}>Read More</Link>
         </button>
+        </div>
         </div>
        </SwiperSlide>
       ))}

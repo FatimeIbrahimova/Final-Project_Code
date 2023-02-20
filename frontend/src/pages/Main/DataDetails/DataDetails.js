@@ -5,9 +5,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import "./DataDetails.scss"
-import { loginFormSchema } from '../../schema/formSchema';
-import { MainContext } from '../../context/ContextProvider';
 import axios from 'axios';
+import { MainContext } from '../../../context/ContextProvider';
+import { loginFormSchema } from '../../../schema/formSchema';
 
 const DataDetails = () => {
   //details
@@ -15,32 +15,12 @@ const DataDetails = () => {
     const [data,setData]=useState({})
 
     useEffect(() => {
-      axios.get(`http://localhost:8080/products/${id}`)
-      .then((res)=>setData(res.data))
-      console.log(data);
-    }, [id]);
-    useEffect(() => {
-      axios.get(`http://localhost:8080/products2/${id}`)
-      .then((res)=>setData(res.data))
-      console.log(data);
-    }, [id]);
-    useEffect(() => {
-      axios.get(`http://localhost:8080/productsAdd1/${id}`)
-      .then((res)=>setData(res.data))
-      console.log(data);
-    }, [id]);
-    useEffect(() => {
-      axios.get(`http://localhost:8080/productsAdd2/${id}`)
-      .then((res)=>setData(res.data))
-      console.log(data);
-    }, [id]);
-    useEffect(() => {
       axios.get(`http://localhost:8080/slider/${id}`)
       .then((res)=>setData(res.data))
       console.log(data);
     }, [id]);
     useEffect(() => {
-      axios.get(`http://localhost:8080/filter/${id}`)
+      axios.get(`http://localhost:8080/allProductt/${id}`)
       .then((res)=>setData(res.data))
     }, [id]);
   //
@@ -56,7 +36,12 @@ const DataDetails = () => {
   } = useForm({
       resolver: yupResolver(loginFormSchema),
   });
-    
+    //comment
+    const [postId,setPostId]=useState([])
+    useEffect(() => {
+      axios.get(`http://localhost:8080/comments/${id}`)
+      .then((res)=>setData(res.data))
+    }, [id]);
   return (
     <>
     <div className='first-card'>
@@ -87,7 +72,7 @@ const DataDetails = () => {
           <i class="fa-solid fa-border-all"></i>
           </div>
           <div className='first-card_switch-next'>
-            <Link to="/beauty2"><h3>Next</h3><i class="fa-solid fa-greater-than"></i></Link>
+            <Link to=""><h3>Next</h3><i class="fa-solid fa-greater-than"></i></Link>
           </div>
         </div>
         <hr/>
@@ -195,22 +180,22 @@ const DataDetails = () => {
            <h5>Oldest</h5>
            </div>
          </div>
-         {/* <div className='comments_post-bottom'>
+         <div className='comments_post-bottom'>
            <div className='comments_post-bottom-comment'>
              <div className='user-profile'>
-             <img src='https://c.disquscdn.com/uploads/users/2534/640/avatar92.jpg?1590753847' alt="img"/>
+             <img src={postId.commentProfile} alt="img"/>
              </div>
              <div className='comments_post-bottom-comment-rightside'>
                <div className='username'>
-                <h3>oomyim</h3>
+                <h3>{postId.commentUser}</h3>
                 <i class="fa-solid fa-user-plus"></i>
                </div>
                <div className='date'>
                <i class="fa-regular fa-clock"></i>
-               <span>  3 years ago edited</span>
+               <span>  {postId.commentDate}</span>
                </div>
                <div className='comment'>
-                <p>Nice</p>
+                <p>{postId.comment}</p>
                </div>
                <div className='feedback'>
                <div className='feedback-likes'>
@@ -230,7 +215,7 @@ const DataDetails = () => {
                </div>
              </div>
            </div>
-         </div> */}
+         </div>
          <span className='no-comment'>Be the first to comment</span>
          <hr/>
          <div className='comments-part-end'>

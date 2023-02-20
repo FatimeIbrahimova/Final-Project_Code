@@ -1,13 +1,12 @@
-"use strict"
 const express = require('express')
 let router = express.Router()
-const Products=require("../../models/SecondSection/Products2");
+const Categories=require("../models/Categories");
 
 
 
-//get all products
+//get all comments
 router.get("/",(req,res)=>{
-    Products.find({},(err,docs)=>{
+    Categories.find({},(err,docs)=>{
         if(!err){
             res.send(docs)
         }else{
@@ -15,24 +14,21 @@ router.get("/",(req,res)=>{
         }
     })
 })
-//add product
+//add comment
 router.post("/",(req,res)=>{
-    let product=new Products({
-        url:req.body.url,
-        title:req.body.title,
-        desc:req.body.desc,
-        name:req.body.name,
-        date:req.body.date,
-        allDesc:req.body.allDesc
+    let category=new Categories({
+      categoryName:req.body.categoryName,
+      exampleImg:req.body.exampleImg,
+      categoryDesc:req.body.categoryDesc,
     })
-    product.save()
+    category.save()
     res.send({message: "success"})
 })
-//! Get user by id
+//! Get comments by id
 router.get("/:id", (req, res) => {
     const { id } = req.params;
   
-    Products.findById(id, (err, docs) => {
+    Categories.findById(id, (err, docs) => {
       if (!err) {
         if (docs) {
           res.send(docs);
@@ -48,7 +44,7 @@ router.get("/:id", (req, res) => {
 //delete
 router.delete("/:id",(req,res)=>{
     const {id}=req.params;
-    Products.findByIdAndDelete(id,(err,docs)=>{
+    Categories.findByIdAndDelete(id,(err,docs)=>{
         if(!err){
             res.send({message:"deleted"})
         }else{
@@ -56,4 +52,17 @@ router.delete("/:id",(req,res)=>{
         }
     })
 })
+//! Update category by id
+router.put ('/:id', (req, res) => {
+  const {id} = req.params;
+
+  Categories.findByIdAndUpdate (id, req.body, (err, doc) => {
+    if (!err) {
+      res.status (201);
+    } else {
+      res.status (500).json (err);
+    }
+  });
+  res.send ({message: 'SUCCESSFULLY Updated'});
+});
 module.exports=router;

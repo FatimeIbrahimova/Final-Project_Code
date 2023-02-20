@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import { MainContext } from '../../../../context/ContextProvider'
 import "./Beauty.scss"
-import "../../../../pages/DataDetails/DataDetails"
+import "../../../../../pages/Main/DataDetails/DataDetails"
+import { MainContext } from '../../../../../context/ContextProvider'
 
 const Beauty = () => {
    const {filter,setFilter}=useContext(MainContext)
@@ -30,10 +30,8 @@ const Beauty = () => {
          .filter((data)=>{
           return data.name.toLowerCase()==="beauty" ? data : data.name.toLowerCase().includes("beauty")
         })
-        .map((product)=>(
-          
-          <>
-           <div className="second-section__products-first">
+        .map((product,index)=>(
+           <div className="second-section__products-first" key={index}>
            <img
              src={product.url}
              alt="img"
@@ -48,7 +46,6 @@ const Beauty = () => {
              </button>
            </div>
          </div>
-           </>
         ))
       }
         
