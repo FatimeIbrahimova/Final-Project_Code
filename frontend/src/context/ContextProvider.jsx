@@ -23,7 +23,7 @@ function ContextProvider({ children }) {
        count,
        setCount,
        insta,
-       setInsta
+       setInsta,
     }
 
     return (

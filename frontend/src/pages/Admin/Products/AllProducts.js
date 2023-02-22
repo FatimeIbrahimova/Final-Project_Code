@@ -60,13 +60,12 @@ const AllProducts = () => {
 		getData();
 	}, []);
 	//post products to api
-	const [add, setAdd] = useState("hidden");
 	const [state, setState] = useState({
 		url: "",
 		name: "",
 		title: "",
 		desc: "",
-		date: "",
+		date: new Date(),
 	});
 	const [id, setId] = useState(undefined);
 
@@ -75,10 +74,6 @@ const AllProducts = () => {
 
 		console.log(state);
 		getData();
-	};
-
-	const handleClick = () => {
-		setAdd(add === "hidden" ? "visible" : "hidden");
 	};
 	const handleChange = (e) => {
 		e.preventDefault();
@@ -100,9 +95,10 @@ const AllProducts = () => {
 			name: data.name,
 			title: data.title,
 			desc: data.desc,
-			date: data.date,
+			date: new Date(),
 		});
-		setId(data.id);
+		setId(data._id);
+		console.log("b");
 	};
 
 	const updateData = async (id) => {
@@ -167,7 +163,7 @@ const AllProducts = () => {
 											<Button
 												variant="contained"
 												color="secondary"
-												onClick={(id) => handleEditClick(item)}
+												onClick={() => handleEditClick(item)}
 											>
 												Edit
 											</Button>
@@ -178,84 +174,62 @@ const AllProducts = () => {
 						</Table>
 					</TableContainer>
 				</Container>
-				<div className="btn">
-					<Button
-						variant="contained"
-						color="success"
-						onClick={() => handleClick()}
-						sx={{ marginRight: 2 }}
-					>
-						Add Product
-					</Button>
-					<Button
-						variant="contained"
-						color="secondary"
-						onClick={() => handleClick()}
-						onSubmit={() => updateData(id)}
-					>
-						update
-					</Button>
-				</div>
-				<div className={add}>
-					<div className="add_inputs">
-						<form>
-							<input
-								placeholder="Image"
-								name="url"
-								{...register("url")}
-								onChange={(e) => handleChange(e)}
-							/>
-							{errors?.url && (
-								<span style={{ color: "red" }}>{errors.url.message}</span>
-							)}
+				<div className="add_inputs">
+					<form>
+						<input
+							placeholder="Image"
+							name="url"
+							{...register("url")}
+							onChange={(e) => handleChange(e)}
+						/>
+						{errors?.url && (
+							<span style={{ color: "red" }}>{errors.url.message}</span>
+						)}
 
-							<input
-								placeholder="Category"
-								name="name"
-								{...register("name")}
-								onChange={(e) => handleChange(e)}
-							/>
-							{errors?.category ? (
-								<span style={{ color: "red" }}>{errors.category.message}</span>
-							) : (
-								<></>
-							)}
-							<input
-								placeholder="Title"
-								name="title"
-								{...register("title")}
-								onChange={(e) => handleChange(e)}
-							/>
-							{errors?.title ? (
-								<span style={{ color: "red" }}>{errors.title.message}</span>
-							) : (
-								<></>
-							)}
-							<input
-								placeholder="Desc"
-								name="desc"
-								{...register("desc")}
-								onChange={(e) => handleChange(e)}
-							/>
-							{errors?.desc ? (
-								<span style={{ color: "red" }}>{errors.desc.message}</span>
-							) : (
-								<></>
-							)}
-							<input
-								placeholder="Date"
-								name="date"
-								{...register("date")}
-								onChange={(e) => handleChange(e)}
-							/>
-							{errors?.date ? (
-								<span style={{ color: "red" }}>{errors.date.message}</span>
-							) : (
-								<></>
-							)}
-							<button onClick={() => addData()}>Add to Api</button>
-						</form>
-					</div>
+						<input
+							placeholder="Category"
+							name="name"
+							{...register("name")}
+							onChange={(e) => handleChange(e)}
+						/>
+						{errors?.category ? (
+							<span style={{ color: "red" }}>{errors.category.message}</span>
+						) : (
+							<></>
+						)}
+						<input
+							placeholder="Title"
+							name="title"
+							{...register("title")}
+							onChange={(e) => handleChange(e)}
+						/>
+						{errors?.title ? (
+							<span style={{ color: "red" }}>{errors.title.message}</span>
+						) : (
+							<></>
+						)}
+						<input
+							placeholder="Desc"
+							name="desc"
+							{...register("desc")}
+							onChange={(e) => handleChange(e)}
+						/>
+						{errors?.desc ? (
+							<span style={{ color: "red" }}>{errors.desc.message}</span>
+						) : (
+							<></>
+						)}
+						<div className="btns">
+						<Button variant="contained" color="success" onClick={() => addData()}>Add Product</Button>
+						<Button
+							variant="contained"
+							color="secondary"
+							onClick={() => updateData(id)}
+						>
+							update
+						</Button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</>

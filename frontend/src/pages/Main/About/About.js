@@ -1,9 +1,13 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import "./About.scss"
 
 const About = () => {
   return (
     <>
+    <Helmet>
+        <title>About Page</title>
+      </Helmet>
     <div className='about'>
      <div className='container'>
       <div className='about_page-desc'>

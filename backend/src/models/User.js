@@ -18,9 +18,12 @@ const UserSchema=new Schema(
             type:String,
             required:true,
         },
-        profilePic:{
+        Confirmpassword:{
             type:String,
             required:true,
+        },
+        profilePic:{
+            type:String,
         }
     }
 )

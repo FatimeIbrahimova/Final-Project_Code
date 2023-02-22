@@ -47,7 +47,7 @@
                         flex-direction: column;
                         background-color: white;
                         border-radius: 5px;
-                        bottom: -185px;
+                        bottom: -145px;
                         width: 150px;
                         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                         text-align: center;
@@ -85,6 +85,9 @@
                 display: flex;
                 gap: 12px;
                 align-items: center;
+                a{
+                    text-decoration: none;
+                }
                 h2{
                     font-size: 16px;
                     color:#f73b98;

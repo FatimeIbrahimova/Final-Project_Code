@@ -1,8 +1,13 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import "./NotFound.scss"
 
 const NotFound = () => {
   return (
+   <>
+   <Helmet>
+        <title>NotFound Page</title>
+      </Helmet>
     <div className="not-found">
       <div className='container not-found'>
       <div className="not-found_desc">
@@ -20,6 +25,7 @@ const NotFound = () => {
       </div>
       </div>
     </div>
+   </>
   );
 };
 

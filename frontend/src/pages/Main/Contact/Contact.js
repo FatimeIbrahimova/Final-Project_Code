@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginFormSchema } from '../../../schema/formSchema';
 import "./Contact.scss"
+import { Helmet } from 'react-helmet';
 
 const Contact = () => {
 
@@ -15,6 +16,9 @@ const Contact = () => {
 });
   return (
     <>
+    <Helmet>
+        <title>Contact Page</title>
+      </Helmet>
    <div className='contact-page'>
      <div className='container'>
           <div className='contact-page_desc'>

@@ -12,6 +12,8 @@ import AllProducts from '../pages/Admin/Products/AllProducts';
 import DashBoard from '../pages/Admin/DashBoard/DashBoard';
 import Contact from '../pages/Main/Contact/Contact';
 import CategoryDetail from '../components/Main/Navbar/CategoryDetail';
+import Login from '../pages/Main/Login/Login';
+import Register from '../pages/Main/Register/Register';
 
 export const ROUTES = [
   {
@@ -57,6 +59,14 @@ export const ROUTES = [
       {
         path:"category/:id",
         element:<CategoryDetail/>
+      },
+      {
+        path:"login",
+        element:<Login/>
+      },
+      {
+        path:"register",
+        element:<Register/>
       }
     ],
   },

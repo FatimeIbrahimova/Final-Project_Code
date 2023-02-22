@@ -5,7 +5,9 @@ import { MainContext } from '../../../context/ContextProvider'
 import "./Navbar.scss"
 
 const Navbar = () => {
-  const [active,setActive]=useState(false)
+  const [active,setActive]=useState({
+    className:"active"
+  })
   //categories
   const [categories,setCategories]=useState([])
   useEffect(()=>{
@@ -13,7 +15,15 @@ const Navbar = () => {
     .then((res)=>setCategories(res.data))
   },[])
   const sortData=()=>{
-    const categoryName=categories.filter((a)=>a.categoryName==="Nude Makeup")
+    // const categories=categories.filter((a)=>{
+    //   return a.category==="Nude"
+    // })
+    console.log(categories);
+
+    categories.filter((a)=>{
+      // console.log(a.category);
+      return a.category==="Nude" ? a :undefined;
+    })
     
   }
 
@@ -48,7 +58,7 @@ const {insta}=useContext(MainContext)
     //hamburger menu
     const handleClick=()=>{
             setMenuClass("visible")
-            // setActive(true)
+            // setActive(!active)
     }
     const handleClose=()=>{
           setMenuClass("menu hidden")
@@ -59,7 +69,6 @@ const {insta}=useContext(MainContext)
     
   return (
     <>
-    
     <div className='nav'>
         <div className='container'>
             <div className='nav__left-icons'>
@@ -69,13 +78,14 @@ const {insta}=useContext(MainContext)
             <a className='social-icon' href='https://twitter.com/redqinc'><i class="fa-brands fa-twitter"></i></a>
             <a className='social-icon' href='https://www.linkedin.com/company/redqinc/'><i class="fa-brands fa-linkedin"></i></a>
             </div>
-            <ul style={{display:"flex",alignItems:"center"}}>
+            <ul>
                 <li className='categories'><h3>Categories</h3>
                 <ul>
                 {categories && categories
                 .map((item,index)=>(
-                 <NavLink to={`/category/${item._id}`}> <li key={index} onClick={()=>sortData()}>{item.categoryName}</li></NavLink>
-                ))}
+                 <NavLink to={`/category/${item._id}`}><li key={index} onClick={()=>sortData()}>{item.categoryName}</li></NavLink>
+                ))
+                }
                 
               </ul>
                 </li>
@@ -86,10 +96,10 @@ const {insta}=useContext(MainContext)
             </div>
             <div className='nav__right-icons burger'>
              
-              <h2>Login</h2><span>/</span>
-              <h2>Register</h2>
+              <NavLink to="/login"><h2>Login</h2></NavLink><span>/</span>
+              <NavLink to="/register"><h2>Register</h2></NavLink>
             <i class="fa-solid fa-magnifying-glass" onClick={()=>handleSearch()}></i>
-            <i class="fa-solid fa-bars" onClick={()=>handleClick()}></i>
+            <i class="fa-solid fa-bars active" onClick={()=>handleClick()}></i>
             </div>
         </div>
         <div className={nav_list}>

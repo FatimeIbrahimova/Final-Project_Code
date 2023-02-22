@@ -4,13 +4,6 @@
       width: 100px;
       height: 60px;
    }
-   .btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-      margin-bottom: 30px;
-   }
    .add_inputs {
       display: flex;
       flex-direction: column;
@@ -23,6 +16,7 @@
       padding-top: 20px;
       padding-bottom: 20px;
       margin-bottom: 50px;
+      margin-top: 40px;
       form {
          display: flex;
          flex-direction: column;
@@ -37,12 +31,9 @@
       border-radius: 10px;
       background-color: rgb(171, 169, 169);
       }
-      button{
-         background-color: rgb(69, 68, 68);
-         color: white;
-         border: none;
-         padding: 10px 30px;
-         border-radius: 10px;
+      .btns{
+         display: flex;
+         gap:10px;
       }
    }
    .hidden{

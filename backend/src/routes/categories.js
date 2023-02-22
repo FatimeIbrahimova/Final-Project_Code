@@ -20,6 +20,7 @@ router.post("/",(req,res)=>{
       categoryName:req.body.categoryName,
       exampleImg:req.body.exampleImg,
       categoryDesc:req.body.categoryDesc,
+      category:req.body.category,
     })
     category.save()
     res.send({message: "success"})
