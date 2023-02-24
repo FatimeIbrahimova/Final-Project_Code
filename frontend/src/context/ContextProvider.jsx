@@ -9,6 +9,7 @@ function ContextProvider({ children }) {
   const [filter, setFilter] =useState([])
   const [count,setCount]=useState(0)
   const [insta,setInsta]=useState([])
+  const [categories,setCategories]=useState([])
     const values = {
        login,
        setLogin,
@@ -24,6 +25,8 @@ function ContextProvider({ children }) {
        setCount,
        insta,
        setInsta,
+       categories,
+       setCategories
     }
 
     return (

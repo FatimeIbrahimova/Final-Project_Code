@@ -1,29 +1,28 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useParams } from 'react-router-dom'
 import { MainContext } from '../../../context/ContextProvider'
 import "./Navbar.scss"
 
 const Navbar = () => {
-  const [active,setActive]=useState({
-    className:"active"
-  })
+  const [active,setActive]=useState(false)
   //categories
-  const [categories,setCategories]=useState([])
+  const {categories,setCategories}=useContext(MainContext)
   useEffect(()=>{
     axios.get(`http://localhost:8080/categories`)
     .then((res)=>setCategories(res.data))
   },[])
-  const sortData=()=>{
+  // const {id}=useParams()
+  const sortData=(item)=>{
     // const categories=categories.filter((a)=>{
     //   return a.category==="Nude"
     // })
-    console.log(categories);
-
-    categories.filter((a)=>{
-      // console.log(a.category);
-      return a.category==="Nude" ? a :undefined;
-    })
+    // })
+    // const newItem = categories.filter((newVal) => {
+    //   return newVal.category === item; 
+    //     	// comparing category for displaying data
+    // });
+    // setCategories(newItem);
     
   }
 
@@ -81,12 +80,19 @@ const {insta}=useContext(MainContext)
             <ul>
                 <li className='categories'><h3>Categories</h3>
                 <ul>
-                {categories && categories
+                {/* {categories && categories
                 .map((item,index)=>(
-                 <NavLink to={`/category/${item._id}`}><li key={index} onClick={()=>sortData()}>{item.categoryName}</li></NavLink>
+                 <NavLink to={`/category/${item._id}`} onClick={()=>sortData(item)}><li key={index} >{item.categoryName}</li></NavLink>
                 ))
-                }
-                
+                } */}
+                <NavLink to="/hd">Hd Makeup</NavLink>
+                <NavLink to="/nude">Nude Makeup</NavLink>
+                <NavLink to="/matte">Matte Makeup</NavLink>
+                <NavLink to="/dewy">Dewy Makeup</NavLink>
+                <NavLink to="/airbrush">Airbrush Makeup</NavLink>
+                <NavLink to="/editorial">Editorial Makeup</NavLink>
+                <NavLink to="/celebrity">Celebrity Makeup</NavLink>
+                <NavLink to="/permanent">Permanent Makeup</NavLink>
               </ul>
                 </li>
               </ul>
@@ -98,6 +104,7 @@ const {insta}=useContext(MainContext)
              
               <NavLink to="/login"><h2>Login</h2></NavLink><span>/</span>
               <NavLink to="/register"><h2>Register</h2></NavLink>
+              <NavLink to="/user">User</NavLink>
             <i class="fa-solid fa-magnifying-glass" onClick={()=>handleSearch()}></i>
             <i class="fa-solid fa-bars active" onClick={()=>handleClick()}></i>
             </div>

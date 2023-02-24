@@ -8,22 +8,27 @@ import { loginFormSchema } from "../../../schema/formSchema";
 import "./Register.scss";
 
 const Register = () => {
+	const [span,setSpan]=useState("hidden")
 	//
 	const [state, setState] = useState({
 		username: "",
 		surname:"",
 		email: "",
 		password: undefined,
-		confirmPassword:undefined,
+		Confirmpassword:undefined,
 	});
 	const handleChange = (e) => {
 		e.preventDefault();
 		setState({ ...state, [e.target.name]: e.target.value });
+		// console.log(state);
 	};
-	const addData = async () => {
-		await axios.post("localhost:8080/register", state);
-console.log("a")
+	const addData = () => {
+		 axios.post("http://localhost:8080/auth/register", state);
+        // console.log("a")
 		console.log(state);
+		// if(state.password !== state.Confirmpassword){
+        //    setSpan("visible")
+		// }
 	};
 	
     //Yup
@@ -43,40 +48,43 @@ console.log("a")
 					<h1>Sign Up</h1>
 				</div>
 				<form>
-				<label for="username">Username</label>
+				<label>Username</label>
 					<br />
 					<input id="username" type="text" {...register("username")} onChange={(e) => handleChange(e)} name="username"/><br/>
 					{errors?.username && (
 						<span style={{ color: "red" }}>{errors.username.message}</span>
 					)}
 					<br />
-					<label for="Surname">Surname</label>
+					<label>Surname</label>
 					<br />
 					<input id="surname" type="text" {...register("surname")} onChange={(e) => handleChange(e)} name="surname"/><br/>
 					{errors?.surname && (
 						<span style={{ color: "red" }}>{errors.surname.message}</span>
 					)}
 					<br />
-					<label for="email">Email</label>
+					<label>Email</label>
 					<br />
 					<input id="email" type="email" {...register("email")} onChange={(e) => handleChange(e)} name="email"/><br/>
 					{errors?.email && (
 						<span style={{ color: "red" }}>{errors.email.message}</span>
 					)}
 					<br />
-					<label for="password">Password</label>
+					<label>Password</label>
 					<br />
-					<input type="password" id="password" {...register("password")} onChange={(e) => handleChange(e)} name="password"/><br/>
+					<input type="password" autoComplete="password" {...register("password")} onChange={(e) => handleChange(e)} name="password"/><br/>
 					{errors?.password && (
 						<span style={{ color: "red" }}>{errors.password.message}</span>
 					)}
 					<br/>
-					<label for="new-password">Confirm Password</label>
+					{/* <label>Confirm Password</label>
 					<br />
-					<input type="password" id="new-password" {...register("passwor")} onChange={(e) => handleChange(e)} name="confirmPassword"/><br/>
+					<input type="password" {...register("passwor")} onChange={(e) => handleChange(e)} name="Confirmpassword"/><br/>
 					{errors?.password && (
 						<span style={{ color: "red" }}>{errors.password.message}</span>
 					)}
+					<div className={span}>
+					<span style={{color:"red"}}>Passwords Don't Match</span>
+					</div> */}
 
 				</form>
 				<button className="sign-btn" 

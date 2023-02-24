@@ -9,12 +9,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button, TextField } from "@mui/material";
+import { Button} from "@mui/material";
 import axios from "axios";
 import { Container } from "@mui/system";
-import { loginFormSchema } from "../../../schema/formSchema";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -36,39 +33,36 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 	},
 }));
 
-const AllProducts = () => {
+const AllCategories = () => {
 	//get products from api
-	const [filter, setFilter] = useState([]);
+	const [categories, setCategories] = useState([]);
 	const getData = async () => {
-		const res = await axios.get("http://localhost:8080/allProductt");
-		setFilter(res.data);
+		const res = await axios.get("http://localhost:8080/categories");
+		setCategories(res.data);
 	};
 	useEffect(() => {
 		getData();
 	}, []);
 	//post products to api
 	const [state, setState] = useState({
-		url: "",
-		name: "",
-		title: "",
-		desc: "",
-		allDesc:"",
-		date: new Date(),
+		categoryName: "",
+		category: "",
+		exampleImg: "",
+		categoryDesc: "",
 	});
 	const [id, setId] = useState(undefined);
 
 	const addData = async () => {
-		await axios.post("http://localhost:8080/allProductt", state);
+		await axios.post("http://localhost:8080/categories", state);
 
 		console.log(state);
 		getData();
 		setState({
-			url:"",
-			name:"",
-			title:"",
-			desc:"",
-			allDesc:"",
-		})
+			categoryName: "",
+			category: "",
+			exampleImg: "",
+			categoryDesc: "",
+		});
 	};
 	const handleChange = (e) => {
 		e.preventDefault();
@@ -78,7 +72,7 @@ const AllProducts = () => {
 
 	//delete
 	const handleDelete = async (id) => {
-		await axios.delete(`http://localhost:8080/allProductt/${id}`);
+		await axios.delete(`http://localhost:8080/categories/${id}`);
 		console.log("delete");
 		getData();
 	};
@@ -86,76 +80,58 @@ const AllProducts = () => {
 	//update
 	const handleEditClick = (data) => {
 		setState({
-			url: data.url,
-			name: data.name,
-			title: data.title,
-			desc: data.desc,
-			allDesc:data.allDesc,
-			date: new Date(),
+			categoryName: data.categoryName,
+			category: data.category,
+			exampleImg: data.exampleImg,
+			categoryDesc: data.categoryDesc,
 		});
 		setId(data._id);
-		console.log("b");
 	};
 
 	const updateData = async (id) => {
-		await axios.put(`http://localhost:8080/allProductt/${id}`, state);
+		await axios.put(`http://localhost:8080/categories/${id}`, state);
 		getData();
 		setState({
-			url:"",
-			name:"",
-			title:"",
-			desc:"",
-			allDesc:"",
-		})
+			categoryName: "",
+			category: "",
+			exampleImg: "",
+			categoryDesc: "",
+		});
 	};
 
-	//Yup
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm({ resolver: yupResolver(loginFormSchema) });
 	return (
 		<>
 			<div className="products">
 				<Container fixed>
 					<TableContainer
 						component={Paper}
-						sx={{ width: "100%", margin: "auto" }}
+						sx={{ width: "90%", margin: "auto" }}
 					>
 						<Table aria-label="customized table">
 							<TableHead>
 								<TableRow>
 									<StyledTableCell align="center">Image</StyledTableCell>
+									<StyledTableCell align="center">CategoryName</StyledTableCell>
 									<StyledTableCell align="center">Category</StyledTableCell>
-									<StyledTableCell align="center">Title</StyledTableCell>
-									<StyledTableCell align="center">Desc</StyledTableCell>
-									<StyledTableCell align="center">All Desc</StyledTableCell>
-									<StyledTableCell align="center">Date</StyledTableCell>
+									<StyledTableCell align="center">Description</StyledTableCell>
 									<StyledTableCell align="center">Delete</StyledTableCell>
 									<StyledTableCell align="center">Edit</StyledTableCell>
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{filter?.map((item) =>(
+								{categories?.map((item) => (
 									<StyledTableRow key={item._id}>
 										<StyledTableCell component="th" scope="row">
-											<img src={item.url} alt="img" />
+											<img src={item.exampleImg} alt="img" />
 										</StyledTableCell>
 										<StyledTableCell align="center">
-											{item.name}
+											{item.categoryName}
 										</StyledTableCell>
 										<StyledTableCell sx={{ width: 200 }} align="center">
-											{item.title}
-										</StyledTableCell>
-										<StyledTableCell align="center" sx={{width:"15%"}}>
-											{item.desc}
-										</StyledTableCell>
-										<StyledTableCell align="center" sx={{ width:"80" }}>
-											<p style={{fontSize:3}}>{item.allDesc}</p>
+											{item.category}
 										</StyledTableCell>
 										<StyledTableCell align="center">
-											{item.date}
+											<p style={{ fontSize: 8 }}>{item.categoryDesc}</p>
 										</StyledTableCell>
 										<StyledTableCell align="center">
 											<Button
@@ -185,61 +161,42 @@ const AllProducts = () => {
 					<form>
 						<input
 							placeholder="Image"
-							name="url"
-							{...register("url")}
+							name="exampleImg"
 							onChange={(e) => handleChange(e)}
 						/>
-						{errors?.url && (
-							<span style={{ color: "red" }}>{errors.url.message}</span>
-						)}
 
 						<input
-							placeholder="Category"
-							name="name"
-							{...register("name")}
+							placeholder="CategoryName"
+							name="categoryName"
 							onChange={(e) => handleChange(e)}
 						/>
-						{errors?.category ? (
-							<span style={{ color: "red" }}>{errors.category.message}</span>
-						) : (
-							<></>
-						)}
 						<input
-							placeholder="Title"
-							name="title"
-							{...register("title")}
+							placeholder="category"
+							name="category"
 							onChange={(e) => handleChange(e)}
 						/>
-						{errors?.title ? (
-							<span style={{ color: "red" }}>{errors.title.message}</span>
-						) : (
-							<></>
-						)}
+
 						<input
 							placeholder="Desc"
-							name="desc"
-							{...register("desc")}
+							name="categoryDesc"
 							onChange={(e) => handleChange(e)}
 						/>
-						{errors?.desc ? (
-							<span style={{ color: "red" }}>{errors.desc.message}</span>
-						) : (
-							<></>
-						)}
-						<input
-							placeholder="All Desc"
-							name="allDesc"
-							onChange={(e) => handleChange(e)}
-						/>
+
 						<div className="btns">
-						<Button variant="contained" color="success" onClick={() => addData()}>Add Product</Button>
-						<Button
-							variant="contained"
-							color="secondary"
-							onClick={() => updateData(id)}
-						>
-							update
-						</Button>
+							<Button
+								variant="contained"
+								color="success"
+								onClick={() => addData()}
+							>
+								Add Product
+							</Button>
+							<Button
+								variant="contained"
+								color="secondary"
+								onClick={() => updateData(id)}
+							>
+								update
+							</Button>
 						</div>
 					</form>
 				</div>
@@ -248,4 +205,4 @@ const AllProducts = () => {
 	);
 };
 
-export default AllProducts;
+export default AllCategories;

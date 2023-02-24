@@ -11,6 +11,8 @@ const userRoute=require("./src/routes/users")
 const commentRoute=require("./src/routes/comments")
 const categoryRoute=require("./src/routes/categories")
 
+
+
 dotenv.config()
 const app=express()
 app.use(express.json())
@@ -21,7 +23,7 @@ app.use(bodyParser.json())
 app.use("/slider",sliderRoute)
 app.use("/allProductt",allProductRoute)
 app.use("/insta",instaRoute)
-app.use("/register",authRoute)
+app.use("/auth",authRoute)
 app.use("/users",userRoute)
 app.use("/comments",commentRoute)
 app.use("/categories",categoryRoute)
