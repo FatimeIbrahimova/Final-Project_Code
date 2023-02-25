@@ -13,6 +13,9 @@ const commentSchema = new Schema (
       },
       comment:{
         type:String
+      },
+      commentImg:{
+        type:String
       }
   },
   {timestamps: true}

@@ -12,19 +12,6 @@ const Navbar = () => {
     axios.get(`http://localhost:8080/categories`)
     .then((res)=>setCategories(res.data))
   },[])
-  // const {id}=useParams()
-  const sortData=(item)=>{
-    // const categories=categories.filter((a)=>{
-    //   return a.category==="Nude"
-    // })
-    // })
-    // const newItem = categories.filter((newVal) => {
-    //   return newVal.category === item; 
-    //     	// comparing category for displaying data
-    // });
-    // setCategories(newItem);
-    
-  }
 
 
   //imgs from insta

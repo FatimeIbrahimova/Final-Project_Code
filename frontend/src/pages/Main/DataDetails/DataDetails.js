@@ -9,11 +9,13 @@ import axios from "axios";
 import { MainContext } from "../../../context/ContextProvider";
 import { loginFormSchema } from "../../../schema/formSchema";
 import { Helmet } from "react-helmet";
+import moment from 'moment'
 
 const DataDetails = () => {
 	//details
 	const { id } = useParams();
 	const [data, setData] = useState({});
+	const [sorted,setSorted]=useState({sorted:"commentDate",reversed:false})
 
 	useEffect(() => {
 		axios
@@ -40,12 +42,68 @@ const DataDetails = () => {
 		resolver: yupResolver(loginFormSchema),
 	});
 	//comment
-	const [postId, setPostId] = useState([]);
+	const [post, setPost] = useState([]);
+	const getData = async () => {
+		const res = await axios.get("http://localhost:8080/comments");
+		setPost(res.data);
+	};
 	useEffect(() => {
-		axios
-			.get(`http://localhost:8080/comments/${id}`)
-			.then((res) => setData(res.data));
-	}, [id]);
+		getData();
+	}, []);
+	//add comment
+	const [state,setState]=useState({comment:"",commentDate:moment(new Date(), "YYYYMMDD").fromNow()});
+	const handleChange=(e)=>{
+		e.preventDefault()
+		setState({ ...state, [e.target.name]: e.target.value });
+		console.log(state);
+	}
+	const addData = async () => {
+		await axios.post("http://localhost:8080/comments",state);
+		getData()
+		setState({
+			comment:""
+		})
+	};
+	const sortDataNew=()=>{
+		setSorted({sorted:"commentDate",reversed:!sorted.reversed})
+		let dataCopy=[...post]
+		dataCopy.sort((a,b)=>{
+			if(sorted.reversed){
+				// return a.commentDate.localeCompare(b.commentDate);
+				return  new Date(b.commentDate).valueOf()-new Date(a.commentDate).valueOf()
+			}
+			// return b.commentDate.localeCompare(a.commentDate);
+		})
+		setPost(dataCopy)
+	  }
+	  const sortDataOld=()=>{
+		setSorted({sorted:"commentDate",reversed:!sorted.reversed})
+		let dataCopy=[...post]
+		dataCopy.sort((a,b)=>{
+			if(sorted.reversed){
+				return b.commentDate.localeCompare(a.commentDate);
+			}
+		})
+		setPost(dataCopy)
+	  }
+	  //style
+	  const [bold,setBold]=useState("normal")
+	  const handleBold=()=>{
+		setBold(bold==="normal" ? "bold" :"normal")
+	  }
+	  const handleCursive=()=>{
+		setBold(bold==="normal" ? "cursive" :"normal")
+	  }
+	  const handleUnderline=()=>{
+		setBold(bold==="normal" ? "underline" :"normal")
+	  }
+	  const handleThrough=()=>{
+		setBold(bold==="normal" ? "line-through" :"normal")
+	  }
+	  const handleSpoiler=()=>{
+		setBold(bold==="normal" ? "spoiler" :"normal")
+	  }
+
 	return (
 		<>
 			<Helmet>
@@ -87,17 +145,17 @@ const DataDetails = () => {
 							<i class="fa-solid fa-border-all"></i>
 						</div>
 						<div className="first-card_switch-next">
-							<Link to="">
+							{/* <Link to="">
 								<h3>Next</h3>
 								<i class="fa-solid fa-greater-than"></i>
-							</Link>
+							</Link> */}
 						</div>
 					</div>
 					<hr />
 					<div className="comments">
 						<div className="comments_top">
 							<div>
-								<span>0</span> <span>Comments</span>
+								 <span>Comments</span>
 							</div>
 						</div>
 						<div className="comments-add">
@@ -106,24 +164,26 @@ const DataDetails = () => {
 									<h1>G</h1>
 								</div>
 								<div className="comments-add_top-write_comment">
-									<input className="input" placeholder="Start the discussion" />
+									<div>
+									<input  className="input" placeholder="Start the discussion" name="comment" onChange={(e)=>handleChange(e)}/>
+									</div>
 									<div className="comments-add_bottom">
 										<div className="comments-add_bottom-style">
 											<i class="fa-solid fa-images"></i>
 											<i class="fa-regular fa-image"></i>
-											<h3>B</h3>
-											<h3 className="cursive">I</h3>
-											<h3 className="underline">U</h3>
-											<h3 className="line-through">S</h3>
+											<h3 onClick={()=>handleBold()}>B</h3>
+											<h3 onClick={()=>handleCursive()} className="cursive">I</h3>
+											<h3 onClick={()=>handleUnderline()} className="underline">U</h3>
+											<h3 onClick={()=>handleThrough()} className="line-through">S</h3>
 											<i class="fa-solid fa-link"></i>
-											<i class="fa-solid fa-eye-slash"></i>
+											<i onClick={()=>handleSpoiler()} class="fa-solid fa-eye-slash"></i>
 											<div>
 												<i class="fa-solid fa-less-than"></i>/
 												<i class="fa-solid fa-greater-than"></i>
 											</div>
 											<i class="fa-solid fa-quote-left"></i>
 										</div>
-										<button className="comment-btn" onClick={handleSubmit()}>
+										<button className="comment-btn" onClick={()=>addData()}>
 											Comment
 										</button>
 									</div>
@@ -236,27 +296,28 @@ const DataDetails = () => {
 								</div>
 							</div>
 							<div className="comments_post-top-rightside-sort">
-								<h5>Best</h5>
-								<h5>Newest</h5>
-								<h5>Oldest</h5>
+								<h5 onClick={()=>sortDataNew()}>Newest</h5>
+								<h5 onClick={()=>sortDataOld()}>Oldest</h5>
 							</div>
 						</div>
 						<div className="comments_post-bottom">
-							<div className="comments_post-bottom-comment">
+							{post && post.map((item,index)=>(
+								<div className="comments_post-bottom-comment" key={index}>
 								<div className="user-profile">
-									<img src={postId.commentProfile} alt="img" />
+									<img src={item.commentProfile} alt="img" />
 								</div>
 								<div className="comments_post-bottom-comment-rightside">
 									<div className="username">
-										<h3>{postId.commentUser}</h3>
+										<h3>{item.commentUser}</h3>
 										<i class="fa-solid fa-user-plus"></i>
 									</div>
 									<div className="date">
 										<i class="fa-regular fa-clock"></i>
-										<span> {postId.commentDate}</span>
+										<span> {item.commentDate}</span>
 									</div>
 									<div className="comment">
-										<p>{postId.comment}</p>
+										<p className={bold}>{item.comment}</p>
+										<img src={item.commentImg}/>
 									</div>
 									<div className="feedback">
 										<div className="feedback-likes">
@@ -276,8 +337,9 @@ const DataDetails = () => {
 									</div>
 								</div>
 							</div>
+							))}
 						</div>
-						<span className="no-comment">Be the first to comment</span>
+						{/* <span className="no-comment">Be the first to comment</span> */}
 						<hr />
 						<div className="comments-part-end">
 							<div className="comments-part-end-leftside">

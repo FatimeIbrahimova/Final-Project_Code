@@ -55,8 +55,8 @@ const handleClose=()=>{
       onSlideChange={() => console.log('slide change')}
     >
       {slider && slider.map((product,index)=>(
-        <SwiperSlide>
-        <div key={index}>
+        <SwiperSlide key={index}>
+        <div>
         <div className="first-section__swipper-img">
         <img src={product.url} alt="img"/>
         </div>

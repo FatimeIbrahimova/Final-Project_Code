@@ -23,6 +23,7 @@ import DewyCategory from "../components/Main/Navbar/Category/DewyCategory";
 import CelebrityCategory from "../components/Main/Navbar/Category/CelebrityCategory";
 import AirbrushCategory from "../components/Main/Navbar/Category/AirbrushCategory";
 import AllCategories from "../pages/Admin/Categories/AllCategories";
+import Comments from "../pages/Admin/Comments/Comments";
 
 export const ROUTES = [
 	{
@@ -127,6 +128,10 @@ export const ROUTES = [
       {
 				path: "categories",
 				element: <AllCategories />,
+			},
+      {
+				path: "comments",
+				element: <Comments />,
 			}
 		],
 	},

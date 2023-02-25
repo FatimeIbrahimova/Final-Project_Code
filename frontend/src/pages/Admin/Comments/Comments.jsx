@@ -9,10 +9,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button} from "@mui/material";
+import { Button } from "@mui/material";
 import axios from "axios";
 import { Container } from "@mui/system";
-import Swal from 'sweetalert2'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -34,42 +33,25 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 	},
 }));
 
-const AllCategories = () => {
+const Comments = () => {
 	//get products from api
-	const [categories, setCategories] = useState([]);
+	const [comments, setComments] = useState([]);
 	const getData = async () => {
-		const res = await axios.get("http://localhost:8080/categories");
-		setCategories(res.data);
+		const res = await axios.get("http://localhost:8080/comments");
+		setComments(res.data);
 	};
 	useEffect(() => {
 		getData();
 	}, []);
 	//post products to api
 	const [state, setState] = useState({
-		categoryName: "",
-		category: "",
-		exampleImg: "",
-		categoryDesc: "",
+		commentProfile: "",
+		commentUser: "",
+		commentDate: "",
+		comment: "",
 	});
 	const [id, setId] = useState(undefined);
 
-	const addData = async () => {
-		await axios.post("http://localhost:8080/categories", state);
-        Swal.fire({
-			title: 'Success!',
-			text: 'Data Added to API',
-			icon: 'success',
-			confirmButtonText: 'Okay'
-		  })
-		console.log(state);
-		getData();
-		setState({
-			categoryName: "",
-			category: "",
-			exampleImg: "",
-			categoryDesc: "",
-		});
-	};
 	const handleChange = (e) => {
 		e.preventDefault();
 		setState({ ...state, [e.target.name]: e.target.value });
@@ -77,69 +59,30 @@ const AllCategories = () => {
 	console.log(state);
 
 	//delete
-	const handleDelete = (id) => {
-        const swalWithBootstrapButtons = Swal.mixin({
-			customClass: {
-			  confirmButton: 'btn btn-success',
-			  cancelButton: 'btn btn-danger'
-			},
-			buttonsStyling: false
-		  })
-		  swalWithBootstrapButtons.fire({
-			title: 'Are you sure?',
-			text: "You won't be able to revert this!",
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonText: 'Yes, delete it!',
-			cancelButtonText: 'No, cancel!',
-			reverseButtons: true
-		  }).then((result) => {
-			if (result.isConfirmed) {
-                 axios.delete(`http://localhost:8080/categories/${id}`);
-                 getData();
-			  swalWithBootstrapButtons.fire(
-				'Deleted!',
-				'Your product has been deleted.',
-				'success'
-			  )
-			} else if (
-			  result.dismiss === Swal.DismissReason.cancel
-			) {
-			  swalWithBootstrapButtons.fire(
-				'Cancelled',
-				'Your imaginary file is safe :)',
-				'error'
-			  )
-			}
-		  })
-          getData();
+	const handleDelete = async (id) => {
+		await axios.delete(`http://localhost:8080/comments/${id}`);
+		console.log("delete");
+		getData();
 	};
 
 	//update
 	const handleEditClick = (data) => {
+        console.log(state);
 		setState({
-			categoryName: data.categoryName,
-			category: data.category,
-			exampleImg: data.exampleImg,
-			categoryDesc: data.categoryDesc,
+			commentProfile: data.commentProfile,
+			commentUser: data.commentUser,
+			comment: data.comment,
 		});
 		setId(data._id);
 	};
 
 	const updateData = async (id) => {
-		await axios.put(`http://localhost:8080/categories/${id}`, state);
-        Swal.fire({
-			title: 'Success!',
-			text: 'Data Updated',
-			icon: 'success',
-			confirmButtonText: 'Okay'
-		  })
+		await axios.put(`http://localhost:8080/comments/${id}`, state);
 		getData();
 		setState({
-			categoryName: "",
-			category: "",
-			exampleImg: "",
-			categoryDesc: "",
+			commentProfile: "",
+			commentUser: "",
+			comment: "",
 		});
 	};
 
@@ -154,28 +97,28 @@ const AllCategories = () => {
 						<Table aria-label="customized table">
 							<TableHead>
 								<TableRow>
-									<StyledTableCell align="center">Image</StyledTableCell>
-									<StyledTableCell align="center">CategoryName</StyledTableCell>
-									<StyledTableCell align="center">Category</StyledTableCell>
-									<StyledTableCell align="center">Description</StyledTableCell>
+									<StyledTableCell align="center">Profile</StyledTableCell>
+									<StyledTableCell align="center">User</StyledTableCell>
+									<StyledTableCell align="center">Date</StyledTableCell>
+									<StyledTableCell align="center">Comments</StyledTableCell>
 									<StyledTableCell align="center">Delete</StyledTableCell>
 									<StyledTableCell align="center">Edit</StyledTableCell>
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{categories?.map((item) => (
+								{comments?.map((item) => (
 									<StyledTableRow key={item._id}>
 										<StyledTableCell component="th" scope="row">
-											<img src={item.exampleImg} alt="img" />
+											<img src={item.commentProfile} alt="img" />
 										</StyledTableCell>
 										<StyledTableCell align="center">
-											{item.categoryName}
-										</StyledTableCell>
-										<StyledTableCell sx={{ width: 200 }} align="center">
-											{item.category}
+											{item.commentUser}
 										</StyledTableCell>
 										<StyledTableCell align="center">
-											<p style={{ fontSize: 8 }}>{item.categoryDesc}</p>
+											{item.commentDate}
+										</StyledTableCell>
+										<StyledTableCell align="center">
+											{item.comment}
 										</StyledTableCell>
 										<StyledTableCell align="center">
 											<Button
@@ -204,36 +147,23 @@ const AllCategories = () => {
 				<div className="add_inputs">
 					<form>
 						<input
-							placeholder="Image"
-							name="exampleImg"
+							placeholder="Profile"
+							name="commentProfile"
 							onChange={(e) => handleChange(e)}
 						/>
 
 						<input
-							placeholder="CategoryName"
-							name="categoryName"
+							placeholder="User"
+							name="commentUser"
 							onChange={(e) => handleChange(e)}
 						/>
 						<input
-							placeholder="category"
-							name="category"
-							onChange={(e) => handleChange(e)}
-						/>
-
-						<input
-							placeholder="Desc"
-							name="categoryDesc"
+							placeholder="Comment"
+							name="comment"
 							onChange={(e) => handleChange(e)}
 						/>
 
 						<div className="btns">
-							<Button
-								variant="contained"
-								color="success"
-								onClick={() => addData()}
-							>
-								Add Product
-							</Button>
 							<Button
 								variant="contained"
 								color="secondary"
@@ -249,4 +179,4 @@ const AllCategories = () => {
 	);
 };
 
-export default AllCategories;
+export default Comments;

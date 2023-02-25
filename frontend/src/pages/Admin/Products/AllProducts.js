@@ -15,6 +15,8 @@ import { Container } from "@mui/system";
 import { loginFormSchema } from "../../../schema/formSchema";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import moment from "moment";
+import Swal from 'sweetalert2'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -53,22 +55,20 @@ const AllProducts = () => {
 		title: "",
 		desc: "",
 		allDesc:"",
-		date: new Date(),
+		date:moment( new Date()).format('ll'),
 	});
 	const [id, setId] = useState(undefined);
 
 	const addData = async () => {
 		await axios.post("http://localhost:8080/allProductt", state);
-
+		Swal.fire({
+			title: 'Success!',
+			text: 'Data Added to API',
+			icon: 'success',
+			confirmButtonText: 'Okay'
+		  })
 		console.log(state);
 		getData();
-		setState({
-			url:"",
-			name:"",
-			title:"",
-			desc:"",
-			allDesc:"",
-		})
 	};
 	const handleChange = (e) => {
 		e.preventDefault();
@@ -77,10 +77,42 @@ const AllProducts = () => {
 	console.log(state);
 
 	//delete
-	const handleDelete = async (id) => {
-		await axios.delete(`http://localhost:8080/allProductt/${id}`);
-		console.log("delete");
-		getData();
+	const handleDelete =  (id) => {
+		const swalWithBootstrapButtons = Swal.mixin({
+			customClass: {
+			  confirmButton: 'btn btn-success',
+			  cancelButton: 'btn btn-danger'
+			},
+			buttonsStyling: false
+		  })
+		  swalWithBootstrapButtons.fire({
+			title: 'Are you sure?',
+			text: "You won't be able to revert this!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonText: 'Yes, delete it!',
+			cancelButtonText: 'No, cancel!',
+			reverseButtons: true
+		  }).then((result) => {
+			if (result.isConfirmed) {
+				 axios.delete(`http://localhost:8080/allProductt/${id}`);
+				 getData();
+			  swalWithBootstrapButtons.fire(
+				'Deleted!',
+				'Your product has been deleted.',
+				'success'
+			  )
+			} else if (
+			  result.dismiss === Swal.DismissReason.cancel
+			) {
+			  swalWithBootstrapButtons.fire(
+				'Cancelled',
+				'Your imaginary file is safe :)',
+				'error'
+			  )
+			}
+		  })
+		
 	};
 
 	//update
@@ -99,6 +131,12 @@ const AllProducts = () => {
 
 	const updateData = async (id) => {
 		await axios.put(`http://localhost:8080/allProductt/${id}`, state);
+		Swal.fire({
+			title: 'Success!',
+			text: 'Data Updated',
+			icon: 'success',
+			confirmButtonText: 'Okay'
+		  })
 		getData();
 		setState({
 			url:"",

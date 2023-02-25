@@ -29,7 +29,7 @@ const Contact = () => {
            {/* <form> */}
           <div className='form_inputs'>
           <div className='form_inputs-name'>
-          <label for="name">Name</label><br/>
+          <label>Name</label><br/>
             <div className='input-name'>
             <input id="name" {...register("name")}/>
             {errors.name ? (
@@ -40,7 +40,7 @@ const Contact = () => {
             </div>
           </div>
             <div className='form_inputs-email'>
-            <label for="email">Email</label><br/>
+            <label>Email</label><br/>
             <div className='input-email'>
             <input id="email" {...register("email")}/>
             {errors.email ? (

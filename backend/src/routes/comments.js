@@ -21,6 +21,7 @@ router.post("/",(req,res)=>{
       commentUser:req.body.commentUser,
       commentDate:req.body.commentDate,
       comment:req.body.comment,
+      commentImg:req.body.commentImg
     })
     comment.save()
     res.send({message: "success"})
