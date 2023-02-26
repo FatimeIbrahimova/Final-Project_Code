@@ -10,6 +10,7 @@ import { MainContext } from "../../../context/ContextProvider";
 import { loginFormSchema } from "../../../schema/formSchema";
 import { Helmet } from "react-helmet";
 import moment from 'moment'
+import Loading from "../../../components/Admin/Loading/Loading";
 
 const DataDetails = () => {
 	//details
@@ -51,7 +52,7 @@ const DataDetails = () => {
 		getData();
 	}, []);
 	//add comment
-	const [state,setState]=useState({comment:"",commentDate:moment(new Date(), "YYYYMMDD").fromNow()});
+	const [state,setState]=useState({comment:"",commentDate:moment(new Date()).format("MMM Do YY")})
 	const handleChange=(e)=>{
 		e.preventDefault()
 		setState({ ...state, [e.target.name]: e.target.value });
@@ -69,8 +70,8 @@ const DataDetails = () => {
 		let dataCopy=[...post]
 		dataCopy.sort((a,b)=>{
 			if(sorted.reversed){
-				// return a.commentDate.localeCompare(b.commentDate);
-				return  new Date(b.commentDate).valueOf()-new Date(a.commentDate).valueOf()
+				return a.commentDate.localeCompare(b.commentDate);
+				// return  new Date(b.commentDate).valueOf()-new Date(a.commentDate).valueOf()
 			}
 			// return b.commentDate.localeCompare(a.commentDate);
 		})
@@ -103,7 +104,13 @@ const DataDetails = () => {
 	  const handleSpoiler=()=>{
 		setBold(bold==="normal" ? "spoiler" :"normal")
 	  }
-
+	  useEffect(()=>{
+		window.scrollTo({
+		  top:0,
+		  left:0,
+		  behavior:"smooth"
+		})
+	   },[])
 	return (
 		<>
 			<Helmet>
@@ -112,16 +119,16 @@ const DataDetails = () => {
 			<div className="first-card">
 				<div className="container">
 					<div className="first-card_desc">
-						<h1>{data.title}</h1>
-						<h2>{data.name}</h2>
-						<span>{data.date}</span>
-					</div>
-					<div className="first-card_img">
-						<img src={data.url} alt="img" />
-					</div>
-					<div className="first-card_message">
-						<p>{data.allDesc}</p>
-					</div>
+					<h1>{data.title}</h1>
+					<h2>{data.name}</h2>
+					<span>{data.date}</span>
+				</div>
+				<div className="first-card_img">
+					<img src={data.url} alt="img" />
+				</div>
+				<div className="first-card_message">
+					<p>{data.allDesc}</p>
+				</div>
 					<div className="first-card_social-icons">
 						<ul>
 							<li>

@@ -10,6 +10,10 @@ function ContextProvider({ children }) {
   const [count,setCount]=useState(0)
   const [insta,setInsta]=useState([])
   const [categories,setCategories]=useState([])
+  const logOut=()=>{
+    window.localStorage.clear()
+    window.location.href="./login"
+   }
     const values = {
        login,
        setLogin,
@@ -26,7 +30,8 @@ function ContextProvider({ children }) {
        insta,
        setInsta,
        categories,
-       setCategories
+       setCategories,
+       logOut
     }
 
     return (

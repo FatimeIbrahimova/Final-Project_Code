@@ -13,8 +13,8 @@ const MatteCategory = () => {
 				.filter((item)=>{
 					return item.category.toLowerCase()==="matte" ? item : item.category.toLowerCase().includes("matte")
 				})
-				.map((item)=>(
-					<div className="makeup">
+				.map((item,index)=>(
+					<div className="makeup" key={index}>
 					<div className="makeup-img">
 						<img src={item.exampleImg} alt="img" style={{ width: 300 }} />
 					</div>

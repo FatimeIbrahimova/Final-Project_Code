@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginFormSchema } from '../../../schema/formSchema';
@@ -14,6 +14,13 @@ const Contact = () => {
 } = useForm({
     resolver: yupResolver(loginFormSchema),
 });
+useEffect(()=>{
+  window.scrollTo({
+    top:0,
+    left:0,
+    behavior:"smooth"
+  })
+ },[])
   return (
     <>
     <Helmet>

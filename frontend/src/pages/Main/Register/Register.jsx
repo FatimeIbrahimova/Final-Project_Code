@@ -15,16 +15,16 @@ const Register = () => {
 		surname:"",
 		email: "",
 		password: undefined,
-		Confirmpassword:undefined,
+		// Confirmpassword:undefined,
 	});
 	const handleChange = (e) => {
 		e.preventDefault();
 		setState({ ...state, [e.target.name]: e.target.value });
-		// console.log(state);
+		console.log(state);
 	};
 	const addData = () => {
 		 axios.post("http://localhost:8080/auth/register", state);
-        // console.log("a")
+        console.log("a")
 		console.log(state);
 		// if(state.password !== state.Confirmpassword){
         //    setSpan("visible")
@@ -37,6 +37,14 @@ const Register = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm({ resolver: yupResolver(loginFormSchema) });
+
+	useEffect(()=>{
+		window.scrollTo({
+		  top:0,
+		  left:0,
+		  behavior:"smooth"
+		})
+	   },[])
 	return (
 		<>
 		<Helmet>

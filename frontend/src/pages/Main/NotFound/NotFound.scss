@@ -33,15 +33,24 @@
 }
 @media only screen and (max-width: 576px){
     .not-found{
+        margin-top: 50px;
         display: flex;
         flex-direction: column-reverse;
+        
+        .container{
+            width: 80%;
+            margin: 0 auto;
+            .not-found_desc{
+                margin-top: 20px; 
+            }
+        }
     }
     
 }
 @media only screen and (max-width: 768px){
     .not-found{
         img{
-            margin-top: 180px;
+            margin-top: 100px;
         }
     }
 }

@@ -1,10 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { MainContext } from '../../../../../context/ContextProvider'
 import "../Beauty/Beauty.scss"
 
 const Products = () => {
   const {filter,setFilter}=useContext(MainContext)
   const {count,setCount}=useContext(MainContext)
+  useEffect(()=>{
+    window.scrollTo({
+      top:0,
+      left:0,
+      behavior:"smooth"
+    })
+   },[])
   return (
     <>
     <div className='category'>

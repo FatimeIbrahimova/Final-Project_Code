@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { MainContext } from '../../../../../context/ContextProvider'
 import "../Beauty/Beauty.scss"
 
@@ -9,6 +9,13 @@ const LifeStyle = () => {
   const changeCount=()=>{
     setCount(count)
    }
+   useEffect(()=>{
+    window.scrollTo({
+      top:0,
+      left:0,
+      behavior:"smooth"
+    })
+   },[])
   return (
     <>
     <div className='category'>
@@ -25,8 +32,6 @@ const LifeStyle = () => {
          return data.name.toLowerCase()==="lifestyle" ? data : data.name.toLowerCase().includes("lifestyle")
        })
        .map((product,index)=>(
-         
-         <>
           <div className="second-section__products-first" key={index}>
           <img
             src={product.url}
@@ -42,7 +47,6 @@ const LifeStyle = () => {
             </button>
           </div>
         </div>
-          </>
        ))
      }
        

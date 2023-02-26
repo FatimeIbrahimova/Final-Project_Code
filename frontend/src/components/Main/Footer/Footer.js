@@ -3,6 +3,7 @@ import './Footer.scss';
 import ScrollToTop from "react-scroll-to-top";
 import axios from 'axios';
 import { MainContext } from '../../../context/ContextProvider';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
   const {insta,setInsta}=useContext(MainContext)
@@ -72,18 +73,18 @@ const Footer = () => {
           <div className="footer-end_links">
             <h3>Quick Links</h3>
             <ul>
-              <li><a className='link' href="/about">About</a></li>
-              <li><a className='link' href="/contact">Contact</a></li>
-              <li><a className='link' href="/notFound">404 Page</a></li>
+              <li><NavLink to="/about">About</NavLink></li>
+              <li><NavLink to="/contact">Contact</NavLink></li>
+              <li><NavLink to="/notFound">404 Page</NavLink></li>
             </ul>
           </div>
           <div className="footer-end_categories">
             <h3>Category</h3>
             <ul>
-              <li><a className='link' href="/beauty">Beauty</a></li>
-              <li><a className='link' href="/lifestyle">Lifestyle</a></li>
-              <li><a className='link' href="/products">Products</a></li>
-              <li><a className='link' href="/tips">Tips</a></li>
+              <li><NavLink to="/beauty">Beauty</NavLink></li>
+              <li><NavLink to="/lifestyle">Lifestyle</NavLink></li>
+              <li><NavLink to="/products">Products</NavLink></li>
+              <li><NavLink to="/tips">Tips</NavLink></li>
             </ul>
           </div>
           <div className="footer-end_follow">

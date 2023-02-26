@@ -77,42 +77,9 @@ const AllProducts = () => {
 	console.log(state);
 
 	//delete
-	const handleDelete =  (id) => {
-		const swalWithBootstrapButtons = Swal.mixin({
-			customClass: {
-			  confirmButton: 'btn btn-success',
-			  cancelButton: 'btn btn-danger'
-			},
-			buttonsStyling: false
-		  })
-		  swalWithBootstrapButtons.fire({
-			title: 'Are you sure?',
-			text: "You won't be able to revert this!",
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonText: 'Yes, delete it!',
-			cancelButtonText: 'No, cancel!',
-			reverseButtons: true
-		  }).then((result) => {
-			if (result.isConfirmed) {
-				 axios.delete(`http://localhost:8080/allProductt/${id}`);
-				 getData();
-			  swalWithBootstrapButtons.fire(
-				'Deleted!',
-				'Your product has been deleted.',
-				'success'
-			  )
-			} else if (
-			  result.dismiss === Swal.DismissReason.cancel
-			) {
-			  swalWithBootstrapButtons.fire(
-				'Cancelled',
-				'Your imaginary file is safe :)',
-				'error'
-			  )
-			}
-		  })
-		
+	const handleDelete =async (id) => {
+		 await axios.delete(`http://localhost:8080/allProductt/${id}`);
+		  getData();
 	};
 
 	//update
@@ -159,7 +126,7 @@ const AllProducts = () => {
 				<Container fixed>
 					<TableContainer
 						component={Paper}
-						sx={{ width: "100%", margin: "auto" }}
+						sx={{ width: "100%",display:"flex",alignItems:"center",justifyContent:"center"}}
 					>
 						<Table aria-label="customized table">
 							<TableHead>

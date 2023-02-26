@@ -59,3 +59,9 @@
    background-color: red;
    margin-right: 7px;
 }
+@media only screen and (max-width: 576px){
+   TableContainer{
+      width: 100%;
+      margin: 0 auto;
+   }
+}

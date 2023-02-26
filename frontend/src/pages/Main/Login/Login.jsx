@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { loginFormSchema } from "../../../schema/formSchema";
 import { useForm } from "react-hook-form";
@@ -16,13 +16,21 @@ const Login = () => {
 		e.preventDefault();
 		setState({ ...state, [e.target.name]: e.target.value });
 		console.log(state);
-		window.localStorage.setItem("token",state)
-		console.log(window.localStorage.setItem("token",state));
-		window.location.href="./user"
 	};
-	const addData = () => {
-		 axios.post("http://localhost:8080/auth/login", state);
-        console.log("b")
+	const addData =async () => {
+		await axios.post("http://localhost:8080/auth/login", state)
+		.then((data)=>{
+			console.log(data,"userRegister")
+			if(data.data.status=="ok"){
+				alert("login successful");
+				window.localStorage.setItem("token",JSON.stringify(data.data.data))
+				window.localStorage.setItem("login",true)
+				window.location.href="./user"
+				console.log("data.data");
+			}
+		})
+		
+        console.log("login")
 	};
 	//Yup
 	const {
@@ -30,6 +38,13 @@ const Login = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm({ resolver: yupResolver(loginFormSchema) });
+	useEffect(()=>{
+		window.scrollTo({
+		  top:0,
+		  left:0,
+		  behavior:"smooth"
+		})
+	   },[])
 	return (
 		<>
 		<Helmet>

@@ -24,6 +24,7 @@ import CelebrityCategory from "../components/Main/Navbar/Category/CelebrityCateg
 import AirbrushCategory from "../components/Main/Navbar/Category/AirbrushCategory";
 import AllCategories from "../pages/Admin/Categories/AllCategories";
 import Comments from "../pages/Admin/Comments/Comments";
+import User from "../pages/Admin/User/User";
 
 export const ROUTES = [
 	{
@@ -41,10 +42,6 @@ export const ROUTES = [
 			{
 				path: "contact",
 				element: <Contact />,
-			},
-			{
-				path: "notFound",
-				element: <NotFound />,
 			},
 			{
 				path: ":id",
@@ -67,7 +64,6 @@ export const ROUTES = [
 				element: <Tips />,
 			},
 			{
-				// path:"category/:id",
 				path: "hd",
 				element: <CategoryDetail />,
 			},
@@ -114,6 +110,10 @@ export const ROUTES = [
 		],
 	},
 	{
+		path: "notFound",
+		element: <NotFound />,
+	},
+	{
 		path: "/admin/",
 		element: <AdminRoot />,
 		children: [
@@ -125,13 +125,17 @@ export const ROUTES = [
 				path: "products",
 				element: <AllProducts />,
 			},
-      {
+			{
 				path: "categories",
 				element: <AllCategories />,
 			},
-      {
+			{
 				path: "comments",
 				element: <Comments />,
+			},
+			{
+				path:"user",
+				element:<User/>
 			}
 		],
 	},

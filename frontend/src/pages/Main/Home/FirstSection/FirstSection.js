@@ -11,14 +11,17 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Loading from '../../../../components/Admin/Loading/Loading';
 
 const FirstSection = () => {
+  const [loading,setLoading]=useState(true)
   //api
   const [slider,setSlider]=useState([])
   
    const getData = async () => {
     const res = await axios.get("http://localhost:8080/slider");
     setSlider(res.data);
+    setLoading(false)
   };
   useEffect(() => {
     getData();
@@ -54,6 +57,8 @@ const handleClose=()=>{
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log('slide change')}
     >
+      {loading ? <Loading/> :
+      <>
       {slider && slider.map((product,index)=>(
         <SwiperSlide key={index}>
         <div>
@@ -70,6 +75,9 @@ const handleClose=()=>{
         </div>
        </SwiperSlide>
       ))}
+      </>
+      }
+      
     </Swiper>
       </div>
       <button className='demos-btn' onClick={()=>handleClick()}><h2>Demos</h2></button>

@@ -6,6 +6,7 @@ import "./Navbar.scss"
 
 const Navbar = () => {
   const [active,setActive]=useState(false)
+  const {logOut}=useContext(MainContext)
   //categories
   const {categories,setCategories}=useContext(MainContext)
   useEffect(()=>{
@@ -89,9 +90,19 @@ const {insta}=useContext(MainContext)
             </div>
             <div className='nav__right-icons burger'>
              
-              <NavLink to="/login"><h2>Login</h2></NavLink><span>/</span>
+              <NavLink to="/login"><h2>Login</h2></NavLink><span className='line'>/</span>
               <NavLink to="/register"><h2>Register</h2></NavLink>
-              <NavLink to="/user">User</NavLink>
+              <ul>
+                <li className="user">
+                  <h2><NavLink to="/user" >User</NavLink>
+                <ul>
+                  <li onClick={()=>logOut()}>Log Out</li>
+                </ul>
+                </h2>
+                
+                </li>
+                
+              </ul>
             <i class="fa-solid fa-magnifying-glass" onClick={()=>handleSearch()}></i>
             <i class="fa-solid fa-bars active" onClick={()=>handleClick()}></i>
             </div>
