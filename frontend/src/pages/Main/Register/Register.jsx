@@ -26,9 +26,6 @@ const Register = () => {
 		 axios.post("http://localhost:8080/auth/register", state);
         console.log("a")
 		console.log(state);
-		// if(state.password !== state.Confirmpassword){
-        //    setSpan("visible")
-		// }
 	};
 	
     //Yup
@@ -84,15 +81,6 @@ const Register = () => {
 						<span style={{ color: "red" }}>{errors.password.message}</span>
 					)}
 					<br/>
-					{/* <label>Confirm Password</label>
-					<br />
-					<input type="password" {...register("passwor")} onChange={(e) => handleChange(e)} name="Confirmpassword"/><br/>
-					{errors?.password && (
-						<span style={{ color: "red" }}>{errors.password.message}</span>
-					)}
-					<div className={span}>
-					<span style={{color:"red"}}>Passwords Don't Match</span>
-					</div> */}
 
 				</form>
 				<button className="sign-btn" 

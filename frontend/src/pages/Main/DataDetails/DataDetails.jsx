@@ -71,6 +71,7 @@ const DataDetails = () => {
 		dataCopy.sort((a,b)=>{
 			if(sorted.reversed){
 				return a.commentDate.localeCompare(b.commentDate);
+				// return a.commentDate-b.commentDate;
 				// return  new Date(b.commentDate).valueOf()-new Date(a.commentDate).valueOf()
 			}
 			// return b.commentDate.localeCompare(a.commentDate);
@@ -346,7 +347,6 @@ const DataDetails = () => {
 							</div>
 							))}
 						</div>
-						{/* <span className="no-comment">Be the first to comment</span> */}
 						<hr />
 						<div className="comments-part-end">
 							<div className="comments-part-end-leftside">

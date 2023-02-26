@@ -4,11 +4,6 @@ import { useState } from 'react'
 
 const UserDetail = () => {
     const [data,setData]=useState("")
-    //     axios.post("http://localhost:8080/auth/userData")
-    //     .then((data)=>console.log(data,"userData"))
-    //     window.localStorage.getItem("token")
-    // axios.get("http://localhost:8080/auth/login").then((res)=>setData(res.data))
-    
     fetch("http://localhost:8080/auth/userData",{
       method:"POST",
       crossDomain:true,

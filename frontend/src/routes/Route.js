@@ -14,7 +14,7 @@ import Contact from "../pages/Main/Contact/Contact";
 import CategoryDetail from "../components/Main/Navbar/Category/CategoryDetail";
 import Login from "../pages/Main/Login/Login";
 import Register from "../pages/Main/Register/Register";
-import UserDetail from "../pages/UserDetail";
+import UserDetail from "../pages/Main/UserDetail";
 import NudeCategory from "../components/Main/Navbar/Category/NudeCategory";
 import PermanentCategory from "../components/Main/Navbar/Category/PermanentCategory";
 import MatteCategory from "../components/Main/Navbar/Category/MatteCategory";
@@ -25,6 +25,8 @@ import AirbrushCategory from "../components/Main/Navbar/Category/AirbrushCategor
 import AllCategories from "../pages/Admin/Categories/AllCategories";
 import Comments from "../pages/Admin/Comments/Comments";
 import User from "../pages/Admin/User/User";
+import AdminLogin from "../pages/Admin/AdminLogin/AdminLogin";
+import AdminRoot2 from "../components/Admin/AdminRoot2";
 
 export const ROUTES = [
 	{
@@ -114,7 +116,7 @@ export const ROUTES = [
 		element: <NotFound />,
 	},
 	{
-		path: "/admin/",
+		path: "/admin/dashboard",
 		element: <AdminRoot />,
 		children: [
 			{
@@ -139,4 +141,15 @@ export const ROUTES = [
 			}
 		],
 	},
+	{
+		path:"/admin/",
+		element:<AdminRoot2/>,
+		children:[	
+			{
+				path:"",
+				element:<AdminLogin/>
+			 },
+		]
+	}
+	
 ];

@@ -13,6 +13,26 @@ const Navbar = () => {
         }
         setMenuClass(nav_list==="hidden" ? "visible" :"hidden")
     }
+    //login user profile
+    const [data,setData]=useState("")
+    fetch("http://localhost:8080/auth/adminUser",{
+      method:"POST",
+      crossDomain:true,
+      headers:{
+        "Content-Type":"application/json",
+        Accept:"application/json",
+        "Access-Control-Allow-Origin":"*",
+      },
+      body:JSON.stringify({
+        token:JSON.parse(window.localStorage.getItem("user")),
+      })
+      
+    })
+    .then(res=>res.json())
+    .then((data)=>{
+      console.log(data,"adminUser");
+      setData(data.data)
+    })
   return (
    <>
    <div className='nav'>
@@ -25,14 +45,14 @@ const Navbar = () => {
      <div className='nav-list'>
        <div className='admin-user'>
         <img src='https://static.thenounproject.com/png/1743560-200.png' alt="img"/>
-        <h1>Fatime Ibrahimova</h1>
+        <h1>{data.username} {data.surname}</h1>
        </div>
       <div className='list'>
        <ul>
-        <NavLink to="/admin/products"><li>Products</li></NavLink>
-        <NavLink to="/admin/categories"><li>Categories</li></NavLink>
-        <NavLink to="/admin/comments"><li>Comments</li></NavLink>
-        <NavLink to="/admin/user"><li>User Profile</li></NavLink>
+        <NavLink to="/admin/dashboard/products"><li>Products</li></NavLink>
+        <NavLink to="/admin/dashboard/categories"><li>Categories</li></NavLink>
+        <NavLink to="/admin/dashboard/comments"><li>Comments</li></NavLink>
+        <NavLink to="/admin/dashboard/user"><li>User Profile</li></NavLink>
        </ul>
       </div>
      </div>
