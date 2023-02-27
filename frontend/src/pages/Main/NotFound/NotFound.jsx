@@ -24,7 +24,7 @@ const NotFound = () => {
 							or use the Go Back button below.
 						</p>
 						<a href="/">
-							<i class="fa-solid fa-arrow-left"></i> Go Back
+							<i className="fa-solid fa-arrow-left"></i> Go Back
 						</a>
 					</div>
 					<div className="not-found_img">

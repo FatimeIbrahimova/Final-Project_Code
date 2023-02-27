@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { loginFormSchema } from "../../../schema/formSchema";
 import "./Register.scss";
+import Swal from "sweetalert2"
 
 const Register = () => {
 	const [span,setSpan]=useState("hidden")
@@ -22,11 +23,38 @@ const Register = () => {
 		setState({ ...state, [e.target.name]: e.target.value });
 		console.log(state);
 	};
-	const addData = () => {
-		 axios.post("http://localhost:8080/auth/register", state);
+	const addData = async() => {
+		await axios.post("http://localhost:8080/auth/register", state)
+        .then((data)=>{
+			console.log(data);
+			console.log(data);
+			if(data.data.status=="ok"){
+				Swal.fire({
+					icon: "success",
+					title: "Congratulations! Your account has been successfully created!",
+					showConfirmButton: false,
+					// timer: 1500,
+				})
+			}
+		})
         console.log("a")
 		console.log(state);
+		
+	// 	if (state.status == 200) {
+    //         Swal.fire({
+    //             icon: "success",
+    //             title: "Təbriklər! Sizin hesabınız müvəffəqiyyətlə yaradıldı!",
+    //             showConfirmButton: false,
+    //             timer: 1500,
+    //         }).then((c) => {
+    //             navigate("/login");
+    //         });
+    //     } else {
+    //         setErrorMessage(user.message);
+    //     }
+    // };
 	};
+
 	
     //Yup
 	const {

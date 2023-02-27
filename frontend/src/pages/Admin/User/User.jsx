@@ -57,7 +57,11 @@ const User = () => {
 		setState({ ...state, [e.target.name]: e.target.value });
 	};
 	console.log(state);
-
+	//add
+	// const addData = async () => {
+	// 	await axios.post("http://localhost:8080/auth/register", state);
+	// 	getData();
+	// };
 	//delete
 	const handleDelete = async (id) => {
 		await axios.delete(`http://localhost:8080/auth/register/${id}`);
@@ -92,13 +96,14 @@ const User = () => {
 				<Container fixed>
 					<TableContainer
 						component={Paper}
-						sx={{ width: "90%", margin: "auto" }}
+						sx={{ width: "100%", margin: "auto" }}
 					>
 						<Table aria-label="customized table">
 							<TableHead>
 								<TableRow>
 									<StyledTableCell align="center">Username</StyledTableCell>
 									<StyledTableCell align="center">Surname</StyledTableCell>
+									<StyledTableCell align="center">Email</StyledTableCell>
 									<StyledTableCell align="center">Password</StyledTableCell>
 									<StyledTableCell align="center">Delete</StyledTableCell>
 									<StyledTableCell align="center">Edit</StyledTableCell>
@@ -114,7 +119,10 @@ const User = () => {
 											{item.surname}
 										</StyledTableCell>
 										<StyledTableCell align="center">
-											{item.password}
+											{item.email}
+										</StyledTableCell>
+										<StyledTableCell align="center" style={{fontSize:8}}>
+											<p>{item.password}</p>
 										</StyledTableCell>
 										<StyledTableCell align="center">
 											<Button
@@ -143,23 +151,29 @@ const User = () => {
 				<div className="add_inputs">
 					<form>
 						<input
-							placeholder="Profile"
-							name="commentProfile"
+							placeholder="Username"
+							name="username"
 							onChange={(e) => handleChange(e)}
 						/>
 
 						<input
-							placeholder="User"
-							name="commentUser"
+							placeholder="Surname"
+							name="surname"
 							onChange={(e) => handleChange(e)}
 						/>
 						<input
-							placeholder="Comment"
-							name="comment"
+							placeholder="email"
+							name="email"
+							onChange={(e) => handleChange(e)}
+						/>
+						<input
+							placeholder="password"
+							name="password"
 							onChange={(e) => handleChange(e)}
 						/>
 
 						<div className="btns">
+						{/* <Button variant="contained" color="success" onClick={() => addData()}>Add User</Button> */}
 							<Button
 								variant="contained"
 								color="secondary"

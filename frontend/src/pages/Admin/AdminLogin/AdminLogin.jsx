@@ -18,7 +18,7 @@ const AdminLogin = () => {
 		console.log(state);
 	};
 	const addData =async () => {
-		await axios.post("http://localhost:8080/auth/adminLogin", state)
+		await axios.post("http://localhost:8080/authAdmin/adminLogin", state)
 		.then((data)=>{
 			console.log(data,"userAdminRegister")
 			if(data.data.status=="ok"){

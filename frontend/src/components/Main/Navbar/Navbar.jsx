@@ -68,11 +68,6 @@ const {insta}=useContext(MainContext)
             <ul>
                 <li className='categories'><h3>Categories</h3>
                 <ul>
-                {/* {categories && categories
-                .map((item,index)=>(
-                 <NavLink to={`/category/${item._id}`} onClick={()=>sortData(item)}><li key={index} >{item.categoryName}</li></NavLink>
-                ))
-                } */}
                 <NavLink to="/hd">Hd Makeup</NavLink>
                 <NavLink to="/nude">Nude Makeup</NavLink>
                 <NavLink to="/matte">Matte Makeup</NavLink>
@@ -103,13 +98,13 @@ const {insta}=useContext(MainContext)
                 </li>
                 
               </ul>
-            <i class="fa-solid fa-magnifying-glass" onClick={()=>handleSearch()}></i>
-            <i class="fa-solid fa-bars active" onClick={()=>handleClick()}></i>
+            <i className="fa-solid fa-magnifying-glass" onClick={()=>handleSearch()}></i>
+            <i className="fa-solid fa-bars active" onClick={()=>handleClick()}></i>
             </div>
         </div>
         <div className={nav_list}>
             <div className='nav_list'>
-            <i class="fa-solid fa-circle-xmark" onClick={()=>handleClose()}></i>
+            <i className="fa-solid fa-circle-xmark" onClick={()=>handleClose()}></i>
                 <ul>
                 <NavLink to="/"><li>Home</li></NavLink>
               <NavLink to="/about"><li>About</li></NavLink>
@@ -122,7 +117,7 @@ const {insta}=useContext(MainContext)
                      <div className='img-wrapper' key={index}>
                      <img src={data.url} alt="img"/>
                      <div className='message'>
-                       <span><i class="fa-solid fa-heart"></i>{data.like}</span> <span><i class="fa-solid fa-comment"></i>{data.comment}</span>
+                       <span><i className="fa-solid fa-heart"></i>{data.like}</span> <span><i className="fa-solid fa-comment"></i>{data.comment}</span>
                      </div>
                      </div>
                   ))}
@@ -131,10 +126,10 @@ const {insta}=useContext(MainContext)
                 <div className='nav-footer'>
                 <h3>Follow us</h3>
                     <ul>
-                        <li><a href='https://www.facebook.com/redqinc/'><i class="fa-brands fa-square-facebook"></i></a></li>
-                        <li><a href='https://www.instagram.com/redqinc/'><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href='https://twitter.com/redqinc'><i class="fa-brands fa-twitter"></i></a></li>
-                        <li><a href='https://www.linkedin.com/company/redqinc/'><i class="fa-brands fa-linkedin"></i></a></li>
+                        <li><a href='https://www.facebook.com/redqinc/'><i className="fa-brands fa-square-facebook"></i></a></li>
+                        <li><a href='https://www.instagram.com/redqinc/'><i className="fa-brands fa-instagram"></i></a></li>
+                        <li><a href='https://twitter.com/redqinc'><i className="fa-brands fa-twitter"></i></a></li>
+                        <li><a href='https://www.linkedin.com/company/redqinc/'><i className="fa-brands fa-linkedin"></i></a></li>
                     </ul>
                 </div> 
             </div>   
@@ -143,7 +138,7 @@ const {insta}=useContext(MainContext)
         <div className='search-input'>
           <div className='container'>
           <input placeholder='Enter Your Search Topic'  onChange={(e)=>handleChange(e)} value={value}/>
-          <i class="fa-solid fa-xmark" onClick={()=>handleClose()}></i>
+          <i className="fa-solid fa-xmark" onClick={()=>handleClose()}></i>
           </div>
         </div>
         </div>

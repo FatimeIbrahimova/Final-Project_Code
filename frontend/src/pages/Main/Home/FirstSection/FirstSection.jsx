@@ -86,7 +86,7 @@ const handleClose=()=>{
         <div className='demos-container'>
         <div className='demos-top'>
           <div><h2>Explore other Demos</h2></div>
-          <div><i class="fa-solid fa-xmark" onClick={()=>handleClose()}></i></div>
+          <div><i className="fa-solid fa-xmark" onClick={()=>handleClose()}></i></div>
         </div>
         <div className='demos-cards'>
         <div className='demos-cards_wrapper'>

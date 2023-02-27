@@ -22,7 +22,7 @@ const Footer = () => {
       <div className="container">
         <div className="footer-top">
           <div className="footer-top_desc">
-            <i class="fa-brands fa-instagram" />
+            <i className="fa-brands fa-instagram" />
             <h2>Me On Instagram</h2>
           </div>
           <div className="footer-top_imgs">
@@ -33,7 +33,7 @@ const Footer = () => {
                 alt="img"
               />
               <div className='footer-top_imgs_image-desc'>
-             <span><i class="fa-solid fa-heart"></i>{data.like} <i class="fa-solid fa-comment"></i>{data.comment}</span>
+             <span><i className="fa-solid fa-heart"></i>{data.like} <i className="fa-solid fa-comment"></i>{data.comment}</span>
               </div>
             </div>
             ))}
@@ -92,7 +92,7 @@ const Footer = () => {
             <ul>
               <li>
                 <a href="https://www.facebook.com/redqinc/">
-                  <i class="fa-brands fa-square-facebook" />
+                  <i className="fa-brands fa-square-facebook" />
                 </a>
               </li>
               <li>
@@ -100,12 +100,12 @@ const Footer = () => {
                   className="social-icon"
                   href="https://www.instagram.com/redqinc/"
                 >
-                  <i class="fa-brands fa-instagram" />
+                  <i className="fa-brands fa-instagram" />
                 </a>
               </li>
               <li>
                 <a className="social-icon" href="https://twitter.com/redqinc">
-                  <i class="fa-brands fa-twitter" />
+                  <i className="fa-brands fa-twitter" />
                 </a>
               </li>
               <li>
@@ -113,7 +113,7 @@ const Footer = () => {
                   className="social-icon"
                   href="https://www.linkedin.com/company/redqinc/"
                 >
-                  <i class="fa-brands fa-linkedin" />
+                  <i className="fa-brands fa-linkedin" />
                 </a>
               </li>
             </ul>

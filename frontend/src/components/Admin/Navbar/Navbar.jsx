@@ -15,7 +15,7 @@ const Navbar = () => {
     }
     //login user profile
     const [data,setData]=useState("")
-    fetch("http://localhost:8080/auth/adminUser",{
+    fetch("http://localhost:8080/authAdmin/adminUser",{
       method:"POST",
       crossDomain:true,
       headers:{
@@ -37,7 +37,7 @@ const Navbar = () => {
    <>
    <div className='nav'>
     <div className='container'>
-    <i class="fa-solid fa-bars" onClick={()=>handleClick()}></i>
+    <i className="fa-solid fa-bars" onClick={()=>handleClick()}></i>
     <h1>Dashboard</h1>
     <div></div>
     </div>

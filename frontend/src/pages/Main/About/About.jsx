@@ -32,22 +32,22 @@ const About = () => {
          <ul>
               <li>
                 <a href="https://www.facebook.com/redqinc/">
-                  <i class="fa-brands fa-square-facebook" />
+                  <i className="fa-brands fa-square-facebook" />
                 </a>
               </li>
               <li>
                 <a className="social-icon" href="https://www.instagram.com/redqinc/">
-                  <i class="fa-brands fa-instagram" />
+                  <i className="fa-brands fa-instagram" />
                 </a>
               </li>
               <li>
                 <a className="social-icon" href="https://twitter.com/redqinc">
-                  <i class="fa-brands fa-twitter" />
+                  <i className="fa-brands fa-twitter" />
                 </a>
               </li>
               <li>
                 <a className="social-icon" href="https://www.linkedin.com/company/redqinc/">
-                  <i class="fa-brands fa-linkedin" />
+                  <i className="fa-brands fa-linkedin" />
                 </a>
               </li>
             </ul>

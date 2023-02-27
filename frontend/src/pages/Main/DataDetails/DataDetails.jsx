@@ -9,8 +9,10 @@ import axios from "axios";
 import { MainContext } from "../../../context/ContextProvider";
 import { loginFormSchema } from "../../../schema/formSchema";
 import { Helmet } from "react-helmet";
-import moment from 'moment'
+import moment from 'moment';
 import Loading from "../../../components/Admin/Loading/Loading";
+import Moment from "moment";
+
 
 const DataDetails = () => {
 	//details
@@ -70,9 +72,11 @@ const DataDetails = () => {
 		let dataCopy=[...post]
 		dataCopy.sort((a,b)=>{
 			if(sorted.reversed){
-				return a.commentDate.localeCompare(b.commentDate);
-				// return a.commentDate-b.commentDate;
+				// return a.commentDate.getTime().localeCompare(b.commentDate.getTime());
+				// return a.commentDate.getTime()-b.commentDate.getTime();
 				// return  new Date(b.commentDate).valueOf()-new Date(a.commentDate).valueOf()
+				// return a.commentDate > b.commentDate;
+				return new Moment(a.commentDate).format('YYYYMMDD') - new Moment(b.commentDate).format('YYYYMMDD');
 			}
 			// return b.commentDate.localeCompare(a.commentDate);
 		})
@@ -83,7 +87,7 @@ const DataDetails = () => {
 		let dataCopy=[...post]
 		dataCopy.sort((a,b)=>{
 			if(sorted.reversed){
-				return b.commentDate.localeCompare(a.commentDate);
+				return a.commentDate.getTime().localeCompare(b.commentDate.getTime());
 			}
 		})
 		setPost(dataCopy)
@@ -133,16 +137,16 @@ const DataDetails = () => {
 					<div className="first-card_social-icons">
 						<ul>
 							<li>
-								<i class="fa-brands fa-square-facebook" />
+								<i className="fa-brands fa-square-facebook" />
 							</li>
 							<li>
-								<i class="fa-brands fa-twitter" />
+								<i className="fa-brands fa-twitter" />
 							</li>
 							<li>
-								<i class="fa-brands fa-linkedin" />
+								<i className="fa-brands fa-linkedin" />
 							</li>
 							<li>
-								<i class="fa-brands fa-reddit-alien"></i>
+								<i className="fa-brands fa-reddit-alien"></i>
 							</li>
 						</ul>
 					</div>
@@ -150,13 +154,9 @@ const DataDetails = () => {
 					<div className="first-card_switch">
 						<div></div>
 						<div>
-							<i class="fa-solid fa-border-all"></i>
+							<i className="fa-solid fa-border-all"></i>
 						</div>
 						<div className="first-card_switch-next">
-							{/* <Link to="">
-								<h3>Next</h3>
-								<i class="fa-solid fa-greater-than"></i>
-							</Link> */}
 						</div>
 					</div>
 					<hr />
@@ -177,19 +177,19 @@ const DataDetails = () => {
 									</div>
 									<div className="comments-add_bottom">
 										<div className="comments-add_bottom-style">
-											<i class="fa-solid fa-images"></i>
-											<i class="fa-regular fa-image"></i>
+											<i className="fa-solid fa-images"></i>
+											<i className="fa-regular fa-image"></i>
 											<h3 onClick={()=>handleBold()}>B</h3>
 											<h3 onClick={()=>handleCursive()} className="cursive">I</h3>
 											<h3 onClick={()=>handleUnderline()} className="underline">U</h3>
 											<h3 onClick={()=>handleThrough()} className="line-through">S</h3>
-											<i class="fa-solid fa-link"></i>
-											<i onClick={()=>handleSpoiler()} class="fa-solid fa-eye-slash"></i>
+											<i className="fa-solid fa-link"></i>
+											<i onClick={()=>handleSpoiler()} className="fa-solid fa-eye-slash"></i>
 											<div>
-												<i class="fa-solid fa-less-than"></i>/
-												<i class="fa-solid fa-greater-than"></i>
+												<i className="fa-solid fa-less-than"></i>/
+												<i className="fa-solid fa-greater-than"></i>
 											</div>
-											<i class="fa-solid fa-quote-left"></i>
+											<i className="fa-solid fa-quote-left"></i>
 										</div>
 										<button className="comment-btn" onClick={()=>addData()}>
 											Comment
@@ -200,9 +200,9 @@ const DataDetails = () => {
 											<h4>Log in with</h4>
 											<div className="login-comment-icons_icon">
 												<h3>D</h3>
-												<i class="fa-brands fa-facebook-f"></i>
-												<i class="fa-brands fa-twitter"></i>
-												<i class="fa-brands fa-google"></i>
+												<i className="fa-brands fa-facebook-f"></i>
+												<i className="fa-brands fa-twitter"></i>
+												<i className="fa-brands fa-google"></i>
 											</div>
 										</div>
 										<div className="login-comment-inputs">
@@ -286,18 +286,18 @@ const DataDetails = () => {
 						</div>
 						<div className="comments_post-top">
 							<div className="comments_post-top-leftside">
-								<i class="fa-regular fa-bookmark"></i>
+								<i className="fa-regular fa-bookmark"></i>
 								<div className="comments_post-top-leftside-share">
 									<h5>Share</h5>
 									<ul>
 										<li>
 											<a>
-												<i class="fa-brands fa-twitter"></i>
+												<i className="fa-brands fa-twitter"></i>
 											</a>
 										</li>
 										<li>
 											<a>
-												<i class="fa-brands fa-facebook-f"></i>
+												<i className="fa-brands fa-facebook-f"></i>
 											</a>
 										</li>
 									</ul>
@@ -317,10 +317,10 @@ const DataDetails = () => {
 								<div className="comments_post-bottom-comment-rightside">
 									<div className="username">
 										<h3>{item.commentUser}</h3>
-										<i class="fa-solid fa-user-plus"></i>
+										<i className="fa-solid fa-user-plus"></i>
 									</div>
 									<div className="date">
-										<i class="fa-regular fa-clock"></i>
+										<i className="fa-regular fa-clock"></i>
 										<span> {item.commentDate}</span>
 									</div>
 									<div className="comment">
@@ -329,11 +329,11 @@ const DataDetails = () => {
 									</div>
 									<div className="feedback">
 										<div className="feedback-likes">
-											<i class="fa-regular fa-thumbs-up"></i>
+											<i className="fa-regular fa-thumbs-up"></i>
 											<span> 0</span>
 										</div>
 										<div className="feedback-likes">
-											<i class="fa-regular fa-thumbs-down"></i>
+											<i className="fa-regular fa-thumbs-down"></i>
 											<span> 0</span>
 										</div>
 										<div>
@@ -355,7 +355,7 @@ const DataDetails = () => {
 										href="https://disqus.com/profile/login/?forum=test-qrcecc5znu&next=https%3A%2F%2Fdisqus.com%2Fnext%2Flogin%2F&evs=bmV0d29ya19kZWZhdWx0X2hpZGRlbjpmYWxsdGhyb3VnaDpkeW5hbWlj"
 										target="_blank"
 									>
-										<i class="fa-solid fa-square-envelope"></i>
+										<i className="fa-solid fa-square-envelope"></i>
 										<h4>Subscribe</h4>
 									</a>
 								</div>
@@ -364,7 +364,7 @@ const DataDetails = () => {
 										href="https://help.disqus.com/en/articles/1717103-disqus-privacy-policy"
 										target="_blank"
 									>
-										<i class="fa-solid fa-lock"></i>
+										<i className="fa-solid fa-lock"></i>
 										<h4>Privacy</h4>
 									</a>
 								</div>
@@ -373,7 +373,7 @@ const DataDetails = () => {
 										href="https://disqus.com/data-sharing-settings/"
 										target="_blank"
 									>
-										<i class="fa-solid fa-exclamation"></i>
+										<i className="fa-solid fa-exclamation"></i>
 										<h4>Do Not Sell My Data</h4>
 									</a>
 								</div>
