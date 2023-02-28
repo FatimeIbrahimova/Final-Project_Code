@@ -19,10 +19,8 @@ const UserDetail = () => {
     })
     .then(res=>res.json())
     .then((data)=>{
-      console.log(data,"userData");
+      // console.log(data,"userData");
       setData(data.data)
-      // console.log("fatimeee");
-      // console.log("token",(localStorage.token));
     })
    
     useEffect(()=>{
@@ -32,7 +30,6 @@ const UserDetail = () => {
         behavior:"smooth"
       })
      },[])
-    //  console.log("user");
   return (
     <div style={{marginTop:200,display:"flex",gap:10,color:"red",justifyContent:"center"}}>
         <h1>{data.username}</h1>

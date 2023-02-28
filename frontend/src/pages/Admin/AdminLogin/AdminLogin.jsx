@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { loginFormSchema } from "../../../schema/formSchema";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet";
 import axios from "axios";
 
 const AdminLogin = () => {
+	const [userType, setUserType] = useState("");
 	const [state, setState] = useState({
 		email: "",
 		password: undefined,
@@ -17,17 +18,21 @@ const AdminLogin = () => {
 		setState({ ...state, [e.target.name]: e.target.value });
 		console.log(state);
 	};
-	const addData =async () => {
-		await axios.post("http://localhost:8080/authAdmin/adminLogin", state)
-		.then((data)=>{
-			console.log(data,"userAdminRegister")
-			if(data.data.status=="ok"){
-				alert("login successful");
-				window.localStorage.setItem("user",JSON.stringify(data.data.data))
-				window.location.href="/admin/dashboard"
-				// console.log("data.data");
-			}
-		})
+	const addData = async () => {
+		await axios
+			.post("http://localhost:8080/authAdmin/adminnLogin", state)
+			.then((data) => {
+				console.log(data, "userAdminRegister");
+				console.log(data.data.error);
+				if (data.data.status == "ok") {
+					alert("login successful");
+					window.localStorage.setItem("user", JSON.stringify(data.data.data));
+					window.location.href = "/admin/dashboard";
+					console.log("data.data");
+				} else if (data.data.error == "User Not Found") {
+					alert("Invalid Admin");
+				}
+			});
 	};
 	//Yup
 	const {
@@ -35,41 +40,56 @@ const AdminLogin = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm({ resolver: yupResolver(loginFormSchema) });
-	useEffect(()=>{
+	useEffect(() => {
 		window.scrollTo({
-		  top:0,
-		  left:0,
-		  behavior:"smooth"
-		})
-	   },[])
+			top: 0,
+			left: 0,
+			behavior: "smooth",
+		});
+	}, []);
 	return (
 		<>
-		<Helmet>
-        <title>Login Page</title>
-      </Helmet>
-		<div className="login-page">
-			<div className="login-page_wrapper">
-				<div className="login-page_wrapper-title">
-					<h1>Login</h1>
+			<Helmet>
+				<title>Login Page</title>
+			</Helmet>
+			<div className="login-page">
+				<div className="login-page_wrapper">
+					<div className="login-page_wrapper-title">
+						<h1>Login</h1>
+					</div>
+					<form>
+						<label>Email</label>
+						<br />
+						<input
+							type="email"
+							{...register("email")}
+							onChange={(e) => handleChange(e)}
+							name="email"
+						/>
+						<br />
+						{errors?.email && (
+							<span style={{ color: "red" }}>{errors.email.message}</span>
+						)}
+						<br />
+						<label>Password</label>
+						<br />
+						<input
+							type="password"
+							autoComplete="passwordd"
+							{...register("password")}
+							onChange={(e) => handleChange(e)}
+							name="password"
+						/>
+						<br />
+						{errors?.password && (
+							<span style={{ color: "red" }}>{errors.password.message}</span>
+						)}
+					</form>
+					<button className="login-btn" onClick={handleSubmit(addData())}>
+						Login
+					</button>
 				</div>
-				<form>
-					<label>Email</label>
-					<br />
-					<input type="email" {...register("email")} onChange={(e) => handleChange(e)} name="email"/><br/>
-					{errors?.email && (
-						<span style={{ color: "red" }}>{errors.email.message}</span>
-					)}
-					<br />
-					<label>Password</label>
-					<br />
-					<input type="password" {...register("password")} onChange={(e) => handleChange(e)} name="password"/><br/>
-					{errors?.password && (
-						<span style={{ color: "red" }}>{errors.password.message}</span>
-					)}
-				</form>
-				<button className="login-btn" onClick={handleSubmit(addData())}>Login</button>
 			</div>
-		</div>
 		</>
 	);
 };

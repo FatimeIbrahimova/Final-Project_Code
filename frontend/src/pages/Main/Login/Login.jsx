@@ -65,7 +65,7 @@ const Login = () => {
 					<br />
 					<label>Password</label>
 					<br />
-					<input type="password" {...register("password")} onChange={(e) => handleChange(e)} name="password"/><br/>
+					<input type="password" autoComplete="new-password"{...register("password")} onChange={(e) => handleChange(e)} name="password"/><br/>
 					{errors?.password && (
 						<span style={{ color: "red" }}>{errors.password.message}</span>
 					)}

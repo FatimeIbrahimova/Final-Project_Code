@@ -15,7 +15,7 @@ const Navbar = () => {
     }
     //login user profile
     const [data,setData]=useState("")
-    fetch("http://localhost:8080/authAdmin/adminUser",{
+    fetch("http://localhost:8080/authAdmin/adminnUser",{
       method:"POST",
       crossDomain:true,
       headers:{
@@ -30,7 +30,7 @@ const Navbar = () => {
     })
     .then(res=>res.json())
     .then((data)=>{
-      console.log(data,"adminUser");
+      // console.log(data,"adminUser");
       setData(data.data)
     })
   return (

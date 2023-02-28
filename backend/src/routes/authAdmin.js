@@ -1,13 +1,13 @@
 const express = require("express");
 let router = express.Router();
-const User = require("../models/User");
+const User = require("../models/UserAdmin");
 const bcrypt = require("bcrypt");
 
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = "abcdef123";
 
 //Admin Register
-router.post("/adminRegister", async (req, res) => {
+router.post("/adminnRegister", async (req, res) => {
 	try {
 		const salt = await bcrypt.genSalt(10);
 		const hashedPass = await bcrypt.hash(req.body.password, salt);
@@ -23,7 +23,7 @@ router.post("/adminRegister", async (req, res) => {
 		res.status(500).json(err);
 	}
 });
-router.get("/adminRegister", (req, res) => {
+router.get("/adminnRegister", (req, res) => {
 	User.find({}, (err, docs) => {
 		if (!err) {
 			res.send(docs);
@@ -34,7 +34,7 @@ router.get("/adminRegister", (req, res) => {
 });
 
 //Admin Login
-router.post("/adminLogin", async (req, res) => {
+router.post("/adminnLogin", async (req, res) => {
 	const { email, password } = req.body;
 	const user = await User.findOne({ email });
 	if (!user) {
@@ -43,7 +43,7 @@ router.post("/adminLogin", async (req, res) => {
 	if (await bcrypt.compare(password, user.password)) {
 		const token = jwt.sign({ email: user.email }, JWT_SECRET);
 		if (res.status(200)) {
-			return res.json({ status: "ok", data: token });
+			return res.json({ status: "ok", data: token});
 		} else {
 			return res.json({ message: error });
 		}
@@ -51,7 +51,7 @@ router.post("/adminLogin", async (req, res) => {
 	res.json({ status: "error", error: "Invalid Password" });
 });
 //admin user
-router.post("/adminUser", async (req, res) => {
+router.post("/adminnUser", async (req, res) => {
 	const { token } = req.body;
 	try {
 		const user = jwt.verify(token, JWT_SECRET);

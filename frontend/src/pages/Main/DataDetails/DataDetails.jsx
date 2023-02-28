@@ -72,11 +72,11 @@ const DataDetails = () => {
 		let dataCopy=[...post]
 		dataCopy.sort((a,b)=>{
 			if(sorted.reversed){
-				// return a.commentDate.getTime().localeCompare(b.commentDate.getTime());
+				return a.commentDate.localeCompare(b.commentDate);
 				// return a.commentDate.getTime()-b.commentDate.getTime();
 				// return  new Date(b.commentDate).valueOf()-new Date(a.commentDate).valueOf()
 				// return a.commentDate > b.commentDate;
-				return new Moment(a.commentDate).format('YYYYMMDD') - new Moment(b.commentDate).format('YYYYMMDD');
+				// return new Moment(a.commentDate).format('YYYYMMDD') - new Moment(b.commentDate).format('YYYYMMDD');
 			}
 			// return b.commentDate.localeCompare(a.commentDate);
 		})
@@ -87,7 +87,8 @@ const DataDetails = () => {
 		let dataCopy=[...post]
 		dataCopy.sort((a,b)=>{
 			if(sorted.reversed){
-				return a.commentDate.getTime().localeCompare(b.commentDate.getTime());
+				// return a.commentDate.getTime().localeCompare(b.commentDate.getTime());
+				return a.commentDate.localeCompare(b.commentDate);
 			}
 		})
 		setPost(dataCopy)

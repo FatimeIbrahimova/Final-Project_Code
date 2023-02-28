@@ -60,10 +60,10 @@ const {insta}=useContext(MainContext)
         <div className='container'>
             <div className='nav__left-icons'>
             <div className='icons'>
-            <a href='https://www.facebook.com/redqinc/'><i class="fa-brands fa-square-facebook"></i></a>
-            <a className='social-icon' href='https://www.instagram.com/redqinc/'><i class="fa-brands fa-instagram"></i></a>
-            <a className='social-icon' href='https://twitter.com/redqinc'><i class="fa-brands fa-twitter"></i></a>
-            <a className='social-icon' href='https://www.linkedin.com/company/redqinc/'><i class="fa-brands fa-linkedin"></i></a>
+            <a href='https://www.facebook.com/redqinc/'><i className="fa-brands fa-square-facebook"></i></a>
+            <a className='social-icon' href='https://www.instagram.com/redqinc/'><i className="fa-brands fa-instagram"></i></a>
+            <a className='social-icon' href='https://twitter.com/redqinc'><i className="fa-brands fa-twitter"></i></a>
+            <a className='social-icon' href='https://www.linkedin.com/company/redqinc/'><i className="fa-brands fa-linkedin"></i></a>
             </div>
             <ul>
                 <li className='categories'><h3>Categories</h3>

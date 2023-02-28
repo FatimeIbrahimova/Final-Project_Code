@@ -9,7 +9,7 @@ import "./Register.scss";
 import Swal from "sweetalert2"
 
 const Register = () => {
-	const [span,setSpan]=useState("hidden")
+	// const [span,setSpan]=useState("hidden")
 	//
 	const [state, setState] = useState({
 		username: "",
@@ -39,20 +39,6 @@ const Register = () => {
 		})
         console.log("a")
 		console.log(state);
-		
-	// 	if (state.status == 200) {
-    //         Swal.fire({
-    //             icon: "success",
-    //             title: "Təbriklər! Sizin hesabınız müvəffəqiyyətlə yaradıldı!",
-    //             showConfirmButton: false,
-    //             timer: 1500,
-    //         }).then((c) => {
-    //             navigate("/login");
-    //         });
-    //     } else {
-    //         setErrorMessage(user.message);
-    //     }
-    // };
 	};
 
 	
