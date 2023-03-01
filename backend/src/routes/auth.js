@@ -8,18 +8,14 @@ const JWT_SECRET = "abcdef12";
 //Register
 router.post("/register", async (req, res) => {
 	const { username, surname, email, password } = req.body;
-	const hashedPass = await bcrypt.hash(password, 10);
+	// const hashedPass = await bcrypt.hash(password, 10);
 	try {
-		// const oldUser = User.findOne({ email });
-		// if (oldUser) {
-		// 	return res.send({ error: "User exists" });
-		// }
 		await User.create({
 			username,
 			surname,
 			email,
-			password: hashedPass,
-			// password,
+			// password: hashedPass,
+			password,
 		});
 		res.send({ status: "ok" });
 	} catch (error) {
