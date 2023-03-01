@@ -71,6 +71,7 @@ const About = () => {
 									href="https://www.linkedin.com/company/redqinc/"
 								>
 									<i className="fa-brands fa-linkedin" />
+                  <p>hi</p>
 								</a>
 							</li>
 						</ul>
