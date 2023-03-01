@@ -33,6 +33,7 @@ const Register = () => {
 				console.log(data);
 			});
 		console.log(state);
+		console.log("b");
 	};
 
 	//Yup
