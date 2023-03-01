@@ -19,9 +19,9 @@
             a {
                 color: black;
             }
-            .nav__left-icons{
+            .nav__left-icons {
                 display: flex;
-                gap:20px;
+                gap: 20px;
                 align-items: center;
                 .categories {
                     position: relative;
@@ -52,28 +52,28 @@
                         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                         text-align: center;
                         visibility: hidden;
-                        a{
+                        a {
                             text-decoration: none;
-                            
-                        li{
-                            list-style: none;
-                            cursor: pointer;
-                            text-align: left;
-                            margin-left: 5px;
-                        }
+
+                            li {
+                                list-style: none;
+                                cursor: pointer;
+                                text-align: left;
+                                margin-left: 5px;
+                            }
                         }
                     }
-                    &:hover{
+                    &:hover {
                         ul {
                             visibility: visible;
                         }
                     }
                 }
-                li{
+                li {
                     list-style: none;
                     font-size: 14px;
                     font-weight: 400;
-                    h3{
+                    h3 {
                         font-family: "PT Serif", serif;
                     }
                 }
@@ -85,21 +85,21 @@
                 display: flex;
                 gap: 12px;
                 align-items: center;
-                a{
+                a {
                     text-decoration: none;
                 }
-                h2{
+                h2 {
                     font-size: 16px;
-                    color:#f73b98;
+                    color: #f73b98;
                 }
-                span{
+                span {
                     margin-left: -12px;
                     margin-right: -12px;
                 }
-                .user{
+                .user {
                     position: relative;
                     list-style: none;
-                    ul{
+                    ul {
                         list-style: none;
                         position: absolute;
                         z-index: 9999;
@@ -112,19 +112,18 @@
                         // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                         // text-align: center;
                         visibility: hidden;
-                        li{
-                            color:rgb(146, 145, 145);
-                            cursor:pointer;
+                        li {
+                            color: rgb(146, 145, 145);
+                            cursor: pointer;
                             font-style: italic;
                         }
                     }
-                    &:hover{
-                       ul{
-                        visibility: visible;
-                       } 
+                    &:hover {
+                        ul {
+                            visibility: visible;
+                        }
                     }
                 }
-                
             }
         }
         .nav_list {
@@ -287,30 +286,29 @@
     }
 }
 
-@media only screen and (max-width: 500px){
-    .nav__right-icons{
-        a{
-            h2{
+@media only screen and (max-width: 500px) {
+    .nav__right-icons {
+        a {
+            h2 {
                 display: none;
             }
         }
-        .user{
+        .user {
             display: none;
         }
-        .line{
+        .line {
             display: none;
         }
     }
 }
 @media only screen and (max-width: 576px) {
     .nav__left-icons {
-        .icons{
+        .icons {
             display: none;
         }
-        h3{
+        h3 {
             display: none;
         }
-        
     }
     .nav__right-icons {
         margin-right: 10px;
@@ -318,14 +316,14 @@
 }
 @media only screen and (max-width: 768px) {
     .nav__left-icons {
-        .icons{
+        .icons {
             display: none;
         }
-        h3{
+        h3 {
             display: none;
         }
     }
-    .nav-title{
+    .nav-title {
         margin-left: 0px;
     }
     .nav__right-icons {

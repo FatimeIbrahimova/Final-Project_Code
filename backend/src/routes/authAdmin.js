@@ -43,7 +43,7 @@ router.post("/adminnLogin", async (req, res) => {
 	if (await bcrypt.compare(password, user.password)) {
 		const token = jwt.sign({ email: user.email }, JWT_SECRET);
 		if (res.status(200)) {
-			return res.json({ status: "ok", data: token});
+			return res.json({ status: "ok", data: token });
 		} else {
 			return res.json({ message: error });
 		}
@@ -67,6 +67,5 @@ router.post("/adminnUser", async (req, res) => {
 		res.status(500).json(error);
 	}
 });
-
 
 module.exports = router;

@@ -9,14 +9,11 @@ import "./Register.scss";
 import Swal from "sweetalert2"
 
 const Register = () => {
-	// const [span,setSpan]=useState("hidden")
-	//
 	const [state, setState] = useState({
 		username: "",
 		surname:"",
 		email: "",
 		password: undefined,
-		// Confirmpassword:undefined,
 	});
 	const handleChange = (e) => {
 		e.preventDefault();
@@ -25,19 +22,15 @@ const Register = () => {
 	};
 	const addData = async() => {
 		await axios.post("http://localhost:8080/auth/register", state)
+		Swal.fire({
+						icon: "success",
+						title: "Congratulations! Your account has been successfully created!",
+						showConfirmButton: false,
+						timer: 1500,
+					})
         .then((data)=>{
 			console.log(data);
-			console.log(data);
-			if(data.data.status=="ok"){
-				Swal.fire({
-					icon: "success",
-					title: "Congratulations! Your account has been successfully created!",
-					showConfirmButton: false,
-					// timer: 1500,
-				})
-			}
 		})
-        console.log("a")
 		console.log(state);
 	};
 

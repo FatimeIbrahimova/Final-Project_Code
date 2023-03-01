@@ -16,7 +16,7 @@ import { loginFormSchema } from "../../../schema/formSchema";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import moment from "moment";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -54,19 +54,19 @@ const AllProducts = () => {
 		name: "",
 		title: "",
 		desc: "",
-		allDesc:"",
-		date:moment( new Date()).format('ll'),
+		allDesc: "",
+		date: moment(new Date()).format("ll"),
 	});
 	const [id, setId] = useState(undefined);
 
 	const addData = async () => {
 		await axios.post("http://localhost:8080/allProductt", state);
 		Swal.fire({
-			title: 'Success!',
-			text: 'Data Added to API',
-			icon: 'success',
-			confirmButtonText: 'Okay'
-		  })
+			title: "Success!",
+			text: "Data Added to API",
+			icon: "success",
+			confirmButtonText: "Okay",
+		});
 		console.log(state);
 		getData();
 	};
@@ -77,9 +77,9 @@ const AllProducts = () => {
 	console.log(state);
 
 	//delete
-	const handleDelete =async (id) => {
-		 await axios.delete(`http://localhost:8080/allProductt/${id}`);
-		  getData();
+	const handleDelete = async (id) => {
+		await axios.delete(`http://localhost:8080/allProductt/${id}`);
+		getData();
 	};
 
 	//update
@@ -89,7 +89,7 @@ const AllProducts = () => {
 			name: data.name,
 			title: data.title,
 			desc: data.desc,
-			allDesc:data.allDesc,
+			allDesc: data.allDesc,
 			date: new Date(),
 		});
 		setId(data._id);
@@ -99,19 +99,19 @@ const AllProducts = () => {
 	const updateData = async (id) => {
 		await axios.put(`http://localhost:8080/allProductt/${id}`, state);
 		Swal.fire({
-			title: 'Success!',
-			text: 'Data Updated',
-			icon: 'success',
-			confirmButtonText: 'Okay'
-		  })
+			title: "Success!",
+			text: "Data Updated",
+			icon: "success",
+			confirmButtonText: "Okay",
+		});
 		getData();
 		setState({
-			url:"",
-			name:"",
-			title:"",
-			desc:"",
-			allDesc:"",
-		})
+			url: "",
+			name: "",
+			title: "",
+			desc: "",
+			allDesc: "",
+		});
 	};
 
 	//Yup
@@ -126,7 +126,12 @@ const AllProducts = () => {
 				<Container fixed>
 					<TableContainer
 						component={Paper}
-						sx={{ width: "100%",display:"flex",alignItems:"center",justifyContent:"center"}}
+						sx={{
+							width: "100%",
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "center",
+						}}
 					>
 						<Table aria-label="customized table">
 							<TableHead>
@@ -142,7 +147,7 @@ const AllProducts = () => {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{filter?.map((item) =>(
+								{filter?.map((item) => (
 									<StyledTableRow key={item._id}>
 										<StyledTableCell component="th" scope="row">
 											<img src={item.url} alt="img" />
@@ -153,11 +158,11 @@ const AllProducts = () => {
 										<StyledTableCell sx={{ width: 200 }} align="center">
 											{item.title}
 										</StyledTableCell>
-										<StyledTableCell align="center" sx={{width:"15%"}}>
+										<StyledTableCell align="center" sx={{ width: "15%" }}>
 											{item.desc}
 										</StyledTableCell>
-										<StyledTableCell align="center" sx={{ width:"80" }}>
-											<p style={{fontSize:3}}>{item.allDesc}</p>
+										<StyledTableCell align="center" sx={{ width: "80" }}>
+											<p style={{ fontSize: 3 }}>{item.allDesc}</p>
 										</StyledTableCell>
 										<StyledTableCell align="center">
 											{item.date}
@@ -237,14 +242,20 @@ const AllProducts = () => {
 							onChange={(e) => handleChange(e)}
 						/>
 						<div className="btns">
-						<Button variant="contained" color="success" onClick={() => addData()}>Add Product</Button>
-						<Button
-							variant="contained"
-							color="secondary"
-							onClick={() => updateData(id)}
-						>
-							update
-						</Button>
+							<Button
+								variant="contained"
+								color="success"
+								onClick={() => addData()}
+							>
+								Add Product
+							</Button>
+							<Button
+								variant="contained"
+								color="secondary"
+								onClick={() => updateData(id)}
+							>
+								update
+							</Button>
 						</div>
 					</form>
 				</div>

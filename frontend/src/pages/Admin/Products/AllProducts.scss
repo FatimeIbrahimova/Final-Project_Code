@@ -27,40 +27,40 @@
       }
       input {
          outline: none;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      background-color: rgb(171, 169, 169);
+         padding: 10px 20px;
+         border: none;
+         border-radius: 10px;
+         background-color: rgb(171, 169, 169);
       }
-      .btns{
+      .btns {
          display: flex;
-         gap:10px;
+         gap: 10px;
       }
    }
-   .hidden{
+   .hidden {
       display: none;
    }
-   .visible{
+   .visible {
       display: visible;
    }
 }
-.btn{
+.btn {
    padding: 15px 30px;
    border-radius: 7px;
    border: none;
    color: white;
    font-weight: bold;
 }
-.btn-success{
+.btn-success {
    background-color: green;
    display: block;
 }
-.btn-danger{
+.btn-danger {
    background-color: red;
    margin-right: 7px;
 }
-@media only screen and (max-width: 576px){
-   TableContainer{
+@media only screen and (max-width: 576px) {
+   TableContainer {
       width: 100%;
       margin: 0 auto;
    }

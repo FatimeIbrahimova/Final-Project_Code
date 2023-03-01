@@ -44,12 +44,12 @@
                                 opacity: 0;
                             }
                             &:hover {
-                                background-color: #5e5e5e; 
+                                background-color: #5e5e5e;
                                 span {
                                     opacity: 1;
                                     top: 50%;
                                     left: 50%;
-                                    transform: translate(-50%,-50%);
+                                    transform: translate(-50%, -50%);
                                 }
                             }
                         }
@@ -92,9 +92,9 @@
                     margin-top: 20px;
                     li {
                         padding-top: 10px;
-                        a:hover{
-                            color:red;
-                    }
+                        a:hover {
+                            color: red;
+                        }
                         a {
                             text-decoration: none;
                             color: #5e5e5e;
@@ -124,68 +124,63 @@
         }
     }
 }
-@media only screen and (max-width: 576px){
-   .footer-top{
-   &_imgs{
-    display: flex;
-    gap:0px;
-    &_image:nth-child(4){
-        display: none;
+@media only screen and (max-width: 576px) {
+    .footer-top {
+        &_imgs {
+            display: flex;
+            gap: 0px;
+            &_image:nth-child(4) {
+                display: none;
+            }
+        }
     }
-   }
-   }
-   .footer-middle{
-    position: relative;
-    .container{
+    .footer-middle {
         position: relative;
-       
+        .container {
+            position: relative;
+        }
+        flex-direction: column;
+        p {
+            top: 20px;
+            left: 10px;
+            position: absolute;
+            font-size: 10px;
+            font-weight: 100;
+        }
+        form {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            left: 0;
+            input {
+                margin-top: 20px;
+                width: 250px;
+            }
+        }
     }
-    flex-direction: column;
-    p{
-        top:20px;
-        left: 10px;
-        position: absolute;
-        font-size: 10px;
-        font-weight: 100;
-    }
-    form{
-        margin-top:30px;
+    .footer-end {
         display: flex;
         flex-direction: column;
-        left:0;
-        input{
-                margin-top:20px;
-                width: 250px;
+        &_desc {
+            img {
+                width: 100px;
+            }
+        }
+        h3 {
+            margin-top: 20px;
         }
     }
-   }
-   .footer-end{
-    display: flex;
-    flex-direction: column;
-    &_desc{
-        
-        img{
-            width: 100px;
-        }
-    }
-   h3{
-    margin-top: 20px;
-   }
-   }
 }
-@media only screen and (max-width: 768px){
-    
-    .footer-middle{
-     flex-direction: column;
-     form{
-         margin-top:20px;
-         display: flex;
-     }
-    
+@media only screen and (max-width: 768px) {
+    .footer-middle {
+        flex-direction: column;
+        form {
+            margin-top: 20px;
+            display: flex;
+        }
     }
-    
- }
- @media only screen and (min-width: 769px){
+}
+@media only screen and (min-width: 769px) {
     .footer-middle {
         p {
             font-family: "PT Serif", serif;
@@ -193,27 +188,26 @@
             width: 35%;
         }
     }
- }
+}
 
- @media only screen and (min-width:576px){
-    .footer-end{
+@media only screen and (min-width: 576px) {
+    .footer-end {
         flex-wrap: wrap;
-        gap:50px;
-        &_desc{
+        gap: 50px;
+        &_desc {
             display: grid;
             order: 2;
             padding-left: 30%;
         }
     }
- }
- @media only screen and (min-width: 1200px){
-    .footer-end{
+}
+@media only screen and (min-width: 1200px) {
+    .footer-end {
         flex-wrap: nowrap;
-        &_desc{
+        &_desc {
             display: grid;
             order: 0;
             padding-left: 0px;
         }
     }
- }
-
+}

@@ -57,11 +57,7 @@ const User = () => {
 		setState({ ...state, [e.target.name]: e.target.value });
 	};
 	console.log(state);
-	//add
-	// const addData = async () => {
-	// 	await axios.post("http://localhost:8080/auth/register", state);
-	// 	getData();
-	// };
+	
 	//delete
 	const handleDelete = async (id) => {
 		await axios.delete(`http://localhost:8080/auth/register/${id}`);

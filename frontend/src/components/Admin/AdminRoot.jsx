@@ -1,15 +1,14 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import Navbar from './Navbar/Navbar'
-
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Navbar from "./Navbar/Navbar";
 
 const AdminRoot = () => {
-  return (
-    <>
-         <Navbar/>
-         <Outlet/>
-    </>
-  )
-}
+	return (
+		<>
+			<Navbar />
+			<Outlet />
+		</>
+	);
+};
 
-export default AdminRoot
+export default AdminRoot;

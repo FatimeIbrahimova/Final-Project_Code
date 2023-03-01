@@ -20,9 +20,8 @@
             }
             .form {
                 margin-top: 50px;
-                
+
                 &_inputs {
-                    // position: absolute;
                     width: 100%;
                     display: flex;
                     justify-content: space-between;
@@ -59,16 +58,16 @@
                         }
                     }
                 }
-                &-text{
+                &-text {
                     margin-top: 60px;
                     width: 100%;
-                    textarea{
+                    textarea {
                         width: 100%;
                         margin-top: 10px;
                         border: 1px solid rgb(219, 219, 219);
                     }
                 }
-                &_button-submit{
+                &_button-submit {
                     padding: 10px 20px;
                     background-color: black;
                     color: white;
@@ -79,45 +78,44 @@
     }
 }
 
-@media only screen and (max-width: 576px){
-   .contact-page{
-    .container{
-        .form{
-            &_inputs {
-                width: 100%;
-                flex-direction: column;
-                &-name {
-                    .input-name {
-                        width: 350px;
-                        input {
-                            width: 100%;
-                        }
-                    }
-                }
-                &-email {
-                    .input-email {
-                        width: 350px;
-                        input {
-                            width: 100%;
-                        }
-                    }
-                }
-            }
-            &-text{
-                width: 100%;
-                textarea{
+@media only screen and (max-width: 576px) {
+    .contact-page {
+        .container {
+            .form {
+                &_inputs {
                     width: 100%;
+                    flex-direction: column;
+                    &-name {
+                        .input-name {
+                            width: 350px;
+                            input {
+                                width: 100%;
+                            }
+                        }
+                    }
+                    &-email {
+                        .input-email {
+                            width: 350px;
+                            input {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+                &-text {
+                    width: 100%;
+                    textarea {
+                        width: 100%;
+                    }
                 }
             }
         }
     }
-   }
-    
 }
-@media only screen and (min-width: 577px){
-    .contact-page{
-        .container{
-            .form{
+@media only screen and (min-width: 577px) {
+    .contact-page {
+        .container {
+            .form {
                 &_inputs {
                     flex-direction: row;
                     width: 100%;
@@ -138,20 +136,20 @@
                         }
                     }
                 }
-                &-text{
+                &-text {
                     width: 100%;
-                    textarea{
+                    textarea {
                         width: 100%;
                     }
                 }
             }
         }
-       }
+    }
 }
 @media only screen and (min-width: 992px) {
-    .contact-page{
-        .container{
-            .form{
+    .contact-page {
+        .container {
+            .form {
                 &_inputs {
                     flex-direction: row;
                     width: 100%;
@@ -172,21 +170,21 @@
                         }
                     }
                 }
-                &-text{
+                &-text {
                     width: 100%;
-                    textarea{
+                    textarea {
                         width: 100%;
                     }
                 }
             }
         }
-       }
+    }
 }
 
 @media only screen and (min-width: 1200px) {
-    .contact-page{
-        .container{
-            .form{
+    .contact-page {
+        .container {
+            .form {
                 &_inputs {
                     flex-direction: row;
                     width: 100%;
@@ -207,13 +205,13 @@
                         }
                     }
                 }
-                &-text{
+                &-text {
                     width: 100%;
-                    textarea{
+                    textarea {
                         width: 100%;
                     }
                 }
             }
         }
-       }
+    }
 }

@@ -9,10 +9,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button} from "@mui/material";
+import { Button } from "@mui/material";
 import axios from "axios";
 import { Container } from "@mui/system";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -55,12 +55,12 @@ const AllCategories = () => {
 
 	const addData = async () => {
 		await axios.post("http://localhost:8080/categories", state);
-        Swal.fire({
-			title: 'Success!',
-			text: 'Data Added to API',
-			icon: 'success',
-			confirmButtonText: 'Okay'
-		  })
+		Swal.fire({
+			title: "Success!",
+			text: "Data Added to API",
+			icon: "success",
+			confirmButtonText: "Okay",
+		});
 		console.log(state);
 		getData();
 		setState({
@@ -77,9 +77,9 @@ const AllCategories = () => {
 	console.log(state);
 
 	//delete
-	const handleDelete =async (id) => {
-          await axios.delete(`http://localhost:8080/categories/${id}`);
-          getData();
+	const handleDelete = async (id) => {
+		await axios.delete(`http://localhost:8080/categories/${id}`);
+		getData();
 	};
 
 	//update
@@ -95,12 +95,12 @@ const AllCategories = () => {
 
 	const updateData = async (id) => {
 		await axios.put(`http://localhost:8080/categories/${id}`, state);
-        Swal.fire({
-			title: 'Success!',
-			text: 'Data Updated',
-			icon: 'success',
-			confirmButtonText: 'Okay'
-		  })
+		Swal.fire({
+			title: "Success!",
+			text: "Data Updated",
+			icon: "success",
+			confirmButtonText: "Okay",
+		});
 		getData();
 		setState({
 			categoryName: "",

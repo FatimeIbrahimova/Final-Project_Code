@@ -8,7 +8,7 @@ const JWT_SECRET = "abcdef12";
 //Register
 router.post("/register", async (req, res) => {
 	const { username, surname, email, password } = req.body;
-	// const hashedPass = await bcrypt.hash(password,10); //error created
+	const hashedPass = await bcrypt.hash(password, 10);
 	try {
 		// const oldUser = User.findOne({ email });
 		// if (oldUser) {
@@ -18,10 +18,10 @@ router.post("/register", async (req, res) => {
 			username,
 			surname,
 			email,
-			// password:hashedPass,
-			password,
+			password: hashedPass,
+			// password,
 		});
-		res.send({ status: "ok"});
+		res.send({ status: "ok" });
 	} catch (error) {
 		res.send({ status: "error" });
 	}
@@ -70,8 +70,7 @@ router.post("/login", async (req, res) => {
 		if (res.status(200)) {
 			return res.json({ status: "ok", data: token });
 		} else {
-			return res.json({error:"error"});
-			// return res.json({ message: error });
+			return res.json({ error: "error" });
 		}
 	}
 	res.json({ status: "error", error: "Invalid Password" });

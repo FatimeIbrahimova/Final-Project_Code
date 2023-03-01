@@ -67,7 +67,7 @@ const Comments = () => {
 
 	//update
 	const handleEditClick = (data) => {
-        console.log(state);
+		console.log(state);
 		setState({
 			commentProfile: data.commentProfile,
 			commentUser: data.commentUser,

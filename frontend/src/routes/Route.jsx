@@ -136,20 +136,19 @@ export const ROUTES = [
 				element: <Comments />,
 			},
 			{
-				path:"user",
-				element:<User/>
-			}
+				path: "user",
+				element: <User />,
+			},
 		],
 	},
 	{
-		path:"/admin/",
-		element:<AdminRoot2/>,
-		children:[	
+		path: "/admin/",
+		element: <AdminRoot2 />,
+		children: [
 			{
-				path:"",
-				element:<AdminLogin/>
-			 },
-		]
-	}
-	
+				path: "",
+				element: <AdminLogin />,
+			},
+		],
+	},
 ];

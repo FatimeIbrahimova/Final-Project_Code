@@ -5,7 +5,6 @@ import axios from "axios";
 import { MainContext } from '../../../../context/ContextProvider';
 
 const SecondSection = () => {
-  const {value,setValue}=useContext(MainContext)
   //api
   const {data, setData} = useContext(MainContext);
   //
@@ -16,7 +15,6 @@ const SecondSection = () => {
   const handleClick = () => {
       if (!btnClick) {
       setProductClass ('product visible');
-      //  setProductClass(product_class==="hidden" ? "visible" :"hidden")
       setBtn("hidden")
      } else {
        setProductClass ('product hidden');

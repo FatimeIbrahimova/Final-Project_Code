@@ -8,7 +8,6 @@ import { Helmet } from "react-helmet";
 import axios from "axios";
 
 const AdminLogin = () => {
-	const [userType, setUserType] = useState("");
 	const [state, setState] = useState({
 		email: "",
 		password: undefined,
@@ -23,14 +22,11 @@ const AdminLogin = () => {
 			.post("http://localhost:8080/authAdmin/adminnLogin", state)
 			.then((data) => {
 				console.log(data, "userAdminRegister");
-				console.log(data.data.error);
 				if (data.data.status == "ok") {
 					alert("login successful");
 					window.localStorage.setItem("user", JSON.stringify(data.data.data));
 					window.location.href = "/admin/dashboard";
 					console.log("data.data");
-				} else if (data.data.error == "User Not Found") {
-					alert("Invalid Admin");
 				}
 			});
 	};

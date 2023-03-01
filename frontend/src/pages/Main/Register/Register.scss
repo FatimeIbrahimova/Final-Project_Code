@@ -1,25 +1,25 @@
-*{
-    margin:0;
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
-    .register-page{
+    .register-page {
         margin-top: 200px;
         display: flex;
         align-items: center;
         justify-content: center;
-        &_wrapper{
+        &_wrapper {
             width: 450px;
             box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            &-title{
+            &-title {
                 margin-top: 30px;
                 color: #ff5252;
                 margin-bottom: 10px;
             }
-            label{
+            label {
                 margin-bottom: 10px;
             }
             input {
@@ -29,23 +29,23 @@
                 border: none;
                 border-radius: 5px;
                 background-color: rgb(182, 180, 180);
-              }
-              .sign-btn{
-                   margin-top: 20px;
-                   padding: 10px 116px;
-                   border-radius: 5px;
-                   background-color: #ff5252;
-                   border: none;
-                   margin-bottom: 20px;
-                   color: white;
-                   text-transform: uppercase;
-                   letter-spacing: 1.5px;
-              }
-              .sign-bottom{
+            }
+            .sign-btn {
+                margin-top: 20px;
+                padding: 10px 116px;
+                border-radius: 5px;
+                background-color: #ff5252;
+                border: none;
+                margin-bottom: 20px;
+                color: white;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+            }
+            .sign-bottom {
                 display: flex;
-                gap:4px;
+                gap: 4px;
                 margin-bottom: 30px;
-              }
+            }
         }
     }
 }

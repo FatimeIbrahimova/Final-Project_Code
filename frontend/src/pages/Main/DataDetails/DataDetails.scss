@@ -18,7 +18,7 @@
                 font-family: "PT Serif", serif;
                 font-size: 40px;
                 font-weight: 100;
-                color:#292929;
+                color: #292929;
                 text-align: center;
             }
             h2 {
@@ -360,10 +360,10 @@
                 &-rightside-sort {
                     display: flex;
                     gap: 20px;
-                        h5:hover{
-                            color:red;
-                            cursor:pointer;
-                        }
+                    h5:hover {
+                        color: red;
+                        cursor: pointer;
+                    }
                 }
             }
             &_post-bottom {
@@ -468,7 +468,7 @@
                 font-weight: 400;
             }
             .card-wrapper {
-                position:relative;
+                position: relative;
                 margin-top: 60px;
                 display: flex;
                 justify-content: space-between;
@@ -535,37 +535,37 @@
         .hidden {
             display: none;
         }
-        .bold{
-           .input{
+        .bold {
+            .input {
+                font-weight: 900;
+            }
             font-weight: 900;
-           }
-           font-weight: 900;
         }
-        .cursive{
+        .cursive {
             font-style: italic;
-            .input{
+            .input {
                 font-style: italic;
-               }
+            }
         }
-        .underline{
+        .underline {
+            text-decoration: underline;
+            .input {
                 text-decoration: underline;
-            .input{
-                text-decoration: underline;
-               }
+            }
         }
-        .line-through{
-            text-decoration:line-through;
-            .input{
-                text-decoration:line-through;
-               }
+        .line-through {
+            text-decoration: line-through;
+            .input {
+                text-decoration: line-through;
+            }
         }
-        .spoiler{
-            display:none;
-            &:hover{
+        .spoiler {
+            display: none;
+            &:hover {
                 display: visible;
             }
         }
-        .normal{
+        .normal {
             font-style: normal;
         }
     }
@@ -598,17 +598,16 @@
             }
         }
     }
-    .related-posts{
-        .card-wrapper{
+    .related-posts {
+        .card-wrapper {
             flex-direction: column;
             position: relative;
             width: 100%;
-            .card-wrapper_card{
+            .card-wrapper_card {
                 width: 100%;
-                &-img{
+                &-img {
                     width: 100%;
                 }
-               
             }
         }
     }
